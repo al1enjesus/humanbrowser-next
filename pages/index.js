@@ -573,12 +573,48 @@ const bodyContent = `<!-- ── NAV ──────────────�
 
 
 
-<!-- ── PAYMENT MODAL ─────────────────────────────────── -->
-<div class="pay-modal-overlay" id="payModal" onclick="if(event.target===this)closePayModal()">
-  <div class="pay-modal">
-    <button class="pay-modal-close" onclick="closePayModal()">✕</button>
-    <div id="payModalContent">
-      <p>Loading...</p>
+<!-- ── PAYMENT BOTTOM SHEET ──────────────────────────── -->
+<div class="pay-backdrop" id="payBackdrop" onclick="closePaySheet()"></div>
+<div class="pay-sheet" id="paySheet">
+  <div class="pay-sheet-bar"><div class="pay-sheet-handle"></div></div>
+  <div class="pay-sheet-head">
+    <div class="psh-info">
+      <span class="psh-plan-name" id="pshPlanName">Starter</span>
+      <span class="psh-sep"> — </span>
+      <span class="psh-plan-price" id="pshPlanPrice">$13.99/mo</span>
+    </div>
+    <button class="psh-close" onclick="closePaySheet()">✕</button>
+  </div>
+  <div class="pay-sheet-tabs">
+    <button class="pst pst-active" id="tabCard" onclick="switchPayTab('card')">
+      💳 Card · Apple Pay · Google Pay
+    </button>
+    <button class="pst" id="tabCrypto" onclick="switchPayTab('crypto')">
+      ₿ Crypto
+    </button>
+  </div>
+  <div class="pay-sheet-body">
+    <div id="tabContentCard" class="psc-pane">
+      <div id="stripe-checkout">
+        <div class="psc-placeholder"><div class="pay-spinner"></div><p>Loading secure checkout…</p></div>
+      </div>
+    </div>
+    <div id="tabContentCrypto" class="psc-pane psc-hidden">
+      <div class="crypto-coins">
+        <button class="ccoin ccoin-usdt" onclick="selectCoin('USDT')">
+          <span class="ccoin-icon">💵</span><span class="ccoin-name">USDT</span><span class="ccoin-net">TRC20</span>
+        </button>
+        <button class="ccoin" onclick="selectCoin('BTC')">
+          <span class="ccoin-icon">₿</span><span class="ccoin-name">BTC</span><span class="ccoin-net">Bitcoin</span>
+        </button>
+        <button class="ccoin" onclick="selectCoin('ETH')">
+          <span class="ccoin-icon">⟠</span><span class="ccoin-name">ETH</span><span class="ccoin-net">ERC20</span>
+        </button>
+        <button class="ccoin" onclick="selectCoin('SOL')">
+          <span class="ccoin-icon">◎</span><span class="ccoin-name">SOL</span><span class="ccoin-net">Solana</span>
+        </button>
+      </div>
+      <div id="cryptoInvoice"></div>
     </div>
   </div>
 </div>`;

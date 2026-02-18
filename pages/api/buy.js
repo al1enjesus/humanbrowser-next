@@ -17,12 +17,13 @@ export default async function handler(req, res) {
   const p = PLANS[plan];
   const orderId = `hb_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 
-  // ── CARD via Stripe ─────────────────────────────────────────
+  // ── CARD via Stripe Embedded Checkout ──────────────────────
   if (currency === 'card') {
     try {
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         mode: 'subscription',
+        ui_mode: 'embedded',
         line_items: [{
           price_data: {
             currency: 'usd',
@@ -34,10 +35,13 @@ export default async function handler(req, res) {
         }],
         ...(email ? { customer_email: email } : {}),
         metadata: { plan, order_id: orderId },
-        success_url: `https://humanbrowser.dev/success?session={CHECKOUT_SESSION_ID}`,
-        cancel_url: `https://humanbrowser.dev/#pricing`,
+        return_url: `https://humanbrowser.dev/success?session={CHECKOUT_SESSION_ID}`,
       });
-      return res.status(200).json({ payment_url: session.url, order_id: orderId, method: 'stripe' });
+      return res.status(200).json({
+        client_secret: session.client_secret,
+        order_id: orderId,
+        method: 'stripe',
+      });
     } catch (e) {
       return res.status(500).json({ error: e.message });
     }
