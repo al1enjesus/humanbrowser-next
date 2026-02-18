@@ -69,9 +69,45 @@ const bodyContent = `<!-- ── NAV ──────────────�
 
   <p>No Mac Mini. No local setup. A full Playwright browser that runs on any server, looks like an iPhone 15, and bypasses every bot detection system alive.</p>
 
-  <div class="hero-btns">
-    <a href="#pricing" class="btn btn-primary btn-lg">Start for $13.99/mo →</a>
-    <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank" class="btn btn-secondary btn-lg">Install Free Skill</a>
+  <!-- ── Install command ── -->
+  <div class="hero-install">
+    <div class="hi-bar">
+      <div class="hi-dots">
+        <span class="hid hid-r"></span><span class="hid hid-y"></span><span class="hid hid-g"></span>
+      </div>
+      <span class="hi-title">terminal</span>
+    </div>
+    <div class="hi-body">
+      <span class="hi-prompt">$</span>
+      <span class="hi-cmd" id="heroInstallCmd">clawhub install al1enjesus/human-browser</span>
+      <button class="hi-copy" id="heroInstallCopy" onclick="copyInstallCmd()" title="Copy command">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Platform trust badges ── -->
+  <div class="hero-platforms">
+    <span class="hp-label">Available on</span>
+    <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank" class="hp-badge">
+      <span class="hp-icon">🦀</span> ClawHub
+    </a>
+    <a href="https://skild.sh/@al1enjesus/human-browser" target="_blank" class="hp-badge">
+      <span class="hp-icon">⚡</span> skild.sh
+    </a>
+    <a href="https://skills.sh" target="_blank" class="hp-badge">
+      <span class="hp-icon">🛠</span> skills.sh
+    </a>
+    <a href="https://github.com/al1enjesus/human-browser" target="_blank" class="hp-badge">
+      <span class="hp-icon">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.48 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </span> GitHub
+    </a>
+    <a href="https://www.npmjs.com/package/human-browser" target="_blank" class="hp-badge">
+      <span class="hp-icon">📦</span> npm
+    </a>
   </div>
 </div>
 

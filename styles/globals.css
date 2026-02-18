@@ -825,6 +825,124 @@
 
 
   /* ══════════════════════════════════════════════════════════
+     HERO INSTALL COMMAND + PLATFORMS
+  ══════════════════════════════════════════════════════════ */
+
+  .hero-install {
+    margin: 2rem auto 0;
+    max-width: 520px;
+    background: #0d0d0d;
+    border: 1px solid #2a2a2a;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px #1a1a1a, 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .hi-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #161616;
+    padding: 0.55rem 0.9rem;
+    border-bottom: 1px solid #222;
+  }
+  .hi-dots { display: flex; gap: 5px; }
+  .hid {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+  }
+  .hid-r { background: #ef4444; }
+  .hid-y { background: #f59e0b; }
+  .hid-g { background: #22c55e; }
+  .hi-title {
+    flex: 1;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #444;
+    font-family: 'JetBrains Mono', monospace;
+    margin-right: 30px; /* offset for dots width */
+  }
+  .hi-body {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+  }
+  .hi-prompt {
+    color: #22c55e;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .hi-cmd {
+    flex: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .hi-copy {
+    background: #1e1e1e;
+    border: 1px solid #2a2a2a;
+    color: #666;
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+  .hi-copy:hover  { color: #fff; border-color: #555; background: #2a2a2a; }
+  .hi-copy.copied { color: #22c55e; border-color: #22c55e44; background: #0d1f12; }
+
+  /* Platform badges */
+  .hero-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+  .hp-label {
+    font-size: 0.72rem;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-right: 0.25rem;
+  }
+  .hp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: #141414;
+    border: 1px solid #252525;
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.78rem;
+    color: #888;
+    text-decoration: none;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+  .hp-badge:hover { color: #fff; border-color: #444; background: #1a1a1a; }
+  .hp-icon {
+    display: flex; align-items: center;
+    font-size: 0.85rem;
+    color: #555;
+  }
+  .hp-icon svg { color: currentColor; }
+
+  @media(max-width: 560px) {
+    .hi-cmd { font-size: 0.75rem; }
+    .hero-install { max-width: 100%; }
+    .hi-title { display: none; }
+  }
+
+  /* ══════════════════════════════════════════════════════════
      PAYMENT BOTTOM SHEET
   ══════════════════════════════════════════════════════════ */
 
