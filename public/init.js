@@ -1,36 +1,3 @@
-function initPage() {
-
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Human Browser",
-    "description": "A stealth Playwright browser with residential proxy that acts like a real human. Runs on any Linux server without a Mac Mini or desktop. Bypasses Cloudflare, DataDome and PerimeterX. Official OpenClaw skill.",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "Linux, Windows, macOS",
-    "url": "https://humanbrowser.dev",
-    "offers": {
-      "@type": "Offer",
-      "price": "13.99",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "priceValidUntil": "2027-01-01"
-    },
-    "publisher": { "@type": "Organization", "name": "Virix Labs", "url": "https://virixlabs.com" }
-  }
-  
-
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "What is Human Browser?", "acceptedAnswer": { "@type": "Answer", "text": "Human Browser is a Playwright-based browser automation tool that uses residential proxy IPs and mimics real human behavior (mouse movement, typing speed, scroll patterns) to bypass anti-bot systems like Cloudflare, DataDome, and PerimeterX." } },
-      { "@type": "Question", "name": "Do I need a Mac Mini to run it?", "acceptedAnswer": { "@type": "Answer", "text": "No. Human Browser runs on any Linux server, VPS, Docker container, or CI/CD pipeline. No display server, no VNC, no desktop environment required — just Node.js and Chromium." } },
-      { "@type": "Question", "name": "What is free and what is paid?", "acceptedAnswer": { "@type": "Answer", "text": "The OpenClaw skill and browser-human.js script are completely free to install and use. The paid plans ($13.99/mo and up) provide residential proxy credentials — the IP address that makes the browser appear human. Without a residential IP, most anti-bot systems will block requests." } },
-      { "@type": "Question", "name": "How do I pay?", "acceptedAnswer": { "@type": "Answer", "text": "We accept Stripe (credit/debit card), USDT, ETH, and Bitcoin. Crypto payments are processed via 0xProcessing and credentials are delivered automatically within minutes." } },
-      { "@type": "Question", "name": "Which countries are supported?", "acceptedAnswer": { "@type": "Answer", "text": "Currently Romania (from $13.99/mo), USA ($29.99/mo), UK ($24.99/mo), Germany ($22.99/mo), Netherlands ($22.99/mo), and Japan ($26.99/mo). Each country has different service compatibility — see the country picker on our site." } }
-    ]
-  }
-  
 
   // Hamburger menu
   const btn = document.getElementById('hamburger');
@@ -200,4 +167,87 @@ document.getElementById('payModal').addEventListener('click', function(e) {
 });
 
 
+
+var currentPlan = 'starter';
+var planPrices = { starter: '$13.99', pro: '$49.99', enterprise: '$199' };
+var planNames  = { starter: 'Starter', pro: 'Pro', enterprise: 'Enterprise' };
+
+function openPayModal(plan) {
+  currentPlan = plan;
+  document.getElementById('payModal').classList.add('open');
+  document.getElementById('payModalContent').innerHTML =
+    '<h3 style="margin-bottom:1rem;font-size:1.1rem;">Choose payment method</h3>' +
+    '<p style="color:#999;font-size:0.85rem;margin-bottom:1.5rem;">' + planNames[plan] + ' — ' + planPrices[plan] + '/mo</p>' +
+    '<div class="pay-options">' +
+      '<button class="pay-opt" onclick="buyPlan('' + plan + '','card')">' +
+        '<span class="pay-opt-icons">🍎 🤖 💳</span>' +
+        '<span class="pay-opt-label">Apple Pay / Google Pay / Card</span>' +
+        '<span class="pay-opt-sub">via Stripe</span>' +
+      '</button>' +
+      '<button class="pay-opt" onclick="buyPlan('' + plan + '','USDT')">' +
+        '<span class="pay-opt-icons">💵</span>' +
+        '<span class="pay-opt-label">USDT</span>' +
+        '<span class="pay-opt-sub">TRC-20 or ERC-20</span>' +
+      '</button>' +
+      '<button class="pay-opt" onclick="buyPlan('' + plan + '','ETH')">' +
+        '<span class="pay-opt-icons">⟠</span>' +
+        '<span class="pay-opt-label">Ethereum</span>' +
+        '<span class="pay-opt-sub">ERC-20</span>' +
+      '</button>' +
+      '<button class="pay-opt" onclick="buyPlan('' + plan + '','BTC')">' +
+        '<span class="pay-opt-icons">₿</span>' +
+        '<span class="pay-opt-label">Bitcoin</span>' +
+        '<span class="pay-opt-sub">BTC mainnet</span>' +
+      '</button>' +
+      '<button class="pay-opt" onclick="buyPlan('' + plan + '','SOL')">' +
+        '<span class="pay-opt-icons">◎</span>' +
+        '<span class="pay-opt-label">Solana</span>' +
+        '<span class="pay-opt-sub">SOL mainnet</span>' +
+      '</button>' +
+    '</div>';
+}
+
+function closePayModal() {
+  document.getElementById('payModal').classList.remove('open');
+}
+
+async function buyPlan(plan, currency) {
+  var content = document.getElementById('payModalContent');
+  content.innerHTML = '<div class="pay-spinner"></div><p style="color:#999;font-size:0.9rem;margin-top:1rem;">Creating payment...</p>';
+
+  try {
+    var res = await fetch('/api/buy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan: plan, currency: currency })
+    });
+    var data = await res.json();
+
+    if (currency === 'card') {
+      window.location.href = data.payment_url;
+      return;
+    }
+
+    var coinLabels = { USDT: '💵 USDT', ETH: '⟠ ETH', BTC: '₿ BTC', SOL: '◎ SOL' };
+    content.innerHTML =
+      '<h3 style="margin-bottom:0.25rem;">' + (coinLabels[currency] || currency) + ' Payment</h3>' +
+      '<p style="color:#999;font-size:0.82rem;margin-bottom:1rem;">' + planNames[plan] + ' · ' + planPrices[plan] + '/mo</p>' +
+      '<div class="pay-amount">' + (data.amount_crypto || planPrices[plan].replace('$','')) + ' ' + currency + '</div>' +
+      '<p style="color:#666;font-size:0.78rem;margin-bottom:0.4rem;">Send exactly this amount to:</p>' +
+      '<div class="wallet-addr" onclick="copyAddr(this,'' + (data.wallet_address||'') + '')">' + (data.wallet_address || 'Address loading...') + '</div>' +
+      '<p style="color:#555;font-size:0.72rem;margin-bottom:1rem;">Click to copy · Order: ' + (data.order_id||'') + '</p>' +
+      '<p style="color:#06b6d4;font-size:0.8rem;margin-bottom:1rem;">⏱ Credentials delivered automatically after confirmation</p>' +
+      '<button class="pay-back-btn" onclick="openPayModal('' + plan + '')">← Back</button>';
+  } catch(e) {
+    content.innerHTML =
+      '<p style="color:#ef4444;margin-bottom:1rem;">Error: ' + e.message + '</p>' +
+      '<button class="pay-back-btn" onclick="openPayModal('' + plan + '')">← Try again</button>';
+  }
+}
+
+function copyAddr(el, addr) {
+  navigator.clipboard.writeText(addr).then(function() {
+    el.textContent = '✅ Copied!';
+    setTimeout(function() { el.textContent = addr; }, 2000);
+  });
 }

@@ -5,7 +5,6 @@ export default function Home() {
   useEffect(() => {
     const s = document.createElement('script');
     s.src = '/init.js';
-    s.onload = () => { if(window.initPage) window.initPage(); };
     document.body.appendChild(s);
   }, []);
 
@@ -13,7 +12,7 @@ export default function Home() {
     <>
       <Head>
         <title>Human Browser — Stealth Playwright Browser with Residential Proxy | Virix Labs</title>
-        <meta name="description" content="Run a human-like stealth browser on any server. No Mac Mini needed. Residential proxy from $13.99/mo. Bypasses Cloudflare, DataDome, PerimeterX." />
+        <meta name="description" content="Stealth browser for AI agents. Residential proxy from $13.99/mo. Bypasses Cloudflare, DataDome, PerimeterX. Apple Pay, Google Pay, USDT, ETH, BTC, SOL." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://humanbrowser.dev" />
         <meta property="og:title" content="Human Browser — Stealth Browser for AI Agents" />
@@ -277,7 +276,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
 <div id="pricing" class="pricing-section">
   <div class="section-eyebrow">Pricing</div>
   <div class="section-title">Simple, transparent pricing</div>
-  <div class="section-sub">All plans include proxy credentials + OpenClaw skill. Card or crypto. Cancel anytime.</div>
+  <div class="section-sub">All plans include proxy credentials + OpenClaw skill. Card, Apple Pay, Google Pay or crypto. Cancel anytime.</div>
 
   <div class="pricing-grid">
     <div class="plan">
@@ -289,12 +288,11 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <li>iPhone 15 Pro + Desktop</li>
         <li>OpenClaw skill + credentials</li>
         <li>Cloudflare / DataDome bypass</li>
-        <li>Email + chat support</li>
+        <li>Email support</li>
         <li class="off">Multi-country rotation</li>
         <li class="off">CDP / Scraping Browser</li>
       </ul>
-      <button onclick="buyPlan('starter','card')" class="plan-btn ghost">Pay with Card →</button>
-      <button onclick="buyPlan('starter','USDT')" class="plan-btn crypto-btn">Pay with USDT →</button>
+      <button onclick="openPayModal('starter')" class="plan-btn ghost">Get Started →</button>
     </div>
 
     <div class="plan popular">
@@ -310,8 +308,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <li>Agent-native payment API</li>
         <li>Priority support</li>
       </ul>
-      <button onclick="buyPlan('pro','card')" class="plan-btn solid">Pay with Card →</button>
-      <button onclick="buyPlan('pro','USDT')" class="plan-btn crypto-btn">Pay with USDT →</button>
+      <button onclick="openPayModal('pro')" class="plan-btn solid">Get Started →</button>
     </div>
 
     <div class="plan">
@@ -326,14 +323,12 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <li>SLA guarantee</li>
         <li>Custom skill development</li>
       </ul>
-      <button onclick="buyPlan('enterprise','card')" class="plan-btn ghost">Pay with Card →</button>
-      <button onclick="buyPlan('enterprise','USDT')" class="plan-btn crypto-btn">Pay with USDT →</button>
+      <button onclick="openPayModal('enterprise')" class="plan-btn ghost">Get Started →</button>
     </div>
   </div>
 
   <div class="pay-note">
-    💳 Stripe &nbsp;·&nbsp; 💵 USDT &nbsp;·&nbsp; ⟠ ETH &nbsp;·&nbsp; ₿ BTC &nbsp;·&nbsp;
-    Questions? <a href="mailto:support@humanbrowser.dev">support@humanbrowser.dev</a>
+    🍎 Apple Pay &nbsp;·&nbsp; 🤖 Google Pay &nbsp;·&nbsp; 💳 Card &nbsp;·&nbsp; 💵 USDT &nbsp;·&nbsp; ⟠ ETH &nbsp;·&nbsp; ₿ BTC &nbsp;·&nbsp; ◎ SOL
   </div>
 </div>
 
@@ -404,17 +399,17 @@ const bodyContent = `<!-- ── NAV ──────────────�
 <div class="pay-section">
   <div class="container">
     <div class="section-eyebrow">Payment</div>
-    <div class="section-title">How to get started in 5 minutes</div>
-    <div class="section-sub">Pick your country, choose how to pay, get credentials instantly. No bureaucracy.</div>
+    <div class="section-title">Pay any way you want</div>
+    <div class="section-sub">Card, Apple Pay, Google Pay or crypto. Credentials delivered automatically.</div>
 
     <div class="pay-methods-grid">
       <div class="pay-method">
         <div class="pay-method-icon">💳</div>
-        <h3>Credit / Debit Card</h3>
-        <p>Processed by Stripe. Visa, Mastercard, Amex. Subscription auto-renews monthly. Cancel anytime from Telegram.</p>
+        <h3>Card / Apple Pay / Google Pay</h3>
+        <p>Processed by Stripe. Visa, Mastercard, Amex. Apple Pay and Google Pay supported. Subscription renews monthly.</p>
         <div class="pay-steps">
-          <div class="pay-step"><span class="ps-n">1</span> Click <strong>Pay with Card</strong> on any plan above</div>
-          <div class="pay-step"><span class="ps-n">2</span> Stripe Checkout opens — enter card details</div>
+          <div class="pay-step"><span class="ps-n">1</span> Click <strong>Get Started</strong> on any plan</div>
+          <div class="pay-step"><span class="ps-n">2</span> Choose Card / Apple Pay / Google Pay</div>
           <div class="pay-step"><span class="ps-n">3</span> Pay → credentials delivered instantly</div>
         </div>
       </div>
@@ -422,33 +417,33 @@ const bodyContent = `<!-- ── NAV ──────────────�
       <div class="pay-method">
         <div class="pay-method-icon">💵</div>
         <h3>USDT (TRC-20 or ERC-20)</h3>
-        <p>Most popular crypto option. Send exactly the amount shown. Processed by 0xProcessing — automatic confirmation.</p>
+        <p>Most popular crypto option. Exact amount to wallet address. Auto-confirmed by 0xProcessing.</p>
         <div class="pay-steps">
-          <div class="pay-step"><span class="ps-n">1</span> Click <strong>Pay with USDT</strong> on any plan</div>
-          <div class="pay-step"><span class="ps-n">2</span> Get USDT wallet address + exact amount</div>
-          <div class="pay-step"><span class="ps-n">3</span> Send → credentials auto-delivered in ~2 min</div>
+          <div class="pay-step"><span class="ps-n">1</span> Click <strong>Get Started</strong> → choose USDT</div>
+          <div class="pay-step"><span class="ps-n">2</span> Get wallet address + exact amount</div>
+          <div class="pay-step"><span class="ps-n">3</span> Send → credentials in ~2 min</div>
         </div>
       </div>
 
       <div class="pay-method">
-        <div class="pay-method-icon">⟠</div>
-        <h3>ETH / BTC</h3>
-        <p>Ethereum and Bitcoin also accepted. Same automatic flow — no manual approval needed.</p>
+        <div class="pay-method-icon">◎</div>
+        <h3>Solana / ETH / BTC</h3>
+        <p>All major blockchains accepted. Same automatic flow — no manual approval.</p>
         <div class="pay-steps">
-          <div class="pay-step"><span class="ps-n">1</span> Choose currency when buying</div>
+          <div class="pay-step"><span class="ps-n">1</span> Pick your coin in the payment modal</div>
           <div class="pay-step"><span class="ps-n">2</span> Get network-specific address</div>
-          <div class="pay-step"><span class="ps-n">3</span> Send → credentials in ~10 min</div>
+          <div class="pay-step"><span class="ps-n">3</span> Send → credentials auto-delivered</div>
         </div>
       </div>
 
       <div class="pay-method">
         <div class="pay-method-icon">🤖</div>
         <h3>AI Agent (API)</h3>
-        <p>Your agent can buy credentials programmatically. No human needed. Full JSON API — machine-readable responses.</p>
+        <p>Your agent can buy credentials programmatically. Full JSON API — machine-readable responses.</p>
         <div class="pay-steps">
-          <div class="pay-step"><span class="ps-n">1</span> Agent: <code>GET humanbrowser.dev/api/plans</code></div>
-          <div class="pay-step"><span class="ps-n">2</span> Agent: <code>POST /buy {currency:"USDT"}</code></div>
-          <div class="pay-step"><span class="ps-n">3</span> Agent pays → polls <code>GET /status/:id</code></div>
+          <div class="pay-step"><span class="ps-n">1</span> Agent: <code>GET /api/plans</code></div>
+          <div class="pay-step"><span class="ps-n">2</span> Agent: <code>POST /api/buy {currency:"USDT"}</code></div>
+          <div class="pay-step"><span class="ps-n">3</span> Agent pays → polls <code>GET /api/status/:id</code></div>
         </div>
       </div>
     </div>
@@ -541,11 +536,11 @@ const bodyContent = `<!-- ── NAV ──────────────�
 
 
 <!-- ── PAYMENT MODAL ─────────────────────────────────── -->
-<div class="pay-modal-overlay" id="payModal">
+<div class="pay-modal-overlay" id="payModal" onclick="if(event.target===this)closePayModal()">
   <div class="pay-modal">
+    <button class="pay-modal-close" onclick="closePayModal()">✕</button>
     <div id="payModalContent">
-      <div class="pay-spinner"></div>
-      <p style="color:#999;font-size:0.9rem;">Creating payment...</p>
+      <p>Loading...</p>
     </div>
   </div>
 </div>`;
