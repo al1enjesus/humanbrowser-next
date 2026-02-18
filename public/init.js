@@ -193,3 +193,33 @@ async function buyPlan(plan, currency) {
       '<button class="pay-back-btn" onclick="openPayModal(\'' + plan + '\')">← Try again</button>';
   }
 }
+
+// ── DIRECT PAY (no modal) ──────────────────────────────────────
+function goPay(plan, currency) {
+  // Show loading overlay
+  var overlay = document.getElementById('payLoading');
+  var msg     = document.getElementById('payLoadingMsg');
+  if (overlay) overlay.classList.add('show');
+  if (msg) msg.textContent = currency === 'card'
+    ? 'Opening Stripe Checkout...'
+    : 'Creating ' + currency + ' payment...';
+
+  fetch('/api/buy', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ plan: plan, currency: currency })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.payment_url) {
+      window.location.href = data.payment_url;
+    } else {
+      if (overlay) overlay.classList.remove('show');
+      alert('Error: ' + (data.error || 'Unknown error'));
+    }
+  })
+  .catch(function(e) {
+    if (overlay) overlay.classList.remove('show');
+    alert('Network error: ' + e.message);
+  });
+}

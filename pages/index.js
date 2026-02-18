@@ -285,7 +285,18 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <li class="off">Multi-country rotation</li>
         <li class="off">CDP / Scraping Browser</li>
       </ul>
-      <button onclick="openPayModal('starter')" class="plan-btn ghost">Get Started →</button>
+      <div class="plan-btns">
+        <button onclick="goPay('starter','card')" class="plan-pay-btn stripe-btn">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" height="18">
+          <span class="btn-sub">Apple Pay · Google Pay · Card</span>
+        </button>
+        <div class="crypto-row">
+          <button onclick="goPay('starter','USDT')" class="crypto-coin-btn" title="USDT"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT</span></button>
+          <button onclick="goPay('starter','ETH')"  class="crypto-coin-btn" title="ETH"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" width="24" height="24"><span>ETH</span></button>
+          <button onclick="goPay('starter','BTC')"  class="crypto-coin-btn" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="24" height="24"><span>BTC</span></button>
+          <button onclick="goPay('starter','SOL')"  class="crypto-coin-btn" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="24" height="24"><span>SOL</span></button>
+        </div>
+      </div>
     </div>
 
     <div class="plan popular">
@@ -301,7 +312,18 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <li>Agent-native payment API</li>
         <li>Priority support</li>
       </ul>
-      <button onclick="openPayModal('pro')" class="plan-btn solid">Get Started →</button>
+      <div class="plan-btns">
+        <button onclick="goPay('pro','card')" class="plan-pay-btn stripe-btn">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" height="18">
+          <span class="btn-sub">Apple Pay · Google Pay · Card</span>
+        </button>
+        <div class="crypto-row">
+          <button onclick="goPay('pro','USDT')" class="crypto-coin-btn" title="USDT"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT</span></button>
+          <button onclick="goPay('pro','ETH')"  class="crypto-coin-btn" title="ETH"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" width="24" height="24"><span>ETH</span></button>
+          <button onclick="goPay('pro','BTC')"  class="crypto-coin-btn" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="24" height="24"><span>BTC</span></button>
+          <button onclick="goPay('pro','SOL')"  class="crypto-coin-btn" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="24" height="24"><span>SOL</span></button>
+        </div>
+      </div>
     </div>
 
     <div class="plan">
@@ -316,7 +338,18 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <li>SLA guarantee</li>
         <li>Custom skill development</li>
       </ul>
-      <button onclick="openPayModal('enterprise')" class="plan-btn ghost">Get Started →</button>
+      <div class="plan-btns">
+        <button onclick="goPay('enterprise','card')" class="plan-pay-btn stripe-btn">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" height="18">
+          <span class="btn-sub">Apple Pay · Google Pay · Card</span>
+        </button>
+        <div class="crypto-row">
+          <button onclick="goPay('enterprise','USDT')" class="crypto-coin-btn" title="USDT"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT</span></button>
+          <button onclick="goPay('enterprise','ETH')"  class="crypto-coin-btn" title="ETH"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" width="24" height="24"><span>ETH</span></button>
+          <button onclick="goPay('enterprise','BTC')"  class="crypto-coin-btn" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="24" height="24"><span>BTC</span></button>
+          <button onclick="goPay('enterprise','SOL')"  class="crypto-coin-btn" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="24" height="24"><span>SOL</span></button>
+        </div>
+      </div>
     </div>
   </div>
 
