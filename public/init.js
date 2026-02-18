@@ -104,33 +104,44 @@ function openPayModal(plan) {
   if (!modal || !content) return;
   modal.classList.add('open');
   content.innerHTML =
-    '<h3 style="margin-bottom:1rem;font-size:1.1rem;">Choose payment method</h3>' +
-    '<p style="color:#999;font-size:0.85rem;margin-bottom:1.5rem;">' + planNames[plan] + ' — ' + planPrices[plan] + '/mo</p>' +
-    '<div class="pay-options">' +
-      '<button class="pay-opt" onclick="buyPlan(\'' + plan + '\',\'card\')">' +
-        '<span class="pay-opt-icons">🍎 🤖 💳</span>' +
-        '<span class="pay-opt-label">Apple Pay / Google Pay / Card</span>' +
-        '<span class="pay-opt-sub">via Stripe</span>' +
+    '<h3 style="margin-bottom:0.5rem;font-size:1.1rem;">Choose payment method</h3>' +
+    '<p style="color:#999;font-size:0.85rem;margin-bottom:1.25rem;">' + planNames[plan] + ' — ' + planPrices[plan] + '/mo</p>' +
+
+    // ── Stripe big button ──
+    '<button class="pay-opt pay-opt-stripe" onclick="buyPlan(\'' + plan + '\',\'card\')">' +
+      '<span class="pay-opt-main-label">Pay With Stripe</span>' +
+      '<span class="pay-opt-badges">' +
+        '<span class="pay-badge">🍎 Apple Pay</span>' +
+        '<span class="pay-badge">🤖 Google Pay</span>' +
+        '<span class="pay-badge">💳 Visa</span>' +
+        '<span class="pay-badge">Mastercard</span>' +
+      '</span>' +
+    '</button>' +
+
+    // ── Divider ──
+    '<div class="pay-divider"><span>or pay with crypto</span></div>' +
+
+    // ── Crypto grid ──
+    '<div class="pay-crypto-grid">' +
+      '<button class="pay-crypto-btn pay-crypto-usdt" onclick="buyPlan(\'' + plan + '\',\'USDT\')">' +
+        '<span class="pcc-icon">💵</span>' +
+        '<span class="pcc-name">USDT</span>' +
+        '<span class="pcc-net">TRC20</span>' +
       '</button>' +
-      '<button class="pay-opt" onclick="buyPlan(\'' + plan + '\',\'USDT\')">' +
-        '<span class="pay-opt-icons">💵</span>' +
-        '<span class="pay-opt-label">USDT</span>' +
-        '<span class="pay-opt-sub">TRC-20 or ERC-20</span>' +
+      '<button class="pay-crypto-btn" onclick="buyPlan(\'' + plan + '\',\'BTC\')">' +
+        '<span class="pcc-icon">₿</span>' +
+        '<span class="pcc-name">BTC</span>' +
+        '<span class="pcc-net">Bitcoin</span>' +
       '</button>' +
-      '<button class="pay-opt" onclick="buyPlan(\'' + plan + '\',\'ETH\')">' +
-        '<span class="pay-opt-icons">⟠</span>' +
-        '<span class="pay-opt-label">Ethereum</span>' +
-        '<span class="pay-opt-sub">ERC-20</span>' +
+      '<button class="pay-crypto-btn" onclick="buyPlan(\'' + plan + '\',\'ETH\')">' +
+        '<span class="pcc-icon">⟠</span>' +
+        '<span class="pcc-name">ETH</span>' +
+        '<span class="pcc-net">ERC20</span>' +
       '</button>' +
-      '<button class="pay-opt" onclick="buyPlan(\'' + plan + '\',\'BTC\')">' +
-        '<span class="pay-opt-icons">₿</span>' +
-        '<span class="pay-opt-label">Bitcoin</span>' +
-        '<span class="pay-opt-sub">BTC mainnet</span>' +
-      '</button>' +
-      '<button class="pay-opt" onclick="buyPlan(\'' + plan + '\',\'SOL\')">' +
-        '<span class="pay-opt-icons">◎</span>' +
-        '<span class="pay-opt-label">Solana</span>' +
-        '<span class="pay-opt-sub">SOL mainnet</span>' +
+      '<button class="pay-crypto-btn" onclick="buyPlan(\'' + plan + '\',\'SOL\')">' +
+        '<span class="pcc-icon">◎</span>' +
+        '<span class="pcc-name">SOL</span>' +
+        '<span class="pcc-net">Solana</span>' +
       '</button>' +
     '</div>';
 }

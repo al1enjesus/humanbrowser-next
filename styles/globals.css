@@ -603,11 +603,13 @@
       display: flex; align-items: center; justify-content: center;
     }
     .pay-modal-close:hover { color: #fff; background: #333; }
-    .pay-options { display: flex; flex-direction: column; gap: 0.6rem; }
+
+    /* ── Stripe big button ── */
     .pay-opt {
       display: flex;
-      align-items: center;
-      gap: 0.8rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
       background: #1a1a1a;
       border: 1px solid #2a2a2a;
       border-radius: 12px;
@@ -618,6 +620,77 @@
       width: 100%;
     }
     .pay-opt:hover { border-color: #8b5cf6; background: #1f1a2e; }
+    .pay-opt-stripe {
+      background: linear-gradient(135deg, #1a1040 0%, #0f172a 100%);
+      border-color: #4f46e5;
+      padding: 1rem 1.1rem;
+    }
+    .pay-opt-stripe:hover { border-color: #8b5cf6; background: linear-gradient(135deg, #221650 0%, #1e293b 100%); }
+    .pay-opt-main-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .pay-opt-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .pay-badge {
+      font-size: 0.72rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 2px 8px;
+      color: #aaa;
+      white-space: nowrap;
+    }
+
+    /* ── Divider ── */
+    .pay-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0.9rem 0 0.75rem;
+      color: #444;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .pay-divider::before, .pay-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #222;
+    }
+
+    /* ── Crypto grid ── */
+    .pay-crypto-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+    .pay-crypto-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 0.7rem 0.4rem;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .pay-crypto-btn:hover { border-color: #06b6d4; background: #0f1e22; }
+    .pay-crypto-usdt { border-color: #26a17b44; }
+    .pay-crypto-usdt:hover { border-color: #26a17b; background: #0a1a14; }
+    .pcc-icon { font-size: 1.3rem; line-height: 1; }
+    .pcc-name { font-size: 0.8rem; font-weight: 700; color: #fff; }
+    .pcc-net  { font-size: 0.62rem; color: #555; }
+
+    /* legacy compat */
     .pay-opt-icons { font-size: 1.1rem; min-width: 40px; }
     .pay-opt-label { font-size: 0.95rem; font-weight: 600; color: #fff; flex: 1; }
     .pay-opt-sub { font-size: 0.72rem; color: #666; white-space: nowrap; }
