@@ -1,13 +1,7 @@
 import Head from 'next/head';
-import { useEffect } from 'react';
+import Script from 'next/script';
 
 export default function Home() {
-  useEffect(() => {
-    const s = document.createElement('script');
-    s.src = '/init.js';
-    document.body.appendChild(s);
-  }, []);
-
   return (
     <>
       <Head>
@@ -25,6 +19,7 @@ export default function Home() {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
       </Head>
       <div dangerouslySetInnerHTML={{ __html: bodyContent }} />
+      <Script src="/init.js" strategy="afterInteractive" />
     </>
   );
 }

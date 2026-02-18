@@ -168,6 +168,7 @@ document.getElementById('payModal').addEventListener('click', function(e) {
 
 
 
+
 var currentPlan = 'starter';
 var planPrices = { starter: '$13.99', pro: '$49.99', enterprise: '$199' };
 var planNames  = { starter: 'Starter', pro: 'Pro', enterprise: 'Enterprise' };
