@@ -346,8 +346,7 @@
 
     /* ── FREE VS PAID ───────────────────────────────── */
   .fvp-section { max-width: 1060px; margin: 0 auto; padding: 5rem 1.5rem; }
-  .fvp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 3rem; }
-  @media(max-width:700px){ .fvp-grid { grid-template-columns: 1fr; } }
+  .fvp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
   .fvp-card {
     border: 1px solid var(--border); border-radius: var(--r-xl); padding: 2rem;
     display: flex; flex-direction: column; gap: 1.25rem;
@@ -737,5 +736,18 @@
     .pay-note { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem 0.75rem; margin-top: 2rem; padding: 1rem; background: #111; border-radius: 12px; border: 1px solid #1e1e1e; }
     .pn-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.82rem; color: #888; }
     .pn-sep { color: #333; font-size: 0.9rem; }
+
+  
+  @media(max-width:600px){
+    .fvp-card { padding: 1rem 0.75rem; }
+    .fvp-header h3 { font-size: 0.85rem; }
+    .fvp-header p { display: none; }
+    .fvp-list li { font-size: 0.72rem; }
+    .fvp-tag { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
+    .fvp-install code { font-size: 0.62rem; }
+    .fvp-install-label { display: none; }
+    .fvp-why { flex-direction: column; gap: 0.5rem; }
+    .fvp-grid { gap: 0.5rem; }
+  }
 
   
