@@ -3,144 +3,24 @@ import { useEffect } from 'react';
 
 export default function Home() {
   useEffect(() => {
-    // Hamburger menu
-  const btn = document.getElementById('hamburger');
-  const menu = document.getElementById('mobile-menu');
-  btn.addEventListener('click', () => {
-    menu.classList.toggle('open');
-  });
-  // Close on link click
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
-
-  // ── COUNTRY PICKER ──────────────────────────────
-  const COUNTRIES = {
-    ro: {
-      flag: '🇷🇴', name: 'Romania', isp: 'DIGI Romania / WS Telecom (Residential)',
-      price: '$13.99', note: 'Best price · Most popular · DIGI Romania residential ISP',
-    },
-    us: {
-      flag: '🇺🇸', name: 'United States', isp: 'AT&T / Comcast / Verizon (Residential)',
-      price: '$29.99', note: 'Required for US-only services · Banks, streaming, DoorDash',
-    },
-    gb: {
-      flag: '🇬🇧', name: 'United Kingdom', isp: 'BT / Virgin Media (Residential)',
-      price: '$24.99', note: 'EU-adjacent · Great for crypto & prediction markets',
-    },
-    de: {
-      flag: '🇩🇪', name: 'Germany', isp: 'Deutsche Telekom / Vodafone (Residential)',
-      price: '$22.99', note: 'EU-compliant · GDPR-friendly · Strong for EU services',
-    },
-    nl: {
-      flag: '🇳🇱', name: 'Netherlands', isp: 'KPN / Ziggo (Residential)',
-      price: '$22.99', note: 'Privacy-friendly · Popular for crypto & web3',
-    },
-    jp: {
-      flag: '🇯🇵', name: 'Japan', isp: 'NTT / SoftBank (Residential)',
-      price: '$26.99', note: 'Japanese content · Line · Yahoo Japan',
-    },
-  };
-
-  const SERVICES = [
-    { icon: '📊', name: 'Polymarket',   note: 'Prediction market',   status: { ro:'ok', us:'bad',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  }, label: { us:'US blocked' } },
-    { icon: '📸', name: 'Instagram',    note: 'Scraping & automation', status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
-    { icon: '💼', name: 'LinkedIn',     note: 'Profile & lead scraping', status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
-    { icon: '🛒', name: 'Amazon',       note: 'Price monitoring',     status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
-    { icon: '🐦', name: 'Twitter / X',  note: 'Automation & scraping', status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
-    { icon: '🔶', name: 'Binance',      note: 'Crypto exchange',      status: { ro:'ok', us:'bad',  gb:'warn',de:'ok',  nl:'ok',  jp:'ok'  }, label: { us:'US blocked', gb:'Limited' } },
-    { icon: '🎵', name: 'TikTok',       note: 'Content & automation', status: { ro:'ok', us:'warn', gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  }, label: { us:'Restrictions' } },
-    { icon: '🎬', name: 'Netflix US',   note: 'US content library',   status: { ro:'bad', us:'ok', gb:'bad', de:'bad', nl:'bad', jp:'bad' }, label: { ro:'US only', gb:'US only', de:'US only', nl:'US only', jp:'US only' } },
-    { icon: '🏦', name: 'US Banks',     note: 'Chase, BoA, etc.',     status: { ro:'bad', us:'ok', gb:'bad', de:'bad', nl:'bad', jp:'bad' }, label: { ro:'US IP only', gb:'US IP only', de:'US IP only' } },
-    { icon: '🍔', name: 'DoorDash',     note: 'US food delivery',     status: { ro:'bad', us:'ok', gb:'bad', de:'bad', nl:'bad', jp:'bad' }, label: { ro:'US only' } },
-    { icon: '🛡️', name: 'Cloudflare',  note: 'Any CF-protected site', status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
-    { icon: '🤖', name: 'OpenAI API',  note: 'GPT / DALL-E access',  status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
-    { icon: '💜', name: 'Airbnb',      note: 'Listing scraping',      status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
-    { icon: '🌐', name: 'DataDome',    note: 'Protected sites',       status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
-  ];
-
-  function renderCountry(code) {
-    const c = COUNTRIES[code];
-    document.getElementById('country-meta').innerHTML = `
-      <div class="cm-flag">${c.flag}</div>
-      <div class="cm-info">
-        <h3>${c.flag} ${c.name}</h3>
-        <p>${c.isp}</p>
-        <p style="margin-top:0.2rem;color:var(--accent);font-size:0.78rem;">${c.note}</p>
-      </div>
-      <div class="cm-price">${c.price}<span>/ month</span></div>
-    `;
-
-    const grid = document.getElementById('service-grid');
-    grid.innerHTML = SERVICES.map(s => {
-      const st = s.status[code] || 'ok';
-      const lbl = (s.label && s.label[code]) || (st === 'ok' ? 'Works' : st === 'warn' ? 'Limited' : 'Blocked');
-      const cls = st === 'ok' ? 'ok' : st === 'warn' ? 'warn' : 'bad';
-      const badgeCls = st === 'ok' ? 'badge-ok' : st === 'warn' ? 'badge-warn' : 'badge-bad';
-      return `
-        <div class="svc-card ${cls}">
-          <div class="svc-icon">${s.icon}</div>
-          <div class="svc-info">
-            <div class="svc-name">${s.name}</div>
-            <div class="svc-note">${s.note}</div>
-          </div>
-          <span class="svc-badge ${badgeCls}">${lbl}</span>
-        </div>`;
-    }).join('');
-  }
-
-  document.querySelectorAll('.ctab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      renderCountry(tab.dataset.country);
-    });
-  });
-  renderCountry('ro'); // default
-
-  // Rotating hero title
-  const phrases = [
-    'thinks it\'s human',
-    'bypasses Cloudflare',
-    'has no IP to ban',
-    'types like a person',
-    'runs on any server',
-    'never gets detected',
-  ];
-  let i = 0;
-  const el = document.getElementById('hero-rotating');
-
-  function rotate() {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(8px)';
-    el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-    setTimeout(() => {
-      i = (i + 1) % phrases.length;
-      el.textContent = phrases[i];
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-    }, 320);
-  }
-
-  el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-  setInterval(rotate, 3000);
+    const s = document.createElement('script');
+    s.src = '/init.js';
+    s.onload = () => { if(window.initPage) window.initPage(); };
+    document.body.appendChild(s);
   }, []);
 
   return (
     <>
       <Head>
-        <title>Human Browser — Stealth Playwright Browser with Residential Proxy | No Mac Mini | Virix Labs</title>
-        <meta name="description" content="Run a human-like stealth browser on any server — no Mac Mini, no desktop required. Residential proxy (Romania, US, UK, DE). Bypasses Cloudflare, DataDome & PerimeterX. OpenClaw skill. From $13.99/mo. Accepts crypto + card." />
-        <meta name="keywords" content="human browser, stealth browser, residential proxy, playwright anti-bot, bypass cloudflare bypass datadome, ai agent browser, openclaw skill, web scraping no ban, headless browser server, no mac mini browser, cloud browser playwright, instagram scraper, linkedin automation, polymarket bot" />
-        <meta name="author" content="Virix Labs" />
+        <title>Human Browser — Stealth Playwright Browser with Residential Proxy | Virix Labs</title>
+        <meta name="description" content="Run a human-like stealth browser on any server. No Mac Mini needed. Residential proxy from $13.99/mo. Bypasses Cloudflare, DataDome, PerimeterX." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://humanbrowser.dev" />
-        <meta property="og:title" content="Human Browser — Stealth Browser for AI Agents | Virix Labs" />
-        <meta property="og:description" content="No Mac Mini. No local machine. Playwright + residential IP that looks 100% human. Bypasses any anti-bot. From $13.99/mo." />
+        <meta property="og:title" content="Human Browser — Stealth Browser for AI Agents" />
         <meta property="og:url" content="https://humanbrowser.dev" />
         <meta property="og:image" content="https://virixlabs.com/og-image.jpg" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Human Browser — Stealth Browser for AI Agents" />
-        <meta name="twitter:description" content="Residential proxy + iPhone 15 fingerprint + Bezier mouse. Bypasses Cloudflare, DataDome, PerimeterX." />
         <link rel="icon" href="https://virixlabs.com/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -344,7 +224,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <div class="step">
           <div class="step-n">1</div>
           <div class="step-body">
-            <h3>Agent calls <code>GET /plans</code></h3>
+            <h3>Agent calls <code>GET humanbrowser.dev/api/plans</code></h3>
             <p>Sees pricing, bandwidth, and supported currencies. Machine-readable JSON.</p>
           </div>
         </div>
@@ -374,16 +254,16 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <div>
       <div class="code-label" style="margin-top:0.5rem;">Agent purchase flow</div>
       <div class="agent-box">
-        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">GET /plans</span></div>
+        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">GET humanbrowser.dev/api/plans</span></div>
         <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ starter: <span class="af-ok">$13.99</span>, pro: $49.99 }</span></div>
         <div class="af-sep"></div>
-        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">POST /buy { plan: "starter", currency: "USDT" }</span></div>
+        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">POST humanbrowser.dev/api/buy</span></div>
         <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ address: <span class="af-addr">"0x4a3f…"</span>, amount: "13.99 USDT" }</span></div>
         <div class="af-sep"></div>
         <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">sends 13.99 USDT on-chain</span></div>
         <div class="af"><span class="af-who sv">server ←</span><span class="af-txt"><span class="af-ok">✓ confirmed</span> · credentials ready</span></div>
         <div class="af-sep"></div>
-        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">GET /status/inv_…</span></div>
+        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">GET humanbrowser.dev/api/status/:id</span></div>
         <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ proxy_user: "…", proxy_pass: "…", <span class="af-ok">status: "active"</span> }</span></div>
       </div>
       <p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;">Or pay with card — same flow, Stripe checkout link returned instead.</p>
@@ -397,7 +277,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
 <div id="pricing" class="pricing-section">
   <div class="section-eyebrow">Pricing</div>
   <div class="section-title">Simple, transparent pricing</div>
-  <div class="section-sub">All plans include proxy credentials + OpenClaw skill + Telegram support. Cancel anytime.</div>
+  <div class="section-sub">All plans include proxy credentials + OpenClaw skill. Card or crypto. Cancel anytime.</div>
 
   <div class="pricing-grid">
     <div class="plan">
@@ -409,11 +289,12 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <li>iPhone 15 Pro + Desktop</li>
         <li>OpenClaw skill + credentials</li>
         <li>Cloudflare / DataDome bypass</li>
-        <li>Telegram support</li>
+        <li>Email + chat support</li>
         <li class="off">Multi-country rotation</li>
         <li class="off">CDP / Scraping Browser</li>
       </ul>
-      <a href="https://t.me/virixlabs" target="_blank" class="plan-btn ghost">Get Started →</a>
+      <button onclick="buyPlan('starter','card')" class="plan-btn ghost">Pay with Card →</button>
+      <button onclick="buyPlan('starter','USDT')" class="plan-btn crypto-btn">Pay with USDT →</button>
     </div>
 
     <div class="plan popular">
@@ -427,9 +308,10 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <li>Scraping Browser CDP access</li>
         <li>Custom fingerprints</li>
         <li>Agent-native payment API</li>
-        <li>Priority Telegram support</li>
+        <li>Priority support</li>
       </ul>
-      <a href="https://t.me/virixlabs" target="_blank" class="plan-btn solid">Get Started →</a>
+      <button onclick="buyPlan('pro','card')" class="plan-btn solid">Pay with Card →</button>
+      <button onclick="buyPlan('pro','USDT')" class="plan-btn crypto-btn">Pay with USDT →</button>
     </div>
 
     <div class="plan">
@@ -444,13 +326,14 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <li>SLA guarantee</li>
         <li>Custom skill development</li>
       </ul>
-      <a href="https://t.me/virixlabs" target="_blank" class="plan-btn ghost">Contact Us →</a>
+      <button onclick="buyPlan('enterprise','card')" class="plan-btn ghost">Pay with Card →</button>
+      <button onclick="buyPlan('enterprise','USDT')" class="plan-btn crypto-btn">Pay with USDT →</button>
     </div>
   </div>
 
   <div class="pay-note">
     💳 Stripe &nbsp;·&nbsp; 💵 USDT &nbsp;·&nbsp; ⟠ ETH &nbsp;·&nbsp; ₿ BTC &nbsp;·&nbsp;
-    Questions? <a href="https://t.me/virixlabs" target="_blank">@virixlabs on Telegram</a>
+    Questions? <a href="mailto:support@humanbrowser.dev">support@humanbrowser.dev</a>
   </div>
 </div>
 
@@ -498,7 +381,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
           <li>✅ Instant credential delivery after payment</li>
           <li>✅ Works out of the box with <code>browser-human.js</code></li>
           <li>✅ No Bright Data account needed</li>
-          <li>✅ Telegram support included</li>
+          <li>✅ Email support included</li>
           <li>✅ Cancel anytime — no long-term contract</li>
         </ul>
         <a href="#pricing" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:auto;">See Plans →</a>
@@ -530,9 +413,9 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <h3>Credit / Debit Card</h3>
         <p>Processed by Stripe. Visa, Mastercard, Amex. Subscription auto-renews monthly. Cancel anytime from Telegram.</p>
         <div class="pay-steps">
-          <div class="pay-step"><span class="ps-n">1</span> DM <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> on Telegram</div>
-          <div class="pay-step"><span class="ps-n">2</span> Receive a Stripe payment link</div>
-          <div class="pay-step"><span class="ps-n">3</span> Pay — get credentials in 2 min</div>
+          <div class="pay-step"><span class="ps-n">1</span> Click <strong>Pay with Card</strong> on any plan above</div>
+          <div class="pay-step"><span class="ps-n">2</span> Stripe Checkout opens — enter card details</div>
+          <div class="pay-step"><span class="ps-n">3</span> Pay → credentials delivered instantly</div>
         </div>
       </div>
 
@@ -541,9 +424,9 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <h3>USDT (TRC-20 or ERC-20)</h3>
         <p>Most popular crypto option. Send exactly the amount shown. Processed by 0xProcessing — automatic confirmation.</p>
         <div class="pay-steps">
-          <div class="pay-step"><span class="ps-n">1</span> DM <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> or call <code>POST /buy</code></div>
-          <div class="pay-step"><span class="ps-n">2</span> Receive USDT wallet address + amount</div>
-          <div class="pay-step"><span class="ps-n">3</span> Send — credentials auto-delivered</div>
+          <div class="pay-step"><span class="ps-n">1</span> Click <strong>Pay with USDT</strong> on any plan</div>
+          <div class="pay-step"><span class="ps-n">2</span> Get USDT wallet address + exact amount</div>
+          <div class="pay-step"><span class="ps-n">3</span> Send → credentials auto-delivered in ~2 min</div>
         </div>
       </div>
 
@@ -563,7 +446,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <h3>AI Agent (API)</h3>
         <p>Your agent can buy credentials programmatically. No human needed. Full JSON API — machine-readable responses.</p>
         <div class="pay-steps">
-          <div class="pay-step"><span class="ps-n">1</span> Agent: <code>GET /plans</code></div>
+          <div class="pay-step"><span class="ps-n">1</span> Agent: <code>GET humanbrowser.dev/api/plans</code></div>
           <div class="pay-step"><span class="ps-n">2</span> Agent: <code>POST /buy {currency:"USDT"}</code></div>
           <div class="pay-step"><span class="ps-n">3</span> Agent pays → polls <code>GET /status/:id</code></div>
         </div>
@@ -604,7 +487,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
       </details>
       <details class="faq-item">
         <summary>Can my AI agent buy this automatically?</summary>
-        <p>Yes — that's the whole point. Call <code>GET /plans</code>, then <code>POST /buy</code> with your preferred currency. You'll get a crypto payment address. Your agent sends the payment, polls <code>GET /status/:id</code>, and receives proxy credentials in the response. Zero human involvement required.</p>
+        <p>Yes — that's the whole point. Call <code>GET humanbrowser.dev/api/plans</code>, then <code>POST /buy</code> with your preferred currency. You'll get a crypto payment address. Your agent sends the payment, polls <code>GET /status/:id</code>, and receives proxy credentials in the response. Zero human involvement required.</p>
       </details>
       <details class="faq-item">
         <summary>Will this bypass Cloudflare / DataDome / PerimeterX?</summary>
@@ -653,4 +536,16 @@ const bodyContent = `<!-- ── NAV ──────────────�
   <p class="footer-copy">© 2026 Virix Labs · No Mac Mini needed · Runs on any server</p>
 </footer>
 
-<!-- ── SCRIPTS ───────────────────────────────────────── -->`;
+<!-- ── SCRIPTS ───────────────────────────────────────── -->
+
+
+
+<!-- ── PAYMENT MODAL ─────────────────────────────────── -->
+<div class="pay-modal-overlay" id="payModal">
+  <div class="pay-modal">
+    <div id="payModalContent">
+      <div class="pay-spinner"></div>
+      <p style="color:#999;font-size:0.9rem;">Creating payment...</p>
+    </div>
+  </div>
+</div>`;
