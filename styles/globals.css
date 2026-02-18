@@ -734,3 +734,8 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
   
+    .pay-note { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem 0.75rem; margin-top: 2rem; padding: 1rem; background: #111; border-radius: 12px; border: 1px solid #1e1e1e; }
+    .pn-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.82rem; color: #888; }
+    .pn-sep { color: #333; font-size: 0.9rem; }
+
+  

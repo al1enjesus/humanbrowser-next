@@ -74,10 +74,7 @@ export default async function handler(req, res) {
 
     const oxRes = await fetch('https://app.0xprocessing.com/Payment', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': `Bearer ${apiKey}`,
-      },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: params.toString(),
     });
 
