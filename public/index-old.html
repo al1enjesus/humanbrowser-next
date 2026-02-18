@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
+  <title>Human Browser — Stealth Playwright Browser with Residential Proxy | No Mac Mini | Virix Labs</title>
+  <meta name="description" content="Run a human-like stealth browser on any server — no Mac Mini, no desktop required. Residential proxy (Romania, US, UK, DE). Bypasses Cloudflare, DataDome & PerimeterX. OpenClaw skill. From $13.99/mo. Accepts crypto + card."/>
+  <meta name="keywords" content="human browser, stealth browser, residential proxy, playwright anti-bot, bypass cloudflare bypass datadome, ai agent browser, openclaw skill, web scraping no ban, headless browser server, no mac mini browser, cloud browser playwright, instagram scraper, linkedin automation, polymarket bot"/>
+  <meta name="author" content="Virix Labs"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://humanbrowser.dev"/>
+  <meta property="og:title" content="Human Browser — Stealth Browser for AI Agents | Virix Labs"/>
+  <meta property="og:description" content="No Mac Mini. No local machine. Playwright + residential IP that looks 100% human. Bypasses any anti-bot. From $13.99/mo."/>
+  <meta property="og:url" content="https://humanbrowser.dev"/>
+  <meta property="og:site_name" content="Virix Labs"/>
+  <meta property="og:image" content="https://virixlabs.com/og-image.jpg"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@virixlabs"/>
+  <meta name="twitter:title" content="Human Browser — Stealth Browser for AI Agents"/>
+  <meta name="twitter:description" content="Residential proxy + iPhone 15 fingerprint + Bezier mouse. Bypasses Cloudflare, DataDome, PerimeterX. No Mac Mini needed."/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Human Browser",
+    "description": "A stealth Playwright browser with residential proxy that acts like a real human. Runs on any Linux server without a Mac Mini or desktop. Bypasses Cloudflare, DataDome and PerimeterX. Official OpenClaw skill.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Linux, Windows, macOS",
+    "url": "https://humanbrowser.dev",
+    "offers": {
+      "@type": "Offer",
+      "price": "13.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "priceValidUntil": "2027-01-01"
+    },
+    "publisher": { "@type": "Organization", "name": "Virix Labs", "url": "https://virixlabs.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is Human Browser?", "acceptedAnswer": { "@type": "Answer", "text": "Human Browser is a Playwright-based browser automation tool that uses residential proxy IPs and mimics real human behavior (mouse movement, typing speed, scroll patterns) to bypass anti-bot systems like Cloudflare, DataDome, and PerimeterX." } },
+      { "@type": "Question", "name": "Do I need a Mac Mini to run it?", "acceptedAnswer": { "@type": "Answer", "text": "No. Human Browser runs on any Linux server, VPS, Docker container, or CI/CD pipeline. No display server, no VNC, no desktop environment required — just Node.js and Chromium." } },
+      { "@type": "Question", "name": "What is free and what is paid?", "acceptedAnswer": { "@type": "Answer", "text": "The OpenClaw skill and browser-human.js script are completely free to install and use. The paid plans ($13.99/mo and up) provide residential proxy credentials — the IP address that makes the browser appear human. Without a residential IP, most anti-bot systems will block requests." } },
+      { "@type": "Question", "name": "How do I pay?", "acceptedAnswer": { "@type": "Answer", "text": "We accept Stripe (credit/debit card), USDT, ETH, and Bitcoin. Crypto payments are processed via 0xProcessing and credentials are delivered automatically within minutes." } },
+      { "@type": "Question", "name": "Which countries are supported?", "acceptedAnswer": { "@type": "Answer", "text": "Currently Romania (from $13.99/mo), USA ($29.99/mo), UK ($24.99/mo), Germany ($22.99/mo), Netherlands ($22.99/mo), and Japan ($26.99/mo). Each country has different service compatibility — see the country picker on our site." } }
+    ]
+  }
+  </script>
+  <link rel="icon" href="https://virixlabs.com/favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ── TOKENS ─────────────────────────────────────── */
+    :root {
+      --bg:      #0a0a0a;
+      --card:    #111111;
+      --card2:   #141414;
+      --border:  #222222;
+      --accent:  #8b5cf6;
+      --cyan:    #06b6d4;
+      --green:   #22c55e;
+      --amber:   #f59e0b;
+      --red:     #ef4444;
+      --fg:      #fafafa;
+      --muted:   #71717a;
+      --muted2:  #3f3f46;
+      --r-sm:    8px;
+      --r-md:    12px;
+      --r-lg:    16px;
+      --r-xl:    20px;
+      --r-pill:  999px;
+    }
+
+    /* ── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--fg);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6; overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: #161616; border: 1px solid var(--border);
+      padding: 2px 7px; border-radius: var(--r-sm);
+      font-size: 0.82em; color: var(--cyan);
+    }
+
+    /* ── UTILITIES ──────────────────────────────────── */
+    .grad {
+      background: linear-gradient(135deg, #a78bfa 0%, #06b6d4 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 5rem 1.5rem; }
+    .section-eyebrow {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--accent); margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem;
+    }
+    .section-sub { color: var(--muted); font-size: 0.95rem; max-width: 480px; line-height: 1.65; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── BUTTONS ────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      padding: 0.7rem 1.5rem; border-radius: var(--r-md);
+      font-weight: 600; font-size: 0.9rem; cursor: pointer;
+      transition: all .18s ease; white-space: nowrap; border: none;
+      font-family: inherit;
+    }
+    .btn-lg { padding: 0.85rem 1.8rem; font-size: 0.95rem; border-radius: var(--r-lg); }
+    .btn-primary { background: var(--fg); color: var(--bg); }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--fg);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--muted); }
+    .btn-accent { background: var(--accent); color: #fff; }
+    .btn-accent:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── NAV ────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(10,10,10,0.92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1060px; margin: 0 auto; padding: 0 1.5rem;
+      height: 60px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+    .nav-brand img { width: 26px; height: 26px; border-radius: 6px; }
+    .nav-brand-name { font-weight: 700; font-size: 0.9rem; color: var(--fg); }
+    .nav-brand-name .sep { color: var(--muted); font-weight: 400; margin: 0 0.15rem; }
+    .nav-badge {
+      font-size: 0.62rem; font-weight: 700; padding: 3px 8px;
+      border-radius: var(--r-sm); background: rgba(139,92,246,0.15);
+      border: 1px solid rgba(139,92,246,0.3); color: #a78bfa;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .nav-links a { font-size: 0.85rem; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--fg); }
+    .nav-cta { margin-left: 0.5rem; }
+
+    /* Mobile nav */
+    .nav-hamburger {
+      display: none; background: none; border: 1px solid var(--border);
+      border-radius: var(--r-sm); padding: 6px 8px; cursor: pointer; color: var(--fg);
+    }
+    .nav-mobile-menu {
+      display: none; flex-direction: column; gap: 0;
+      border-top: 1px solid var(--border);
+      background: rgba(10,10,10,0.98);
+    }
+    .nav-mobile-menu a {
+      padding: 0.9rem 1.5rem; font-size: 0.9rem; color: var(--muted);
+      border-bottom: 1px solid var(--border); transition: color .2s;
+    }
+    .nav-mobile-menu a:hover { color: var(--fg); }
+    .nav-mobile-menu .mobile-cta {
+      padding: 1rem 1.5rem;
+    }
+    .nav-mobile-menu .mobile-cta .btn { width: 100%; justify-content: center; }
+    .nav-mobile-menu.open { display: flex; }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; align-items: center; }
+      .nav-badge { display: none; }
+    }
+
+    /* ── HERO ───────────────────────────────────────── */
+    .hero {
+      max-width: 800px; margin: 0 auto;
+      padding: 6rem 1.5rem 3.5rem; text-align: center;
+    }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1px solid var(--border); background: var(--card);
+      padding: 5px 14px; border-radius: var(--r-pill);
+      font-size: 0.78rem; color: var(--muted); margin-bottom: 1.8rem;
+    }
+    .hero-pill .live-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 900; line-height: 1.08;
+      letter-spacing: -0.03em; margin-bottom: 1.4rem;
+    }
+    .hero-rotating {
+      display: block; min-height: 1.2em;
+      background: linear-gradient(135deg, #a78bfa 0%, #06b6d4 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7;
+    }
+    .hero-btns {
+      display: flex; gap: 0.75rem;
+      justify-content: center; flex-wrap: wrap;
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 4rem 1.5rem 2.5rem; }
+      .hero-btns { flex-direction: column; align-items: stretch; }
+      .hero-btns .btn { justify-content: center; }
+    }
+
+    /* ── TRUST BAR ──────────────────────────────────── */
+    .trust-bar {
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 0.5rem 2rem;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.45rem;
+      font-size: 0.8rem; color: var(--muted);
+    }
+    .trust-item .ck { color: var(--green); font-size: 0.75rem; font-weight: 700; }
+
+    /* ── CODE WINDOW ────────────────────────────────── */
+    .code-wrap { max-width: 700px; margin: 4.5rem auto 0; padding: 0 1.5rem; }
+    .code-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.6rem; }
+    .code-window {
+      background: #0c0c0c; border: 1px solid var(--border);
+      border-radius: var(--r-xl); overflow: hidden;
+    }
+    .code-bar {
+      background: var(--card); border-bottom: 1px solid var(--border);
+      padding: 0.65rem 1rem; display: flex; align-items: center; gap: 0.45rem;
+    }
+    .cd { width: 10px; height: 10px; border-radius: 50%; }
+    .cd-r { background: #ff5f57; } .cd-y { background: #ffbd2e; } .cd-g { background: #28c840; }
+    .code-fname { font-size: 0.72rem; color: var(--muted); margin-left: 0.4rem; font-family: 'JetBrains Mono', monospace; }
+    pre {
+      padding: 1.4rem 1.5rem; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem; line-height: 1.8; overflow-x: auto; color: #cdd6f4;
+    }
+    .kw { color: #cba6f7; } .fn { color: #89b4fa; }
+    .str { color: #a6e3a1; } .cm { color: #585b70; font-style: italic; }
+
+    /* ── CALLOUT: NO MAC MINI ───────────────────────── */
+    .callout-wrap { max-width: 1060px; margin: 5rem auto; padding: 0 1.5rem; }
+    .callout {
+      background: linear-gradient(135deg, rgba(139,92,246,0.06), rgba(6,182,212,0.03));
+      border: 1px solid rgba(139,92,246,0.18); border-radius: var(--r-xl);
+      padding: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .callout h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+    .callout p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1rem; }
+    .callout-checks { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .callout-checks li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.875rem; color: #a1a1aa; }
+    .callout-checks li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; line-height: 1.6; }
+
+    .compare { background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
+    .cmp-head { display: grid; grid-template-columns: 1.4fr 1fr 1fr; background: var(--card2); border-bottom: 1px solid var(--border); }
+    .cmp-row { display: grid; grid-template-columns: 1.4fr 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .cmp-row:last-child { border-bottom: none; }
+    .cmp-cell { padding: 0.65rem 0.9rem; font-size: 0.8rem; }
+    .cmp-cell:not(:last-child) { border-right: 1px solid var(--border); }
+    .cmp-head .cmp-cell { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+    .c-bad { color: var(--red); } .c-ok { color: var(--amber); }
+    .c-good { color: var(--green); font-weight: 600; }
+    .cmp-row.highlight { background: rgba(139,92,246,0.05); }
+    .cmp-row.highlight .cmp-cell:first-child { color: var(--fg); font-weight: 600; }
+
+    @media (max-width: 700px) {
+      .callout { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
+    }
+
+    /* ── FEATURES ───────────────────────────────────── */
+    .features-section { max-width: 1060px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border); border-radius: var(--r-xl);
+      overflow: hidden; margin-top: 3rem;
+    }
+    @media (max-width: 800px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .features-grid { grid-template-columns: 1fr; } }
+    .feat {
+      padding: 1.75rem; border-bottom: 1px solid var(--border);
+      transition: background .2s;
+    }
+    .feat:hover { background: var(--card2); }
+    /* Remove bottom border from last row */
+    .features-grid .feat:nth-last-child(-n+3) { border-bottom: none; }
+    @media (max-width: 800px) { .features-grid .feat:nth-last-child(-n+2) { border-bottom: none; } .features-grid .feat:nth-last-child(3) { border-bottom: 1px solid var(--border); } }
+    @media (max-width: 500px) { .features-grid .feat:last-child { border-bottom: none; } .features-grid .feat:not(:last-child) { border-bottom: 1px solid var(--border); } }
+    /* Right borders inside grid */
+    .features-grid { gap: 0; }
+    .feat:not(:nth-child(3n)) { border-right: 1px solid var(--border); }
+    @media (max-width: 800px) { .feat:not(:nth-child(3n)) { border-right: none; } .feat:not(:nth-child(2n)) { border-right: 1px solid var(--border); } }
+    @media (max-width: 500px) { .feat { border-right: none !important; } }
+
+    .feat-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .feat h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .feat p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── HOW IT WORKS ───────────────────────────────── */
+    .how-section { max-width: 1060px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    @media (max-width: 720px) { .how-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .steps { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.75rem; }
+    .step { display: flex; gap: 1.2rem; }
+    .step-n {
+      min-width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent), var(--cyan));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.85rem; color: #fff;
+    }
+    .step-body h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .step-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    .agent-box {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: 1.25rem; margin-top: 2rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; line-height: 1.8;
+    }
+    .af { display: flex; gap: 0.75rem; }
+    .af-who { color: var(--muted); min-width: 56px; flex-shrink: 0; }
+    .af-who.ag { color: var(--cyan); }
+    .af-who.sv { color: var(--accent); }
+    .af-txt { color: var(--fg); }
+    .af-ok { color: var(--green); }
+    .af-addr { color: var(--amber); }
+    .af-sep { border-top: 1px solid var(--border); margin: 0.6rem 0; }
+
+    /* ── PRICING ────────────────────────────────────── */
+    .pricing-section { max-width: 1060px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+    @media (max-width: 800px) { .pricing-grid { grid-template-columns: 1fr; max-width: 420px; } }
+
+    .plan {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r-xl); padding: 1.75rem; position: relative;
+      transition: border-color .2s;
+    }
+    .plan:hover { border-color: var(--muted2); }
+    .plan.popular { border-color: var(--accent); background: linear-gradient(160deg, rgba(139,92,246,0.07), var(--card)); }
+    .pop-tag {
+      position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #fff; font-size: 0.62rem; font-weight: 700;
+      padding: 3px 12px; border-radius: var(--r-pill);
+      text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap;
+    }
+    .plan-tier { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.6rem; }
+    .plan-price { font-size: 3rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.25rem; }
+    .plan-price sub { font-size: 0.9rem; font-weight: 500; color: var(--muted); vertical-align: baseline; }
+    .plan-usage { font-size: 0.75rem; color: var(--muted); margin-bottom: 1.4rem; }
+    .plan-feats { list-style: none; margin-bottom: 1.75rem; }
+    .plan-feats li { font-size: 0.85rem; padding: 0.28rem 0; display: flex; align-items: flex-start; gap: 0.55rem; color: var(--fg); }
+    .plan-feats li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .plan-feats li.off { color: var(--muted2); }
+    .plan-feats li.off::before { color: var(--muted2); content: "–"; }
+    .plan-btn {
+      display: block; text-align: center; padding: 0.72rem;
+      border-radius: var(--r-md); font-weight: 700; font-size: 0.88rem;
+      transition: all .18s; cursor: pointer;
+    }
+    .plan-btn.solid { background: var(--fg); color: var(--bg); }
+    .plan-btn.solid:hover { opacity: 0.88; }
+    .plan-btn.ghost { border: 1px solid var(--border); color: var(--fg); }
+    .plan-btn.ghost:hover { border-color: var(--muted); }
+    .pay-note { text-align: center; margin-top: 1.5rem; color: var(--muted); font-size: 0.78rem; }
+    .pay-note a { color: var(--cyan); }
+
+    /* ── VIRIX BANNER ───────────────────────────────── */
+    .vx-section { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem 5rem; }
+    .vx-card {
+      border: 1px solid var(--border); border-radius: var(--r-xl);
+      padding: 2rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .vx-card img { width: 44px; height: 44px; border-radius: var(--r-md); flex-shrink: 0; }
+    .vx-info { flex: 1; min-width: 180px; }
+    .vx-info h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .vx-info p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── FREE VS PAID ───────────────────────────────── */
+  .fvp-section { max-width: 1060px; margin: 0 auto; padding: 5rem 1.5rem; }
+  .fvp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 3rem; }
+  @media(max-width:700px){ .fvp-grid { grid-template-columns: 1fr; } }
+  .fvp-card {
+    border: 1px solid var(--border); border-radius: var(--r-xl); padding: 2rem;
+    display: flex; flex-direction: column; gap: 1.25rem;
+  }
+  .fvp-card.paid { border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.04); }
+  .fvp-tag {
+    display: inline-block; font-size: 0.65rem; font-weight: 700;
+    padding: 3px 10px; border-radius: var(--r-pill); text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 0.5rem;
+  }
+  .free-tag { background: rgba(34,197,94,0.12); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
+  .paid-tag { background: rgba(139,92,246,0.12); color: #a78bfa; border: 1px solid rgba(139,92,246,0.25); }
+  .fvp-header h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .fvp-header p { font-size: 0.85rem; color: var(--muted); }
+  .fvp-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+  .fvp-list li { font-size: 0.85rem; color: var(--fg); }
+  .fvp-list li.fvp-dim { color: var(--muted); }
+  .fvp-install { margin-top: 0.5rem; }
+  .fvp-install-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-bottom: 0.4rem; }
+  .fvp-why {
+    display: flex; gap: 1rem; align-items: flex-start;
+    background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.15);
+    border-radius: var(--r-lg); padding: 1.25rem 1.5rem; margin-top: 1.5rem;
+  }
+  .fvp-why-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .fvp-why strong { font-size: 0.9rem; display: block; margin-bottom: 0.4rem; }
+  .fvp-why p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+
+  /* ── HOW TO PAY ──────────────────────────────────── */
+  .pay-section { max-width: 1060px; margin: 0 auto; padding: 5rem 1.5rem; }
+  .pay-methods-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 3rem; }
+  @media(max-width:700px){ .pay-methods-grid { grid-template-columns: 1fr; } }
+  .pay-method {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--r-lg); padding: 1.5rem;
+    display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .pay-method-icon { font-size: 1.8rem; }
+  .pay-method h3 { font-size: 0.95rem; font-weight: 700; }
+  .pay-method p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .pay-steps { display: flex; flex-direction: column; gap: 0.4rem; }
+  .pay-step {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.8rem; color: var(--muted);
+  }
+  .pay-step a { color: var(--cyan); }
+  .ps-n {
+    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+    background: var(--border); color: var(--fg); font-size: 0.68rem;
+    font-weight: 700; display: flex; align-items: center; justify-content: center;
+  }
+  .pay-guarantee {
+    display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;
+    margin-top: 2rem; padding: 1.25rem;
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--r-lg);
+    font-size: 0.83rem; color: var(--muted);
+  }
+
+  /* ── FAQ ─────────────────────────────────────────── */
+  .faq-section { max-width: 1060px; margin: 0 auto; padding: 5rem 1.5rem; }
+  .faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .faq-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--r-lg); overflow: hidden; cursor: pointer;
+    transition: border-color .2s;
+  }
+  .faq-item:hover { border-color: var(--muted2); }
+  .faq-item[open] { border-color: var(--accent); }
+  .faq-item summary {
+    padding: 1.1rem 1.25rem; font-size: 0.92rem; font-weight: 600;
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem; cursor: pointer; user-select: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+"; color: var(--muted); font-size: 1.2rem; font-weight: 400; flex-shrink: 0;
+    transition: transform .2s;
+  }
+  .faq-item[open] summary::after { content: "–"; }
+  .faq-item p {
+    padding: 0 1.25rem 1.1rem; font-size: 0.87rem;
+    color: var(--muted); line-height: 1.7;
+  }
+  .faq-item p a { color: var(--cyan); }
+
+  /* ── COUNTRY SECTION ───────────────────────────── */
+  .country-section { padding: 5rem 1.5rem; max-width: 1060px; margin: 0 auto; }
+  .country-tabs {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin: 2.5rem 0 2rem;
+  }
+  .ctab {
+    padding: 0.55rem 1.1rem; border-radius: var(--r-md);
+    border: 1px solid var(--border); background: var(--card);
+    color: var(--muted); font-size: 0.85rem; font-weight: 500;
+    cursor: pointer; transition: all .18s; font-family: inherit;
+  }
+  .ctab:hover { border-color: var(--muted2); color: var(--fg); }
+  .ctab.active { border-color: var(--accent); color: var(--fg); background: rgba(139,92,246,0.1); }
+
+  .country-meta {
+    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--r-lg); padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .cm-flag { font-size: 2.2rem; }
+  .cm-info { flex: 1; }
+  .cm-info h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .cm-info p { font-size: 0.82rem; color: var(--muted); }
+  .cm-price {
+    font-size: 1.4rem; font-weight: 800; color: var(--fg);
+    text-align: right; white-space: nowrap;
+  }
+  .cm-price span { font-size: 0.75rem; font-weight: 400; color: var(--muted); display: block; }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+  .svc-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--r-lg); padding: 1rem 1.1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+    transition: border-color .2s;
+  }
+  .svc-card.ok { border-color: rgba(34,197,94,0.25); background: rgba(34,197,94,0.04); }
+  .svc-card.warn { border-color: rgba(245,158,11,0.25); background: rgba(245,158,11,0.04); }
+  .svc-card.bad { border-color: rgba(239,68,68,0.2); background: rgba(239,68,68,0.03); }
+  .svc-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .svc-info { flex: 1; min-width: 0; }
+  .svc-name { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .svc-note { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
+  .svc-badge {
+    font-size: 0.65rem; font-weight: 700; padding: 2px 7px;
+    border-radius: var(--r-pill); white-space: nowrap; flex-shrink: 0;
+  }
+  .badge-ok { background: rgba(34,197,94,0.15); color: var(--green); }
+  .badge-warn { background: rgba(245,158,11,0.15); color: var(--amber); }
+  .badge-bad { background: rgba(239,68,68,0.12); color: var(--red); }
+
+  .country-note { font-size: 0.72rem; color: var(--muted2); margin-top: 1.25rem; }
+
+  /* ── FOOTER ─────────────────────────────────────── */
+    .footer { border-top: 1px solid var(--border); padding: 2.5rem 1.5rem; text-align: center; }
+    .footer-logo { display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .footer-logo img { width: 20px; height: 20px; border-radius: 4px; }
+    .footer-logo span { font-weight: 700; font-size: 0.85rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); transition: color .2s; }
+    .footer-links a:hover { color: var(--fg); }
+    .footer-copy { font-size: 0.72rem; color: var(--muted2); }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────── -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">
+      <img src="https://virixlabs.com/logo.png" alt="Virix Labs"/>
+      <span class="nav-brand-name">Human Browser<span class="sep"> by </span>Virix Labs</span>
+      <span class="nav-badge">OpenClaw</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#how">How it works</a>
+      <a href="https://t.me/virixlabs" target="_blank" class="btn btn-primary nav-cta">Get Started →</a>
+    </nav>
+
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav-mobile-menu" id="mobile-menu">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#how">How it works</a>
+    <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank">ClawHub Skill (free)</a>
+    <div class="mobile-cta">
+      <a href="https://t.me/virixlabs" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">Get Started →</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-pill">
+    <span class="live-dot"></span>
+    Live · Romania Residential IP · Zero bans
+  </div>
+
+  <h1>
+    The browser that<br>
+    <span class="hero-rotating" id="hero-rotating">thinks it's human</span>
+  </h1>
+
+  <p>No Mac Mini. No local setup. A full Playwright browser that runs on any server, looks like an iPhone 15, and bypasses every bot detection system alive.</p>
+
+  <div class="hero-btns">
+    <a href="#pricing" class="btn btn-primary btn-lg">Start for $13.99/mo →</a>
+    <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank" class="btn btn-secondary btn-lg">Install Free Skill</a>
+  </div>
+</div>
+
+<!-- ── TRUST BAR ───────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="ck">✓</span> Bypasses Cloudflare</div>
+  <div class="trust-item"><span class="ck">✓</span> Bypasses DataDome</div>
+  <div class="trust-item"><span class="ck">✓</span> Bypasses PerimeterX</div>
+  <div class="trust-item"><span class="ck">✓</span> Romania Residential IP</div>
+  <div class="trust-item"><span class="ck">✓</span> Any Linux server</div>
+  <div class="trust-item"><span class="ck">✓</span> OpenClaw native skill</div>
+</div>
+
+<!-- ── CODE PREVIEW ────────────────────────────────── -->
+<div class="code-wrap">
+  <div class="code-label">5 lines · any server · zero bans</div>
+  <div class="code-window">
+    <div class="code-bar">
+      <div class="cd cd-r"></div><div class="cd cd-y"></div><div class="cd cd-g"></div>
+      <span class="code-fname">scraper.js</span>
+    </div>
+    <pre><span class="kw">const</span> { <span class="fn">launchHuman</span> } = <span class="kw">require</span>(<span class="str">'human-browser'</span>);
+
+<span class="kw">const</span> { page, humanType, humanScroll } = <span class="kw">await</span> <span class="fn">launchHuman</span>();
+<span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'https://instagram.com'</span>);
+<span class="kw">await</span> <span class="fn">humanScroll</span>(page, <span class="str">'down'</span>);   <span class="cm">// smooth scroll with jitter</span>
+<span class="kw">await</span> <span class="fn">humanType</span>(page, <span class="str">'input'</span>, <span class="str">'query'</span>);  <span class="cm">// 60–220ms/char</span>
+
+<span class="cm">// ✅ Romanian IP · iPhone 15 fingerprint · webdriver=false</span></pre>
+  </div>
+</div>
+
+<hr class="divider" style="margin-top:5rem;"/>
+
+<!-- ── NO MAC MINI CALLOUT ─────────────────────────── -->
+<div class="callout-wrap">
+  <div class="callout">
+    <div>
+      <h2>Stop buying <span class="grad">hardware</span><br>for your AI agent</h2>
+      <p>Most browser automation guides assume you have a Mac Mini, a desktop VPS, or a $500/mo cloud browser subscription. Human Browser runs on a $5 Linux VPS. Nothing else.</p>
+      <ul class="callout-checks">
+        <li>No display server, no VNC, no desktop required</li>
+        <li>Chromium headless + residential proxy = real human fingerprint</li>
+        <li>iPhone 15 Pro UA · Romania IP · Bucharest geolocation</li>
+        <li>Bezier mouse · human-speed typing · natural scroll</li>
+        <li>Works in Docker, GitHub Actions, any CI/CD pipeline</li>
+      </ul>
+    </div>
+    <div>
+      <div class="compare">
+        <div class="cmp-head">
+          <div class="cmp-cell">Solution</div>
+          <div class="cmp-cell">Cost</div>
+          <div class="cmp-cell">Anti-bot</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-cell">Mac Mini</div>
+          <div class="cmp-cell c-bad">$600 upfront</div>
+          <div class="cmp-cell c-bad">Data center IP</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-cell">Browserless.io</div>
+          <div class="cmp-cell c-bad">$500+/mo</div>
+          <div class="cmp-cell c-ok">Partial</div>
+        </div>
+        <div class="cmp-row">
+          <div class="cmp-cell">Plain Playwright</div>
+          <div class="cmp-cell c-ok">Free</div>
+          <div class="cmp-cell c-bad">Instant ban</div>
+        </div>
+        <div class="cmp-row highlight">
+          <div class="cmp-cell">Human Browser</div>
+          <div class="cmp-cell c-good">$13.99/mo</div>
+          <div class="cmp-cell c-good">✓ Full bypass</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ── COUNTRY PICKER ────────────────────────────────── -->
+<div id="countries" class="country-section">
+  <div class="container">
+    <div class="section-eyebrow">Residential IPs</div>
+    <div class="section-title">Pick your country — see what works</div>
+    <div class="section-sub">Different services block different IPs. Choose a location and instantly see which platforms are accessible. Your agent picks the right country automatically.</div>
+
+    <div class="country-tabs">
+      <button class="ctab active" data-country="ro">🇷🇴 Romania</button>
+      <button class="ctab" data-country="us">🇺🇸 USA</button>
+      <button class="ctab" data-country="gb">🇬🇧 UK</button>
+      <button class="ctab" data-country="de">🇩🇪 Germany</button>
+      <button class="ctab" data-country="nl">🇳🇱 Netherlands</button>
+      <button class="ctab" data-country="jp">🇯🇵 Japan</button>
+    </div>
+
+    <div class="country-meta" id="country-meta">
+      <!-- filled by JS -->
+    </div>
+
+    <div class="service-grid" id="service-grid">
+      <!-- filled by JS -->
+    </div>
+
+    <p class="country-note">* Compatibility based on typical residential IP behavior. Some services may vary by specific ISP or account status.</p>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ── FEATURES ─────────────────────────────────────── -->
+<div id="features" class="features-section">
+  <div class="section-eyebrow">Features</div>
+  <div class="section-title">Everything bots look for — covered</div>
+  <div class="section-sub">Every signal Cloudflare, DataDome, and PerimeterX check. Handled before you write a line of code.</div>
+
+  <div class="features-grid">
+    <div class="feat"><div class="feat-icon">🇷🇴</div><h3>Romania Residential IP</h3><p>DIGI Romania & WS Telecom ISP. Real residential ASN. Looks like a person browsing from Bucharest.</p></div>
+    <div class="feat"><div class="feat-icon">📱</div><h3>iPhone 15 Pro Fingerprint</h3><p>iOS 17.4.1 Safari UA, correct viewport, pixel ratio, touch events, platform string. Passes every fingerprint check.</p></div>
+    <div class="feat"><div class="feat-icon">🖱️</div><h3>Bezier Mouse Curves</h3><p>Movement along randomized curved paths. Humans never go in straight lines — neither does this browser.</p></div>
+    <div class="feat"><div class="feat-icon">⌨️</div><h3>Human Typing Speed</h3><p>60–220ms per keystroke with mid-word pauses. Works with React inputs where <code>page.fill()</code> silently fails.</p></div>
+    <div class="feat"><div class="feat-icon">📜</div><h3>Natural Scroll Behavior</h3><p>Scrolls in smooth steps with random jitter. Pauses to "read" content. Looks exactly like a real user.</p></div>
+    <div class="feat"><div class="feat-icon">🛡️</div><h3>Full Anti-Detection</h3><p><code>webdriver=false</code>, no automation flags, real plugin list, canvas fingerprint, real timezone & geo.</p></div>
+    <div class="feat"><div class="feat-icon">🦅</div><h3>OpenClaw Native Skill</h3><p>One command install: <code>clawhub install al1enjesus/human-browser</code>. Your agent gets it instantly.</p></div>
+    <div class="feat"><div class="feat-icon">🖥️</div><h3>Desktop Mode</h3><p>Switch to Windows Chrome fingerprint when needed: <code>launchHuman({ mobile: false })</code>.</p></div>
+    <div class="feat"><div class="feat-icon">⚡</div><h3>Any Server, Zero Setup</h3><p>Bare Linux, Docker, CI/CD. Just Node.js + Chromium. No display server, no VNC, no X11.</p></div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ── HOW IT WORKS ──────────────────────────────────── -->
+<div id="how" class="how-section">
+  <div class="how-grid">
+    <div>
+      <div class="section-eyebrow">How it works</div>
+      <div class="section-title">Built for AI agents,<br>not just humans</div>
+      <p class="section-sub">The API speaks agent. Pay with crypto. Get credentials programmatically. No dashboards to click.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">1</div>
+          <div class="step-body">
+            <h3>Agent calls <code>GET /plans</code></h3>
+            <p>Sees pricing, bandwidth, and supported currencies. Machine-readable JSON.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">2</div>
+          <div class="step-body">
+            <h3>Agent calls <code>POST /buy</code></h3>
+            <p>Picks plan + currency (USDT, ETH, BTC, or card). Gets payment address back.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">3</div>
+          <div class="step-body">
+            <h3>Payment auto-confirmed</h3>
+            <p>0xProcessing or Stripe webhook fires. Credentials provisioned in seconds.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">4</div>
+          <div class="step-body">
+            <h3>Agent polls <code>GET /status/:id</code></h3>
+            <p>Gets proxy credentials + API key. Drops into <code>.env</code>. Starts browsing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="code-label" style="margin-top:0.5rem;">Agent purchase flow</div>
+      <div class="agent-box">
+        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">GET /plans</span></div>
+        <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ starter: <span class="af-ok">$13.99</span>, pro: $49.99 }</span></div>
+        <div class="af-sep"></div>
+        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">POST /buy { plan: "starter", currency: "USDT" }</span></div>
+        <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ address: <span class="af-addr">"0x4a3f…"</span>, amount: "13.99 USDT" }</span></div>
+        <div class="af-sep"></div>
+        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">sends 13.99 USDT on-chain</span></div>
+        <div class="af"><span class="af-who sv">server ←</span><span class="af-txt"><span class="af-ok">✓ confirmed</span> · credentials ready</span></div>
+        <div class="af-sep"></div>
+        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">GET /status/inv_…</span></div>
+        <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ proxy_user: "…", proxy_pass: "…", <span class="af-ok">status: "active"</span> }</span></div>
+      </div>
+      <p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;">Or pay with card — same flow, Stripe checkout link returned instead.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ── PRICING ───────────────────────────────────────── -->
+<div id="pricing" class="pricing-section">
+  <div class="section-eyebrow">Pricing</div>
+  <div class="section-title">Simple, transparent pricing</div>
+  <div class="section-sub">All plans include proxy credentials + OpenClaw skill + Telegram support. Cancel anytime.</div>
+
+  <div class="pricing-grid">
+    <div class="plan">
+      <div class="plan-tier">Starter</div>
+      <div class="plan-price">$13.99<sub>/mo</sub></div>
+      <div class="plan-usage">2 GB bandwidth · $2.50/GB after</div>
+      <ul class="plan-feats">
+        <li>Romania residential IP</li>
+        <li>iPhone 15 Pro + Desktop</li>
+        <li>OpenClaw skill + credentials</li>
+        <li>Cloudflare / DataDome bypass</li>
+        <li>Telegram support</li>
+        <li class="off">Multi-country rotation</li>
+        <li class="off">CDP / Scraping Browser</li>
+      </ul>
+      <a href="https://t.me/virixlabs" target="_blank" class="plan-btn ghost">Get Started →</a>
+    </div>
+
+    <div class="plan popular">
+      <div class="pop-tag">Most Popular</div>
+      <div class="plan-tier">Pro</div>
+      <div class="plan-price">$49.99<sub>/mo</sub></div>
+      <div class="plan-usage">20 GB bandwidth · $2.00/GB after</div>
+      <ul class="plan-feats">
+        <li>Everything in Starter</li>
+        <li>Multi-country IP rotation</li>
+        <li>Scraping Browser CDP access</li>
+        <li>Custom fingerprints</li>
+        <li>Agent-native payment API</li>
+        <li>Priority Telegram support</li>
+      </ul>
+      <a href="https://t.me/virixlabs" target="_blank" class="plan-btn solid">Get Started →</a>
+    </div>
+
+    <div class="plan">
+      <div class="plan-tier">Enterprise</div>
+      <div class="plan-price">$199<sub>/mo</sub></div>
+      <div class="plan-usage">Unlimited · Dedicated zone</div>
+      <ul class="plan-feats">
+        <li>Everything in Pro</li>
+        <li>Dedicated Romania zone</li>
+        <li>White-label API endpoint</li>
+        <li>1-on-1 onboarding call</li>
+        <li>SLA guarantee</li>
+        <li>Custom skill development</li>
+      </ul>
+      <a href="https://t.me/virixlabs" target="_blank" class="plan-btn ghost">Contact Us →</a>
+    </div>
+  </div>
+
+  <div class="pay-note">
+    💳 Stripe &nbsp;·&nbsp; 💵 USDT &nbsp;·&nbsp; ⟠ ETH &nbsp;·&nbsp; ₿ BTC &nbsp;·&nbsp;
+    Questions? <a href="https://t.me/virixlabs" target="_blank">@virixlabs on Telegram</a>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ── FREE VS PAID ──────────────────────────────────── -->
+<div class="fvp-section">
+  <div class="container">
+    <div class="section-eyebrow">What's included</div>
+    <div class="section-title">Free vs Paid — no tricks</div>
+    <div class="section-sub">The skill and code are open and free. You pay only for the residential proxy — the IP that makes everything work.</div>
+
+    <div class="fvp-grid">
+      <div class="fvp-card free">
+        <div class="fvp-header">
+          <span class="fvp-tag free-tag">FREE forever</span>
+          <h3>OpenClaw Skill + Script</h3>
+          <p>Everything you need to run the browser. No credit card, no account.</p>
+        </div>
+        <ul class="fvp-list">
+          <li>✅ <code>browser-human.js</code> — full source code</li>
+          <li>✅ Human mouse, typing, scroll logic</li>
+          <li>✅ iPhone 15 Pro + Desktop fingerprints</li>
+          <li>✅ Anti-detection stack (webdriver=false, etc.)</li>
+          <li>✅ OpenClaw skill via clawhub</li>
+          <li>✅ All future updates to the script</li>
+          <li class="fvp-dim">⚠️ You need your own residential proxy</li>
+          <li class="fvp-dim">⚠️ Without residential IP — sites will block you</li>
+        </ul>
+        <div class="fvp-install">
+          <span class="fvp-install-label">Install free skill</span>
+          <code style="font-size:0.82rem;padding:0.5rem 0.75rem;border-radius:8px;display:block;background:#0a0a0a;">clawhub install al1enjesus/human-browser</code>
+        </div>
+      </div>
+
+      <div class="fvp-card paid">
+        <div class="fvp-header">
+          <span class="fvp-tag paid-tag">from $13.99/mo</span>
+          <h3>Residential Proxy Credentials</h3>
+          <p>The missing piece. A real home IP that makes your browser invisible to anti-bot systems.</p>
+        </div>
+        <ul class="fvp-list">
+          <li>✅ Romania / US / UK / DE / NL / JP IPs</li>
+          <li>✅ Real residential ISP (DIGI, AT&T, BT…)</li>
+          <li>✅ Instant credential delivery after payment</li>
+          <li>✅ Works out of the box with <code>browser-human.js</code></li>
+          <li>✅ No Bright Data account needed</li>
+          <li>✅ Telegram support included</li>
+          <li>✅ Cancel anytime — no long-term contract</li>
+        </ul>
+        <a href="#pricing" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:auto;">See Plans →</a>
+      </div>
+    </div>
+
+    <div class="fvp-why">
+      <div class="fvp-why-icon">💡</div>
+      <div>
+        <strong>Why do you need a residential IP at all?</strong>
+        <p>Data center IPs (from AWS, DigitalOcean, Hetzner — your regular VPS) are instantly recognized and blocked by Cloudflare, Instagram, LinkedIn, and most modern sites. A residential IP comes from a real home internet connection — it looks exactly like a normal person browsing. That's the only difference between getting blocked in 2 seconds and scraping forever.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ── HOW TO PAY ─────────────────────────────────────── -->
+<div class="pay-section">
+  <div class="container">
+    <div class="section-eyebrow">Payment</div>
+    <div class="section-title">How to get started in 5 minutes</div>
+    <div class="section-sub">Pick your country, choose how to pay, get credentials instantly. No bureaucracy.</div>
+
+    <div class="pay-methods-grid">
+      <div class="pay-method">
+        <div class="pay-method-icon">💳</div>
+        <h3>Credit / Debit Card</h3>
+        <p>Processed by Stripe. Visa, Mastercard, Amex. Subscription auto-renews monthly. Cancel anytime from Telegram.</p>
+        <div class="pay-steps">
+          <div class="pay-step"><span class="ps-n">1</span> DM <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> on Telegram</div>
+          <div class="pay-step"><span class="ps-n">2</span> Receive a Stripe payment link</div>
+          <div class="pay-step"><span class="ps-n">3</span> Pay — get credentials in 2 min</div>
+        </div>
+      </div>
+
+      <div class="pay-method">
+        <div class="pay-method-icon">💵</div>
+        <h3>USDT (TRC-20 or ERC-20)</h3>
+        <p>Most popular crypto option. Send exactly the amount shown. Processed by 0xProcessing — automatic confirmation.</p>
+        <div class="pay-steps">
+          <div class="pay-step"><span class="ps-n">1</span> DM <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> or call <code>POST /buy</code></div>
+          <div class="pay-step"><span class="ps-n">2</span> Receive USDT wallet address + amount</div>
+          <div class="pay-step"><span class="ps-n">3</span> Send — credentials auto-delivered</div>
+        </div>
+      </div>
+
+      <div class="pay-method">
+        <div class="pay-method-icon">⟠</div>
+        <h3>ETH / BTC</h3>
+        <p>Ethereum and Bitcoin also accepted. Same automatic flow — no manual approval needed.</p>
+        <div class="pay-steps">
+          <div class="pay-step"><span class="ps-n">1</span> Choose currency when buying</div>
+          <div class="pay-step"><span class="ps-n">2</span> Get network-specific address</div>
+          <div class="pay-step"><span class="ps-n">3</span> Send → credentials in ~10 min</div>
+        </div>
+      </div>
+
+      <div class="pay-method">
+        <div class="pay-method-icon">🤖</div>
+        <h3>AI Agent (API)</h3>
+        <p>Your agent can buy credentials programmatically. No human needed. Full JSON API — machine-readable responses.</p>
+        <div class="pay-steps">
+          <div class="pay-step"><span class="ps-n">1</span> Agent: <code>GET /plans</code></div>
+          <div class="pay-step"><span class="ps-n">2</span> Agent: <code>POST /buy {currency:"USDT"}</code></div>
+          <div class="pay-step"><span class="ps-n">3</span> Agent pays → polls <code>GET /status/:id</code></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pay-guarantee">
+      <span>🔒 Credentials delivered within 10 minutes of payment confirmation.</span>
+      <span>❌ Not satisfied? Full refund within 24h — no questions asked.</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ── FAQ ───────────────────────────────────────────── -->
+<div class="faq-section">
+  <div class="container" style="max-width:720px;">
+    <div class="section-eyebrow">FAQ</div>
+    <div class="section-title">Common questions</div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do I need a Mac Mini or desktop computer?</summary>
+        <p>No. Human Browser runs on any Linux VPS, Docker container, or cloud server. A $5/mo Hetzner or Contabo VPS is all you need. No display server, no VNC, no X11 — just Node.js and Chromium.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What exactly is free and what costs money?</summary>
+        <p>The <code>browser-human.js</code> script and the OpenClaw skill are completely free — open source, install anytime. The paid subscription gives you <strong>residential proxy credentials</strong>: a real home IP address from DIGI Romania, AT&T, BT, etc. Without a residential IP, anti-bot systems will block your VPS's data center IP instantly.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Why Romania? Can I use other countries?</summary>
+        <p>Romania is the cheapest option and works for most tasks — Instagram, LinkedIn, Binance, Polymarket, Cloudflare sites. We also offer USA, UK, Germany, Netherlands, and Japan. Use the country picker above to see which services work where. Different services have different geo-restrictions.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How quickly do I get credentials after paying?</summary>
+        <p>Card payments via Stripe: 2–3 minutes. Crypto (USDT/ETH): 5–10 minutes after on-chain confirmation. AI agent API: fully automatic, no human in the loop.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can my AI agent buy this automatically?</summary>
+        <p>Yes — that's the whole point. Call <code>GET /plans</code>, then <code>POST /buy</code> with your preferred currency. You'll get a crypto payment address. Your agent sends the payment, polls <code>GET /status/:id</code>, and receives proxy credentials in the response. Zero human involvement required.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Will this bypass Cloudflare / DataDome / PerimeterX?</summary>
+        <p>Yes, in the vast majority of cases. The combination of a residential IP + realistic browser fingerprint (iPhone 15 Pro) + human behavior simulation (Bezier mouse, natural typing, scroll patterns) passes all major anti-bot systems. We've tested against all three.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What's an OpenClaw skill?</summary>
+        <p>OpenClaw is an AI agent platform. Skills are reusable capability packages — install one and your agent gains specialized knowledge and tools. The Human Browser skill gives your OpenClaw agent the ability to launch a stealth browser with one function call: <code>launchHuman()</code>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if I want to cancel?</summary>
+        <p>DM <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> on Telegram. We'll cancel your subscription immediately. If you're within 24h of purchase, you'll get a full refund — no questions.</p>
+      </details>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- ── VIRIX BANNER ──────────────────────────────────── -->
+<div class="vx-section" style="padding-top:3rem;">
+  <div class="vx-card">
+    <img src="https://virixlabs.com/logo.png" alt="Virix Labs"/>
+    <div class="vx-info">
+      <h3>Built by Virix Labs</h3>
+      <p>AI-powered venture studio building focused products at scale. Human Browser is part of the OpenClaw skill ecosystem — tools that let AI agents work without human bottlenecks.</p>
+    </div>
+    <a href="https://virixlabs.com" target="_blank" class="btn btn-secondary">virixlabs.com ↗</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-logo">
+    <img src="https://virixlabs.com/logo.png" alt="Virix Labs"/>
+    <span>Human Browser · Virix Labs</span>
+  </div>
+  <div class="footer-links">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank">ClawHub</a>
+    <a href="https://openclaw.ai" target="_blank">OpenClaw</a>
+    <a href="https://virixlabs.com" target="_blank">Virix Labs</a>
+    <a href="https://t.me/virixlabs" target="_blank">Support</a>
+  </div>
+  <p class="footer-copy">© 2026 Virix Labs · No Mac Mini needed · Runs on any server</p>
+</footer>
+
+<!-- ── SCRIPTS ───────────────────────────────────────── -->
+<script>
+  // Hamburger menu
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('open');
+  });
+  // Close on link click
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // ── COUNTRY PICKER ──────────────────────────────
+  const COUNTRIES = {
+    ro: {
+      flag: '🇷🇴', name: 'Romania', isp: 'DIGI Romania / WS Telecom (Residential)',
+      price: '$13.99', note: 'Best price · Most popular · DIGI Romania residential ISP',
+    },
+    us: {
+      flag: '🇺🇸', name: 'United States', isp: 'AT&T / Comcast / Verizon (Residential)',
+      price: '$29.99', note: 'Required for US-only services · Banks, streaming, DoorDash',
+    },
+    gb: {
+      flag: '🇬🇧', name: 'United Kingdom', isp: 'BT / Virgin Media (Residential)',
+      price: '$24.99', note: 'EU-adjacent · Great for crypto & prediction markets',
+    },
+    de: {
+      flag: '🇩🇪', name: 'Germany', isp: 'Deutsche Telekom / Vodafone (Residential)',
+      price: '$22.99', note: 'EU-compliant · GDPR-friendly · Strong for EU services',
+    },
+    nl: {
+      flag: '🇳🇱', name: 'Netherlands', isp: 'KPN / Ziggo (Residential)',
+      price: '$22.99', note: 'Privacy-friendly · Popular for crypto & web3',
+    },
+    jp: {
+      flag: '🇯🇵', name: 'Japan', isp: 'NTT / SoftBank (Residential)',
+      price: '$26.99', note: 'Japanese content · Line · Yahoo Japan',
+    },
+  };
+
+  const SERVICES = [
+    { icon: '📊', name: 'Polymarket',   note: 'Prediction market',   status: { ro:'ok', us:'bad',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  }, label: { us:'US blocked' } },
+    { icon: '📸', name: 'Instagram',    note: 'Scraping & automation', status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
+    { icon: '💼', name: 'LinkedIn',     note: 'Profile & lead scraping', status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
+    { icon: '🛒', name: 'Amazon',       note: 'Price monitoring',     status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
+    { icon: '🐦', name: 'Twitter / X',  note: 'Automation & scraping', status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
+    { icon: '🔶', name: 'Binance',      note: 'Crypto exchange',      status: { ro:'ok', us:'bad',  gb:'warn',de:'ok',  nl:'ok',  jp:'ok'  }, label: { us:'US blocked', gb:'Limited' } },
+    { icon: '🎵', name: 'TikTok',       note: 'Content & automation', status: { ro:'ok', us:'warn', gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  }, label: { us:'Restrictions' } },
+    { icon: '🎬', name: 'Netflix US',   note: 'US content library',   status: { ro:'bad', us:'ok', gb:'bad', de:'bad', nl:'bad', jp:'bad' }, label: { ro:'US only', gb:'US only', de:'US only', nl:'US only', jp:'US only' } },
+    { icon: '🏦', name: 'US Banks',     note: 'Chase, BoA, etc.',     status: { ro:'bad', us:'ok', gb:'bad', de:'bad', nl:'bad', jp:'bad' }, label: { ro:'US IP only', gb:'US IP only', de:'US IP only' } },
+    { icon: '🍔', name: 'DoorDash',     note: 'US food delivery',     status: { ro:'bad', us:'ok', gb:'bad', de:'bad', nl:'bad', jp:'bad' }, label: { ro:'US only' } },
+    { icon: '🛡️', name: 'Cloudflare',  note: 'Any CF-protected site', status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
+    { icon: '🤖', name: 'OpenAI API',  note: 'GPT / DALL-E access',  status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
+    { icon: '💜', name: 'Airbnb',      note: 'Listing scraping',      status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
+    { icon: '🌐', name: 'DataDome',    note: 'Protected sites',       status: { ro:'ok', us:'ok',  gb:'ok',  de:'ok',  nl:'ok',  jp:'ok'  } },
+  ];
+
+  function renderCountry(code) {
+    const c = COUNTRIES[code];
+    document.getElementById('country-meta').innerHTML = `
+      <div class="cm-flag">${c.flag}</div>
+      <div class="cm-info">
+        <h3>${c.flag} ${c.name}</h3>
+        <p>${c.isp}</p>
+        <p style="margin-top:0.2rem;color:var(--accent);font-size:0.78rem;">${c.note}</p>
+      </div>
+      <div class="cm-price">${c.price}<span>/ month</span></div>
+    `;
+
+    const grid = document.getElementById('service-grid');
+    grid.innerHTML = SERVICES.map(s => {
+      const st = s.status[code] || 'ok';
+      const lbl = (s.label && s.label[code]) || (st === 'ok' ? 'Works' : st === 'warn' ? 'Limited' : 'Blocked');
+      const cls = st === 'ok' ? 'ok' : st === 'warn' ? 'warn' : 'bad';
+      const badgeCls = st === 'ok' ? 'badge-ok' : st === 'warn' ? 'badge-warn' : 'badge-bad';
+      return `
+        <div class="svc-card ${cls}">
+          <div class="svc-icon">${s.icon}</div>
+          <div class="svc-info">
+            <div class="svc-name">${s.name}</div>
+            <div class="svc-note">${s.note}</div>
+          </div>
+          <span class="svc-badge ${badgeCls}">${lbl}</span>
+        </div>`;
+    }).join('');
+  }
+
+  document.querySelectorAll('.ctab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderCountry(tab.dataset.country);
+    });
+  });
+  renderCountry('ro'); // default
+
+  // Rotating hero title
+  const phrases = [
+    'thinks it\'s human',
+    'bypasses Cloudflare',
+    'has no IP to ban',
+    'types like a person',
+    'runs on any server',
+    'never gets detected',
+  ];
+  let i = 0;
+  const el = document.getElementById('hero-rotating');
+
+  function rotate() {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(8px)';
+    el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    setTimeout(() => {
+      i = (i + 1) % phrases.length;
+      el.textContent = phrases[i];
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 320);
+  }
+
+  el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+  setInterval(rotate, 3000);
+</script>
+
+</body>
+</html>
