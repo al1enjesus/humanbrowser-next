@@ -1,1 +1,3 @@
 node_modules\n.next\n.env\n.env.local
+node_modules/
+.next/
