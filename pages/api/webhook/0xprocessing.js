@@ -2,6 +2,14 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
   const data = req.body;
+
+  // Validate webhook password
+  const webhookPass = process.env.OX_WEBHOOK_PASSWORD;
+  if (webhookPass && data.webhook_password !== webhookPass) {
+    console.warn('[0xprocessing webhook] Invalid password');
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
   console.log('[0xprocessing webhook]', JSON.stringify(data));
 
   // Validate status
