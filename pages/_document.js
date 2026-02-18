@@ -7,6 +7,8 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        {/* Always load init.js — works for static + SSR pages */}
+        <script src="/init.js" defer></script>
       </body>
     </Html>
   );
