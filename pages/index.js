@@ -11,6 +11,15 @@ export default function Home() {
         <link rel="canonical" href="https://humanbrowser.dev" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Human Browser",
+          "url": "https://humanbrowser.dev",
+          "description": "Stealth Playwright browser with residential proxy for AI agents. Bypasses Cloudflare, DataDome, PerimeterX.",
+          "potentialAction": { "@type": "SearchAction", "target": "https://humanbrowser.dev/?q={search_term_string}", "query-input": "required name=search_term_string" },
+          "publisher": { "@type": "Organization", "name": "Human Browser", "url": "https://humanbrowser.dev", "logo": { "@type": "ImageObject", "url": "https://humanbrowser.dev/og-image.jpg" }, "sameAs": ["https://github.com/al1enjesus/human-browser", "https://www.npmjs.com/package/human-browser", "https://clawhub.ai/al1enjesus/human-browser"] }
+        }) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "SoftwareApplication",
           "name": "Human Browser",
           "applicationCategory": "DeveloperApplication",
@@ -124,6 +133,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
   </div>
 
   <h1>
+    <span class="hero-brand-label">Human Browser</span>
     <span data-i18n="hero_prefix">The browser that</span><br>
     <span class="hero-rotating" id="hero-rotating">thinks it's human</span>
   </h1>
@@ -702,6 +712,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <a href="#features" data-i18n="nav_features">Features</a>
     <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
     <a href="/blog" data-i18n="footer_blog">Blog</a>
+    <a href="/install" data-i18n="footer_install">Install</a>
     <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank" data-i18n="footer_clawhub">ClawHub</a>
     <a href="https://openclaw.ai" target="_blank" data-i18n="footer_openclaw">OpenClaw</a>
     <a href="https://virixlabs.com" target="_blank" data-i18n="footer_virix">Virix Labs</a>

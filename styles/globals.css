@@ -1460,3 +1460,14 @@
     .amodal-actions { flex-direction: column; }
     .amodal-btn { width: 100%; }
   }
+
+/* Hero brand label — SEO keyword signal in H1 */
+.hero-brand-label {
+  display: block;
+  font-size: 0.55em;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 0.35em;
+}
