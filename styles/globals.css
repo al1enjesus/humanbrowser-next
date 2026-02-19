@@ -971,9 +971,13 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
   
-    .pay-note { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem 0.75rem; margin-top: 2rem; padding: 1rem; background: #111; border-radius: 12px; border: 1px solid #1e1e1e; }
-    .pn-item { display: flex; align-items: center; gap: 0.3rem; font-size: 0.82rem; color: #888; }
-    .pn-sep { color: #333; font-size: 0.9rem; }
+    .pay-note { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.4rem 0.85rem; margin-top: 2rem; padding: 0.85rem 1.25rem; background: #111; border-radius: 12px; border: 1px solid #1e1e1e; }
+    .pn-item { display: flex; align-items: center; opacity: 0.75; transition: opacity 0.15s; }
+    .pn-item:hover { opacity: 1; }
+    .pn-logo { display: block; vertical-align: middle; }
+    .pn-invert { filter: invert(1) brightness(0.85); }
+    .pn-round { border-radius: 50%; }
+    .pn-sep { color: #2a2a2a; font-size: 1rem; }
 
   
   @media(max-width:600px){
