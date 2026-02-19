@@ -16,7 +16,7 @@ export default function Home() {
           "url": "https://humanbrowser.dev",
           "description": "Stealth Playwright browser with residential proxy for AI agents. Bypasses Cloudflare, DataDome, PerimeterX.",
           "potentialAction": { "@type": "SearchAction", "target": "https://humanbrowser.dev/?q={search_term_string}", "query-input": "required name=search_term_string" },
-          "publisher": { "@type": "Organization", "name": "Human Browser", "url": "https://humanbrowser.dev", "logo": { "@type": "ImageObject", "url": "https://humanbrowser.dev/og-image.jpg" }, "sameAs": ["https://github.com/al1enjesus/human-browser", "https://www.npmjs.com/package/human-browser", "https://clawhub.ai/al1enjesus/human-browser"] }
+          "publisher": { "@type": "Organization", "name": "Human Browser", "url": "https://humanbrowser.dev", "logo": { "@type": "ImageObject", "url": "https://humanbrowser.dev/logo-512.png", "width": 512, "height": 512 }, "sameAs": ["https://github.com/al1enjesus/human-browser", "https://www.npmjs.com/package/human-browser", "https://clawhub.ai/al1enjesus/human-browser"] }
         }) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
