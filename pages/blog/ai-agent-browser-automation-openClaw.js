@@ -184,7 +184,7 @@ const res = await fetch('https://humanbrowser.dev/api/buy', {
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
     plan: 'starter',    // $13.99/mo — Romania residential, 2GB
-    currency: 'USDT',  // or 'BTC', 'ETH', 'SOL', 'card'
+    currency: 'USDTTRC',  // TRC-20 (or 'BTC', 'ETH', 'SOL', 'card'
     email: 'agent@example.com'
   })
 });

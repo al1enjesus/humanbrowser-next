@@ -49,9 +49,11 @@ export default async function handler(req, res) {
 
   // ── CRYPTO via 0xProcessing ─────────────────────────────────
   const VALID_CRYPTO = ['USDT', 'ETH', 'BTC', 'SOL', 'USDTTRC', 'USDTERC'];
-  const cur = currency.toUpperCase();
+  // Normalize: 'USDT' defaults to TRC-20 (lower fees, faster)
+  let cur = currency.toUpperCase();
+  if (cur === 'USDT') cur = 'USDTTRC';
   if (!VALID_CRYPTO.includes(cur)) {
-    return res.status(400).json({ error: 'Invalid currency. Use: card, USDT, ETH, BTC, SOL' });
+    return res.status(400).json({ error: 'Invalid currency. Use: card, USDTTRC, ETH, BTC, SOL' });
   }
 
   const merchantId = process.env.OX_MERCHANT_ID;

@@ -29,7 +29,7 @@ export default function handler(req, res) {
         description: 'Unlimited sessions. Dedicated zone. SLA.',
       },
     },
-    currencies: ['USDT', 'ETH', 'BTC', 'card'],
+    currencies: ['USDTTRC', 'ETH', 'BTC', 'SOL', 'card'],
     buy: 'POST /api/buy',
   });
 }

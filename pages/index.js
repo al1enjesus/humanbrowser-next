@@ -367,9 +367,9 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ starter: <span class="af-ok">$13.99</span>, pro: $69.99 }</span></div>
         <div class="af-sep"></div>
         <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">POST humanbrowser.dev/api/buy</span></div>
-        <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ address: <span class="af-addr">"0x4a3f…"</span>, amount: "13.99 USDT" }</span></div>
+        <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ address: <span class="af-addr">"TQn8m…"</span>, amount: "13.99 USDT TRC-20" }</span></div>
         <div class="af-sep"></div>
-        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">sends 13.99 USDT on-chain</span></div>
+        <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">sends 13.99 USDT (TRC-20) on-chain</span></div>
         <div class="af"><span class="af-who sv">server ←</span><span class="af-txt"><span class="af-ok">✓ confirmed</span> · credentials ready</span></div>
         <div class="af-sep"></div>
         <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">GET humanbrowser.dev/api/status/:id</span></div>
@@ -405,7 +405,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
           <span class="btn-sub">Apple Pay · Google Pay · Card</span>
         </button>
         <div class="crypto-row">
-          <button onclick="goPay('starter','USDT')" class="crypto-coin-btn" title="USDT"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT</span></button>
+          <button onclick="goPay('starter','USDTTRC')" class="crypto-coin-btn" title="USDT TRC-20"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT TRC-20</span></button>
           <button onclick="goPay('starter','ETH')"  class="crypto-coin-btn" title="ETH"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" width="24" height="24"><span>ETH</span></button>
           <button onclick="goPay('starter','BTC')"  class="crypto-coin-btn" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="24" height="24"><span>BTC</span></button>
           <button onclick="goPay('starter','SOL')"  class="crypto-coin-btn" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="24" height="24"><span>SOL</span></button>
@@ -431,7 +431,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
           <span class="btn-sub">Apple Pay · Google Pay · Card</span>
         </button>
         <div class="crypto-row">
-          <button onclick="goPay('pro','USDT')" class="crypto-coin-btn" title="USDT"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT</span></button>
+          <button onclick="goPay('pro','USDTTRC')" class="crypto-coin-btn" title="USDT TRC-20"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT TRC-20</span></button>
           <button onclick="goPay('pro','ETH')"  class="crypto-coin-btn" title="ETH"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" width="24" height="24"><span>ETH</span></button>
           <button onclick="goPay('pro','BTC')"  class="crypto-coin-btn" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="24" height="24"><span>BTC</span></button>
           <button onclick="goPay('pro','SOL')"  class="crypto-coin-btn" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="24" height="24"><span>SOL</span></button>
@@ -457,7 +457,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
           <span class="btn-sub">Apple Pay · Google Pay · Card</span>
         </button>
         <div class="crypto-row">
-          <button onclick="goPay('enterprise','USDT')" class="crypto-coin-btn" title="USDT"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT</span></button>
+          <button onclick="goPay('enterprise','USDTTRC')" class="crypto-coin-btn" title="USDT TRC-20"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT TRC-20</span></button>
           <button onclick="goPay('enterprise','ETH')"  class="crypto-coin-btn" title="ETH"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" width="24" height="24"><span>ETH</span></button>
           <button onclick="goPay('enterprise','BTC')"  class="crypto-coin-btn" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="24" height="24"><span>BTC</span></button>
           <button onclick="goPay('enterprise','SOL')"  class="crypto-coin-btn" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="24" height="24"><span>SOL</span></button>
@@ -465,21 +465,21 @@ const bodyContent = `<!-- ── NAV ──────────────�
       </div>
     </div>
 
-    <!-- ── Pay-per-Request API (Coming Soon) ── -->
+    <!-- ── Pay-per-Request API ── -->
     <div class="plan plan-ppr">
-      <div class="ppr-coming-badge" data-i18n="plan_ppr_badge">Coming Soon</div>
+      <div class="ppr-coming-badge" data-i18n="plan_ppr_badge">Beta</div>
       <div class="plan-tier" data-i18n="plan_ppr_name">Pay-per-Request API</div>
-      <div class="plan-price">$0.001<sub data-i18n="plan_ppr_per">–$0.005/req</sub></div>
-      <div class="plan-usage" data-i18n="plan_ppr_usage">No monthly commitment</div>
+      <div class="plan-price">$0.003<sub data-i18n="plan_ppr_per">/req</sub></div>
+      <div class="plan-usage" data-i18n="plan_ppr_usage">No monthly commitment · Pay with crypto</div>
       <ul class="plan-feats">
-        <li data-i18n="ppr_li1">Basic request: $0.001</li>
-        <li data-i18n="ppr_li2">Cloudflare/JS-heavy: $0.005</li>
-        <li data-i18n="ppr_li3">CAPTCHA solve: $0.003</li>
-        <li data-i18n="ppr_li4">Pay with USDT, ETH, BTC, SOL, or card</li>
-        <li data-i18n="ppr_li5">Auto-purchase: agents buy their own credits</li>
+        <li data-i18n="ppr_li1">1,000 requests — $3.00</li>
+        <li data-i18n="ppr_li2">5,000 requests — $10.00</li>
+        <li data-i18n="ppr_li3">50,000 requests — $50.00</li>
+        <li data-i18n="ppr_li4">Pay with USDT, ETH, BTC, SOL</li>
+        <li data-i18n="ppr_li5">Agent-native: POST /api/ppr/quote</li>
       </ul>
       <div class="plan-btns">
-        <button class="plan-pay-btn ppr-notify-btn" onclick="alert('We will notify you when Pay-per-Request API launches!')" data-i18n="ppr_notify_btn">🔔 Notify me when ready</button>
+        <a href="/ppr" class="plan-pay-btn btn-primary" style="text-align:center;text-decoration:none;display:block;" data-i18n="ppr_cta_btn">Buy Credits →</a>
       </div>
     </div>
   </div>
@@ -637,7 +637,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
 
       <div class="pay-method">
         <div class="pay-method-icon">💵</div>
-        <h3 data-i18n="pm2_h">USDT (TRC-20 or ERC-20)</h3>
+        <h3 data-i18n="pm2_h">USDT TRC-20</h3>
         <p data-i18n="pm2_p">Most popular crypto option. Exact amount to wallet address. Auto-confirmed by 0xProcessing.</p>
         <div class="pay-steps">
           <div class="pay-step"><span class="ps-n">1</span> <span data-i18n="pm2_s1">Click Get Started → choose USDT</span></div>
@@ -663,7 +663,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <p data-i18n="pm4_p">Your agent can buy credentials programmatically. Full JSON API — machine-readable responses.</p>
         <div class="pay-steps">
           <div class="pay-step"><span class="ps-n">1</span> <span data-i18n-html="pm4_s1_html">Agent: <code>GET /api/plans</code></span></div>
-          <div class="pay-step"><span class="ps-n">2</span> <span data-i18n-html="pm4_s2_html">Agent: <code>POST /api/buy {currency:"USDT"}</code></span></div>
+          <div class="pay-step"><span class="ps-n">2</span> <span data-i18n-html="pm4_s2_html">Agent: <code>POST /api/buy {currency:"USDTTRC"}</code></span></div>
           <div class="pay-step"><span class="ps-n">3</span> <span data-i18n-html="pm4_s3_html">Agent pays → polls <code>GET /api/status/:id</code></span></div>
         </div>
       </div>
@@ -863,9 +863,9 @@ const bodyContent = `<!-- ── NAV ──────────────�
     </div>
     <div id="tabContentCrypto" class="psc-pane psc-hidden">
       <div class="crypto-coins">
-        <button class="ccoin ccoin-usdt" onclick="selectCoin('USDT')">
+        <button class="ccoin ccoin-usdt" onclick="selectCoin('USDTTRC')">
           <img class="ccoin-img" src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" loading="lazy"/>
-          <span class="ccoin-name">USDT</span><span class="ccoin-net">TRC20</span>
+          <span class="ccoin-name">USDT</span><span class="ccoin-net">TRC-20</span>
         </button>
         <button class="ccoin" onclick="selectCoin('BTC')">
           <img class="ccoin-img" src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" loading="lazy"/>
