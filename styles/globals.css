@@ -104,6 +104,34 @@
     .nav-links a:hover { color: var(--fg); }
     .nav-cta { margin-left: 0.5rem; }
 
+    /* Language selector */
+    .lang-sel {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 3px;
+      margin-left: 0.75rem;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-family: inherit;
+      padding: 3px 7px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+    }
+    .lang-btn:hover   { color: var(--fg); background: var(--card2); }
+    .lang-btn.lang-active { color: var(--fg); background: var(--muted2); }
+    @media (max-width: 720px) { .lang-sel { display: none; } }
+
     /* Mobile nav */
     .nav-hamburger {
       display: none; background: none; border: 1px solid var(--border);
@@ -245,7 +273,8 @@
       overflow: hidden; margin-top: 3rem;
     }
     @media (max-width: 800px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 500px) { .features-grid { grid-template-columns: 1fr; } }
+    /* Keep 2 columns even on small phones */
+    @media (max-width: 400px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
     .feat {
       padding: 1.75rem; border-bottom: 1px solid var(--border);
       transition: background .2s;
@@ -465,8 +494,16 @@
 
   .service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 0.75rem;
+  }
+  @media (max-width: 500px) {
+    .service-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+    .country-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+    .ctab { font-size: 0.75rem; padding: 0.45rem 0.5rem; text-align: center; }
+    .svc-name { font-size: 0.74rem; }
+    .svc-note { display: none; }
+    .cm-price { font-size: 1.1rem; }
   }
   .svc-card {
     background: var(--card); border: 1px solid var(--border);

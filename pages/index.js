@@ -32,11 +32,18 @@ const bodyContent = `<!-- ── NAV ──────────────�
     </a>
 
     <nav class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#how">How it works</a>
-      <a href="https://t.me/virixlabs" target="_blank" class="btn btn-primary nav-cta">Get Started →</a>
+      <a href="#features" data-i18n="nav_features">Features</a>
+      <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+      <a href="#how" data-i18n="nav_how">How it works</a>
+      <a href="https://t.me/virixlabs" target="_blank" class="btn btn-primary nav-cta" data-i18n="nav_cta">Get Started →</a>
     </nav>
+
+    <div class="lang-sel">
+      <button class="lang-btn lang-active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
+    </div>
 
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -59,15 +66,15 @@ const bodyContent = `<!-- ── NAV ──────────────�
 <div class="hero">
   <div class="hero-pill">
     <span class="live-dot"></span>
-    Live · Romania Residential IP · Zero bans
+    <span data-i18n="hero_pill">Any country · Residential IP · Zero bans</span>
   </div>
 
   <h1>
-    The browser that<br>
+    <span data-i18n="hero_prefix">The browser that</span><br>
     <span class="hero-rotating" id="hero-rotating">thinks it's human</span>
   </h1>
 
-  <p>No Mac Mini. No local setup. A full Playwright browser that runs on any server, looks like an iPhone 15, and bypasses every bot detection system alive.</p>
+  <p data-i18n="hero_desc">No Mac Mini. No local setup. A full Playwright browser that runs on any server, looks like a real device, and bypasses every bot detection system alive.</p>
 
   <!-- ── Install command ── -->
   <div class="hero-install">
@@ -90,7 +97,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
 
   <!-- ── Platform trust badges ── -->
   <div class="hero-platforms">
-    <span class="hp-label">Available on</span>
+    <span class="hp-label" data-i18n="install_available">Available on</span>
     <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank" class="hp-badge">
       <span class="hp-icon">🦀</span> ClawHub
     </a>
@@ -193,9 +200,9 @@ const bodyContent = `<!-- ── NAV ──────────────�
 <!-- ── COUNTRY PICKER ────────────────────────────────── -->
 <div id="countries" class="country-section">
   <div class="container">
-    <div class="section-eyebrow">Residential IPs</div>
-    <div class="section-title">Pick your country — see what works</div>
-    <div class="section-sub">Different services block different IPs. Choose a location and instantly see which platforms are accessible. Your agent picks the right country automatically.</div>
+    <div class="section-eyebrow" data-i18n="countries_eyebrow">Residential IPs</div>
+    <div class="section-title" data-i18n="countries_title">Pick your country — see what works</div>
+    <div class="section-sub" data-i18n="countries_sub">Different services block different IPs. Choose a location and instantly see which platforms are accessible. Your agent picks the right country automatically.</div>
 
     <div class="country-tabs">
       <button class="ctab active" data-country="ro">🇷🇴 Romania</button>
@@ -222,9 +229,9 @@ const bodyContent = `<!-- ── NAV ──────────────�
 
 <!-- ── FEATURES ─────────────────────────────────────── -->
 <div id="features" class="features-section">
-  <div class="section-eyebrow">Features</div>
-  <div class="section-title">Everything bots look for — covered</div>
-  <div class="section-sub">Every signal Cloudflare, DataDome, and PerimeterX check. Handled before you write a line of code.</div>
+  <div class="section-eyebrow" data-i18n="features_eyebrow">Features</div>
+  <div class="section-title" data-i18n="features_title">Everything bots look for — covered</div>
+  <div class="section-sub" data-i18n="features_sub">Every signal Cloudflare, DataDome, and PerimeterX check. Handled before you write a line of code.</div>
 
   <div class="features-grid">
     <div class="feat"><div class="feat-icon">🇷🇴</div><h3>Romania Residential IP</h3><p>DIGI Romania & WS Telecom ISP. Real residential ASN. Looks like a person browsing from Bucharest.</p></div>
