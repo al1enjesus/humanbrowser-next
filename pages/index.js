@@ -172,7 +172,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
 <span class="kw">await</span> <span class="fn">humanScroll</span>(page, <span class="str">'down'</span>);   <span class="cm">// <span data-i18n="code_c1">smooth scroll with jitter</span></span>
 <span class="kw">await</span> <span class="fn">humanType</span>(page, <span class="str">'input'</span>, <span class="str">'query'</span>);  <span class="cm">// <span data-i18n="code_c2">60–220ms/char</span></span>
 
-<span class="cm">// ✅ <span data-i18n="code_c3">Romanian IP · iPhone 15 fingerprint · webdriver=false</span></span></pre>
+<span class="cm">// ✅ <span data-i18n="code_c3">Residential IP · iPhone 15 fingerprint · webdriver=false</span></span></pre>
   </div>
 </div>
 
@@ -187,7 +187,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
       <ul class="callout-checks">
         <li data-i18n="callout_li1">No display server, no VNC, no desktop required</li>
         <li data-i18n="callout_li2">Chromium headless + residential proxy = real human fingerprint</li>
-        <li data-i18n="callout_li3">iPhone 15 Pro UA · Romania IP · Bucharest geolocation</li>
+        <li data-i18n="callout_li3">iPhone 15 Pro UA · Residential IP · Local geolocation</li>
         <li data-i18n="callout_li4">Bezier mouse · human-speed typing · natural scroll</li>
         <li data-i18n="callout_li5">Works in Docker, GitHub Actions, any CI/CD pipeline</li>
       </ul>
@@ -263,7 +263,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
   <div class="section-sub" data-i18n="features_sub">Every signal Cloudflare, DataDome, and PerimeterX check. Handled before you write a line of code.</div>
 
   <div class="features-grid">
-    <div class="feat"><div class="feat-icon">🇷🇴</div><h3 data-i18n="feat_1_h">Romania Residential IP</h3><p data-i18n="feat_1_p">DIGI Romania &amp; WS Telecom ISP. Real residential ASN. Looks like a person browsing from Bucharest.</p></div>
+    <div class="feat"><div class="feat-icon">🌍</div><h3 data-i18n="feat_1_h">Residential IP · 6 Countries</h3><p data-i18n="feat_1_p">Real home ISPs — Romania, US, UK, Germany, Netherlands &amp; Japan. Your agent looks like a local person browsing from home.</p></div>
     <div class="feat"><div class="feat-icon">📱</div><h3 data-i18n="feat_2_h">iPhone 15 Pro Fingerprint</h3><p data-i18n="feat_2_p">iOS 17.4.1 Safari UA, correct viewport, pixel ratio, touch events, platform string. Passes every fingerprint check.</p></div>
     <div class="feat"><div class="feat-icon">🖱️</div><h3 data-i18n="feat_3_h">Bezier Mouse Curves</h3><p data-i18n="feat_3_p">Movement along randomized curved paths. Humans never go in straight lines — neither does this browser.</p></div>
     <div class="feat"><div class="feat-icon">⌨️</div><h3 data-i18n="feat_4_h">Human Typing Speed</h3><p data-i18n-html="feat_4_p_html">60–220ms per keystroke with mid-word pauses. Works with React inputs where <code>page.fill()</code> silently fails.</p></div>
