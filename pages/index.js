@@ -139,11 +139,8 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank" class="hp-badge">
       <span class="hp-icon">🦀</span> ClawHub
     </a>
-    <a href="https://skild.sh/@al1enjesus/human-browser" target="_blank" class="hp-badge">
+    <a href="https://hub.skild.sh" target="_blank" class="hp-badge">
       <span class="hp-icon">⚡</span> skild.sh
-    </a>
-    <a href="https://skills.sh/al1enjesus/human-browser" target="_blank" class="hp-badge">
-      <span class="hp-icon">🛠</span> skills.sh
     </a>
     <a href="https://github.com/al1enjesus/human-browser" target="_blank" class="hp-badge">
       <span class="hp-icon">
@@ -152,9 +149,6 @@ const bodyContent = `<!-- ── NAV ──────────────�
     </a>
     <a href="https://www.npmjs.com/package/human-browser" target="_blank" class="hp-badge">
       <span class="hp-icon">📦</span> npm
-    </a>
-    <a href="https://skillsdirectory.com/skills/human-browser" target="_blank" class="hp-badge">
-      <span class="hp-icon">📋</span> Directory
     </a>
   </div>
 </div>
