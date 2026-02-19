@@ -1777,3 +1777,92 @@
 @media (max-width: 480px) {
   .affiliate-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Proxy Comparison Table ── */
+.proxy-compare-section {
+  padding: 3rem 1.5rem;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+.proxy-compare-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+}
+.proxy-compare-sub {
+  font-size: 0.88rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+}
+.proxy-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+.proxy-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+.proxy-table th {
+  background: #13131a;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.proxy-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #111118;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.proxy-row:last-child td { border-bottom: none; }
+.proxy-row:hover td { background: rgba(255,255,255,0.02); }
+.proxy-row--recommended td { background: rgba(99,102,241,0.04); }
+.proxy-row--recommended:hover td { background: rgba(99,102,241,0.07); }
+.proxy-row--plain { opacity: 0.65; }
+.proxy-name strong { color: var(--fg); }
+.proxy-tag {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.12rem 0.45rem;
+  border-radius: 100px;
+  background: rgba(99,102,241,0.15);
+  color: #818cf8;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+}
+.proxy-tag--best { background: rgba(16,185,129,0.15); color: #34d399; }
+.proxy-tag--ent  { background: rgba(245,158,11,0.15); color: #fbbf24; }
+.proxy-bypass { font-weight: 700; }
+.proxy-bypass.ok  { color: #4ade80; }
+.proxy-bypass.meh { color: #fbbf24; }
+.proxy-usecase { color: var(--muted2); font-size: 0.78rem; }
+.proxy-btn {
+  display: inline-block;
+  background: #6366f1;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+.proxy-btn:hover { opacity: 0.85; }
+.proxy-btn--plain { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.proxy-compare-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: center;
+}
+.proxy-compare-note a { color: var(--accent); }

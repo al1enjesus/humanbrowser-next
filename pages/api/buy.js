@@ -48,13 +48,21 @@ export default async function handler(req, res) {
   }
 
   // ── CRYPTO via 0xProcessing ─────────────────────────────────
-  const VALID_CRYPTO = ['USDT', 'ETH', 'BTC', 'SOL', 'USDTTRC', 'USDTERC'];
-  // Normalize: 'USDT' defaults to TRC-20 (lower fees, faster)
-  let cur = currency.toUpperCase();
-  if (cur === 'USDT') cur = 'USDTTRC';
-  if (!VALID_CRYPTO.includes(cur)) {
-    return res.status(400).json({ error: 'Invalid currency. Use: card, USDTTRC, ETH, BTC, SOL' });
+  // 0xProcessing currency codes — exact strings their API accepts
+  const CURRENCY_MAP = {
+    'USDT':    'USDT (TRC20)',   // default USDT = TRC-20 (faster, cheaper)
+    'USDTTRC': 'USDT (TRC20)',   // TRC-20 alias
+    'USDTERC': 'USDT',           // ERC-20 = just 'USDT' in 0xProcessing
+    'ETH':     'ETH',
+    'BTC':     'BTC',
+    'SOL':     'SOL',
+  };
+  const VALID_INPUT = Object.keys(CURRENCY_MAP);
+  const inputCur = currency.toUpperCase();
+  if (!VALID_INPUT.includes(inputCur)) {
+    return res.status(400).json({ error: 'Invalid currency. Use: card, USDT, ETH, BTC, SOL' });
   }
+  const cur = CURRENCY_MAP[inputCur];
 
   const merchantId = process.env.OX_MERCHANT_ID;
   const apiKey     = process.env.OX_API_KEY;

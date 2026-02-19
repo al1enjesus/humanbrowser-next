@@ -149,6 +149,9 @@ var TRANSLATIONS = {
     addon_5_price: '$2.99',
     // ─── Affiliate ───
     affiliate_title: 'Prefer self-hosted proxies?',
+    proxy_compare_title: 'Recommended residential proxies',
+    proxy_compare_sub: 'All providers below are tested and compatible with Human Browser. Set PROXY_HOST/USER/PASS in your env and it works out of the box.',
+    proxy_compare_note: '💡 Don't want to manage proxies? Human Browser Starter — $13.99/mo includes a residential IP out of the box.',
     affiliate_desc: 'Tested and working with Human Browser. Pick a provider and set your proxy credentials in the env vars.',
     aff_hb_title: 'Promote Human Browser. Earn 20%.',
     aff_hb_desc: 'Share the skill with developers, AI teams, or scraping communities. You get 20% of every subscription they buy — recurring, forever.',
@@ -413,6 +416,9 @@ var TRANSLATIONS = {
     addon_5_price: '$2.99',
     // ─── Affiliate ───
     affiliate_title: 'Предпочитаете свои прокси?',
+    proxy_compare_title: 'Рекомендованные резидентные прокси',
+    proxy_compare_sub: 'Все провайдеры ниже протестированы и совместимы с Human Browser. Укажи PROXY_HOST/USER/PASS в env — и всё работает.',
+    proxy_compare_note: '💡 Не хочешь управлять прокси? Human Browser Starter — $13.99/мес. Прокси включён.',
     affiliate_desc: 'Протестированные провайдеры, совместимые с Human Browser. Выберите и укажите credentials в env vars.',
     aff_hb_title: 'Продвигай Human Browser. Зарабатывай 20%.',
     aff_hb_desc: 'Делись скиллом с разработчиками, AI-командами или скрейпинг-сообществами. Получай 20% с каждой их подписки — рекуррентно, навсегда.',
@@ -677,6 +683,9 @@ var TRANSLATIONS = {
     addon_5_price: '$2.99',
     // ─── Affiliate ───
     affiliate_title: '¿Prefieres proxies propios?',
+    proxy_compare_title: 'Proxies residenciales recomendados',
+    proxy_compare_sub: 'Todos los proveedores están probados y son compatibles con Human Browser. Configura PROXY_HOST/USER/PASS en tus variables de entorno.',
+    proxy_compare_note: '💡 ¿No quieres gestionar proxies? Human Browser Starter — $13.99/mes incluye una IP residencial.',
     affiliate_desc: 'Proveedores probados y compatibles con Human Browser. Elige uno e introduce las credenciales en tus variables de entorno.',
     aff_hb_title: 'Promociona Human Browser. Gana 20%.',
     aff_hb_desc: 'Comparte el skill con desarrolladores, equipos de IA o comunidades de scraping. Gana el 20% de cada suscripción — recurrente, para siempre.',
@@ -941,6 +950,9 @@ var TRANSLATIONS = {
     addon_5_price: '$2.99',
     // ─── Affiliate ───
     affiliate_title: '偏好自托管代理？',
+    proxy_compare_title: '推荐的住宅代理商',
+    proxy_compare_sub: '以下所有代理商均经过测试，与Human Browser完全兼容。在环境变量中设置PROXY_HOST/USER/PASS即可使用。',
+    proxy_compare_note: '💡 不想管理代理？Human Browser Starter $13.99/月，包含住宅IP。',
     affiliate_desc: '经过测试的代理商，与Human Browser完全兼容。选择一家并在环境变量中设置凭据。',
     aff_hb_title: '推广Human Browser，赚取20%。',
     aff_hb_desc: '将技能分享给开发者、AI团队或爬虫社区。每带来一个订阅用户，您将永久获得20%的持续佣金。',

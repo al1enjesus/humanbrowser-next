@@ -405,7 +405,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
           <span class="btn-sub">Apple Pay · Google Pay · Card</span>
         </button>
         <div class="crypto-row">
-          <button onclick="goPay('starter','USDTTRC')" class="crypto-coin-btn" title="USDT TRC-20"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT TRC-20</span></button>
+          <button onclick="goPay('starter','USDTTRC')" class="crypto-coin-btn" title="USDT"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT</span></button>
           <button onclick="goPay('starter','ETH')"  class="crypto-coin-btn" title="ETH"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" width="24" height="24"><span>ETH</span></button>
           <button onclick="goPay('starter','BTC')"  class="crypto-coin-btn" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="24" height="24"><span>BTC</span></button>
           <button onclick="goPay('starter','SOL')"  class="crypto-coin-btn" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="24" height="24"><span>SOL</span></button>
@@ -431,7 +431,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
           <span class="btn-sub">Apple Pay · Google Pay · Card</span>
         </button>
         <div class="crypto-row">
-          <button onclick="goPay('pro','USDTTRC')" class="crypto-coin-btn" title="USDT TRC-20"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT TRC-20</span></button>
+          <button onclick="goPay('pro','USDTTRC')" class="crypto-coin-btn" title="USDT"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT</span></button>
           <button onclick="goPay('pro','ETH')"  class="crypto-coin-btn" title="ETH"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" width="24" height="24"><span>ETH</span></button>
           <button onclick="goPay('pro','BTC')"  class="crypto-coin-btn" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="24" height="24"><span>BTC</span></button>
           <button onclick="goPay('pro','SOL')"  class="crypto-coin-btn" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="24" height="24"><span>SOL</span></button>
@@ -457,7 +457,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
           <span class="btn-sub">Apple Pay · Google Pay · Card</span>
         </button>
         <div class="crypto-row">
-          <button onclick="goPay('enterprise','USDTTRC')" class="crypto-coin-btn" title="USDT TRC-20"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT TRC-20</span></button>
+          <button onclick="goPay('enterprise','USDTTRC')" class="crypto-coin-btn" title="USDT"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="24" height="24"><span>USDT</span></button>
           <button onclick="goPay('enterprise','ETH')"  class="crypto-coin-btn" title="ETH"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" width="24" height="24"><span>ETH</span></button>
           <button onclick="goPay('enterprise','BTC')"  class="crypto-coin-btn" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="24" height="24"><span>BTC</span></button>
           <button onclick="goPay('enterprise','SOL')"  class="crypto-coin-btn" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="24" height="24"><span>SOL</span></button>
@@ -807,44 +807,86 @@ const bodyContent = `<!-- ── NAV ──────────────�
 </div>
 
 <!-- ── SELF-HOSTED PROXIES ─────────────────────────────── -->
-<div class="affiliate-section">
+<!-- ── PROXY COMPARISON ───────────────────────────────── -->
+<div class="proxy-compare-section">
   <div class="container">
-    <div class="affiliate-header">
-      <h3 class="affiliate-title" data-i18n="affiliate_title">Prefer self-hosted proxies?</h3>
-      <p class="affiliate-desc" data-i18n="affiliate_desc">Tested and working with Human Browser. Pick a provider and set your proxy credentials in the env vars.</p>
+    <div class="section-eyebrow" data-i18n="">Proxy Providers</div>
+    <h2 class="proxy-compare-title" data-i18n="proxy_compare_title">Recommended residential proxies</h2>
+    <p class="proxy-compare-sub" data-i18n="proxy_compare_sub">All providers below are tested and compatible with Human Browser. Set PROXY_HOST/USER/PASS in your env and it works out of the box.</p>
+
+    <div class="proxy-table-wrap">
+      <table class="proxy-table">
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>IPs</th>
+            <th>Countries</th>
+            <th>Price/GB</th>
+            <th>CF Bypass</th>
+            <th>Best for</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="proxy-row proxy-row--recommended">
+            <td class="proxy-name"><strong>Decodo</strong> <span class="proxy-tag proxy-tag--best">Best value</span></td>
+            <td>195M+</td>
+            <td>195</td>
+            <td><strong>$8.5</strong></td>
+            <td class="proxy-bypass ok">93%</td>
+            <td class="proxy-usecase">High volume</td>
+            <td><a href="https://decodo.com/?ref=humanbrowser" target="_blank" class="proxy-btn">Get →</a></td>
+          </tr>
+          <tr class="proxy-row">
+            <td class="proxy-name"><strong>NodeMaven</strong> <span class="proxy-tag">Clean IPs</span></td>
+            <td>10M+</td>
+            <td>140</td>
+            <td><strong>$7</strong></td>
+            <td class="proxy-bypass ok">95%</td>
+            <td class="proxy-usecase">CF sites</td>
+            <td><a href="https://nodemaven.com/?ref=humanbrowser" target="_blank" class="proxy-btn">Get →</a></td>
+          </tr>
+          <tr class="proxy-row">
+            <td class="proxy-name"><strong>IPRoyal</strong></td>
+            <td>32M+</td>
+            <td>195</td>
+            <td><strong>$7</strong></td>
+            <td class="proxy-bypass meh">78%</td>
+            <td class="proxy-usecase">Budget</td>
+            <td><a href="https://iproyal.com/?ref=humanbrowser" target="_blank" class="proxy-btn">Get →</a></td>
+          </tr>
+          <tr class="proxy-row">
+            <td class="proxy-name"><strong>Webshare</strong> <span class="proxy-tag">Free tier</span></td>
+            <td>30M+</td>
+            <td>180</td>
+            <td><strong>$3</strong></td>
+            <td class="proxy-bypass meh">65%</td>
+            <td class="proxy-usecase">Low-protection</td>
+            <td><a href="https://www.webshare.io/?referral_code=humanbrowser" target="_blank" class="proxy-btn">Get →</a></td>
+          </tr>
+          <tr class="proxy-row">
+            <td class="proxy-name"><strong>Oxylabs</strong> <span class="proxy-tag proxy-tag--ent">Enterprise</span></td>
+            <td>175M+</td>
+            <td>195</td>
+            <td><strong>$12</strong></td>
+            <td class="proxy-bypass ok">92%</td>
+            <td class="proxy-usecase">Big teams</td>
+            <td><a href="https://oxylabs.io/?via=humanbrowser" target="_blank" class="proxy-btn">Get →</a></td>
+          </tr>
+          <tr class="proxy-row proxy-row--plain">
+            <td class="proxy-name"><strong>Bright Data</strong></td>
+            <td>72M+</td>
+            <td>195</td>
+            <td><strong>$15</strong></td>
+            <td class="proxy-bypass ok">95%</td>
+            <td class="proxy-usecase">Enterprise</td>
+            <td><a href="https://brightdata.com" target="_blank" class="proxy-btn proxy-btn--plain">Visit →</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="affiliate-grid">
-      <a href="https://decodo.com/?ref=humanbrowser" target="_blank" rel="noopener" class="affiliate-card">
-        <div class="aff-name">Decodo</div>
-        <div class="aff-desc" data-i18n="aff_decodo_desc">Best value. 195M+ IPs, 195 countries. Our recommended pick.</div>
-        <div class="aff-cta" data-i18n="aff_cta">Get Started →</div>
-      </a>
-      <a href="https://iproyal.com/?ref=humanbrowser" target="_blank" rel="noopener" class="affiliate-card">
-        <div class="aff-name">IPRoyal</div>
-        <div class="aff-desc" data-i18n="aff_iproyal_desc">Affordable rotating &amp; sticky residential proxies. Pay-as-you-go.</div>
-        <div class="aff-cta" data-i18n="aff_cta">Get Started →</div>
-      </a>
-      <a href="https://oxylabs.io/?via=humanbrowser" target="_blank" rel="noopener" class="affiliate-card">
-        <div class="aff-name">Oxylabs</div>
-        <div class="aff-desc" data-i18n="aff_oxylabs_desc">Enterprise-grade. 175M+ IPs, advanced geo-targeting.</div>
-        <div class="aff-cta" data-i18n="aff_cta">Get Started →</div>
-      </a>
-      <a href="https://nodemaven.com/?ref=humanbrowser" target="_blank" rel="noopener" class="affiliate-card">
-        <div class="aff-name">NodeMaven</div>
-        <div class="aff-desc" data-i18n="aff_nodemaven_desc">High-quality IPs with excellent success rates.</div>
-        <div class="aff-cta" data-i18n="aff_cta">Get Started →</div>
-      </a>
-      <a href="https://www.webshare.io/?referral_code=humanbrowser" target="_blank" rel="noopener" class="affiliate-card">
-        <div class="aff-name">Webshare</div>
-        <div class="aff-desc" data-i18n="aff_webshare_desc">Best price-to-performance ratio. Free tier available.</div>
-        <div class="aff-cta" data-i18n="aff_cta">Get Started →</div>
-      </a>
-      <a href="https://brightdata.com" target="_blank" rel="noopener" class="affiliate-card aff-card--plain">
-        <div class="aff-name">Bright Data</div>
-        <div class="aff-desc" data-i18n="aff_brightdata_desc">The original. Best network quality. No affiliate discount.</div>
-        <div class="aff-cta" data-i18n="aff_cta_visit">Visit →</div>
-      </a>
-    </div>
+
+    <p class="proxy-compare-note" data-i18n="proxy_compare_note">💡 Don't want to manage proxies? <a href="#pricing">Human Browser Starter — $13.99/mo</a> includes a residential IP out of the box.</p>
   </div>
 </div>
 
