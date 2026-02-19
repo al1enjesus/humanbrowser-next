@@ -877,12 +877,13 @@
   .hi-cmd {
     flex: 1;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
+    font-size: clamp(0.62rem, 3.1vw, 0.9rem);
     color: #e2e8f0;
     letter-spacing: 0.01em;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    min-width: 0;
+    /* no text-overflow — just clip cleanly */
   }
   .hi-copy {
     background: #1e1e1e;
@@ -1115,6 +1116,7 @@
   .ccoin-usdt { border-color: #26a17b33; }
   .ccoin-usdt.ccoin-active { border-color: #26a17b; background: #081a12; }
   .ccoin-icon  { font-size: 1.4rem; line-height: 1; }
+  .ccoin-img   { width: 32px; height: 32px; border-radius: 50%; object-fit: contain; }
   .ccoin-name  { font-size: 0.82rem; font-weight: 700; color: #fff; }
   .ccoin-net   { font-size: 0.62rem; color: #555; }
 
@@ -1162,5 +1164,21 @@
     width: 100% !important;
     border: none !important;
     border-radius: 12px;
+  }
+
+  /* ── 0xProcessing iframe ── */
+  .crypto-iframe-wrap {
+    margin-top: 0.5rem;
+  }
+  .crypto-iframe {
+    width: 100%;
+    height: 560px;
+    border: none;
+    border-radius: 14px;
+    background: #fff;
+    display: block;
+  }
+  @media(max-width: 480px) {
+    .crypto-iframe { height: 480px; }
   }
 

@@ -638,16 +638,20 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <div id="tabContentCrypto" class="psc-pane psc-hidden">
       <div class="crypto-coins">
         <button class="ccoin ccoin-usdt" onclick="selectCoin('USDT')">
-          <span class="ccoin-icon">💵</span><span class="ccoin-name">USDT</span><span class="ccoin-net">TRC20</span>
+          <img class="ccoin-img" src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" loading="lazy"/>
+          <span class="ccoin-name">USDT</span><span class="ccoin-net">TRC20</span>
         </button>
         <button class="ccoin" onclick="selectCoin('BTC')">
-          <span class="ccoin-icon">₿</span><span class="ccoin-name">BTC</span><span class="ccoin-net">Bitcoin</span>
+          <img class="ccoin-img" src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" loading="lazy"/>
+          <span class="ccoin-name">BTC</span><span class="ccoin-net">Bitcoin</span>
         </button>
         <button class="ccoin" onclick="selectCoin('ETH')">
-          <span class="ccoin-icon">⟠</span><span class="ccoin-name">ETH</span><span class="ccoin-net">ERC20</span>
+          <img class="ccoin-img" src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" loading="lazy"/>
+          <span class="ccoin-name">ETH</span><span class="ccoin-net">ERC20</span>
         </button>
         <button class="ccoin" onclick="selectCoin('SOL')">
-          <span class="ccoin-icon">◎</span><span class="ccoin-name">SOL</span><span class="ccoin-net">Solana</span>
+          <img class="ccoin-img" src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" loading="lazy"/>
+          <span class="ccoin-name">SOL</span><span class="ccoin-net">Solana</span>
         </button>
       </div>
       <div id="cryptoInvoice"></div>

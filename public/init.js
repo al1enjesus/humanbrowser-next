@@ -280,21 +280,39 @@ async function selectCoin(coin) {
     var data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Server error');
 
-    var coinLabels = { USDT: '💵 USDT TRC20', BTC: '₿ Bitcoin', ETH: '⟠ Ethereum', SOL: '◎ Solana' };
+    var coinLabels = { USDT: 'USDT TRC20', BTC: 'Bitcoin', ETH: 'Ethereum', SOL: 'Solana' };
     var addr = data.wallet_address || '';
-    var amt  = data.amount_crypto  || PLAN_PRICES[currentPayPlan].replace('$', '');
+    var amt  = data.amount_crypto  || '';
 
+    // ── 0xProcessing returns payment_url (redirect flow) → embed in iframe ──
+    if (data.payment_url && !addr) {
+      invoice.innerHTML =
+        '<div class="crypto-iframe-wrap">' +
+          '<iframe' +
+          ' src="' + data.payment_url + '"' +
+          ' class="crypto-iframe"' +
+          ' allow="payment *"' +
+          ' sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"' +
+          '></iframe>' +
+          '<p class="cib-hint" style="text-align:center;margin-top:0.5rem;">' +
+            'Order: <code>' + (data.order_id || '') + '</code> · ' +
+            '<a href="' + data.payment_url + '" target="_blank" style="color:#06b6d4;">Open in browser ↗</a>' +
+          '</p>' +
+        '</div>';
+      return;
+    }
+
+    // ── Direct wallet address (future API) ──
     invoice.innerHTML =
       '<div class="crypto-invoice-box">' +
         '<div class="cib-title">' + (coinLabels[coin] || coin) + '</div>' +
-        '<div class="cib-amount">' + amt + ' ' + coin + '</div>' +
+        '<div class="cib-amount">' + (amt || PLAN_PRICES[currentPayPlan].replace('$', '')) + ' ' + coin + '</div>' +
         '<p class="cib-label">Send to this address:</p>' +
         '<div class="cib-addr" id="cryptoAddrEl">' + (addr || '—') + '</div>' +
         '<p class="cib-hint">Tap address to copy · Order: <code>' + (data.order_id || '') + '</code></p>' +
         '<p class="cib-confirm">⏱ Credentials delivered automatically after on-chain confirmation</p>' +
       '</div>';
 
-    // Copy on tap
     var addrEl = document.getElementById('cryptoAddrEl');
     if (addrEl && addr) {
       addrEl.style.cursor = 'pointer';
@@ -303,7 +321,10 @@ async function selectCoin(coin) {
           addrEl.textContent = '✅ Copied!';
           setTimeout(function () { addrEl.textContent = addr; }, 2000);
         }).catch(function () {
-          addrEl.textContent = addr; // fallback
+          var r = document.createRange();
+          r.selectNodeContents(addrEl);
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(r);
         });
       });
     }
