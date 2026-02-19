@@ -392,15 +392,12 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <div class="plan">
       <div class="plan-tier">Starter</div>
       <div class="plan-price">$13.99<sub>/mo</sub></div>
-      <div class="plan-usage" data-i18n="plan_starter_usage">2 GB bandwidth · $2.50/GB after</div>
+      <div class="plan-usage" data-i18n="plan_starter_usage">2GB Romania residential</div>
       <ul class="plan-feats">
-        <li data-i18n="starter_li1">Romania residential IP</li>
-        <li data-i18n="starter_li2">iPhone 15 Pro + Desktop</li>
-        <li data-i18n="starter_li3">OpenClaw skill + credentials</li>
-        <li data-i18n="starter_li4">Cloudflare / DataDome bypass</li>
-        <li data-i18n="starter_li5">Email support</li>
-        <li class="off" data-i18n="starter_li_off1">Multi-country rotation</li>
-        <li class="off" data-i18n="starter_li_off2">CDP / Scraping Browser</li>
+        <li data-i18n="starter_li1">2GB Romania residential IP</li>
+        <li data-i18n="starter_li2">Human Browser skill included</li>
+        <li data-i18n="starter_li3">iPhone 15 Pro fingerprint</li>
+        <li data-i18n="starter_li4">Basic support (Telegram)</li>
       </ul>
       <div class="plan-btns">
         <button onclick="goPay('starter','card')" class="plan-pay-btn stripe-btn">
@@ -420,14 +417,13 @@ const bodyContent = `<!-- ── NAV ──────────────�
       <div class="pop-tag" data-i18n="plan_pop_tag">Most Popular</div>
       <div class="plan-tier">Pro</div>
       <div class="plan-price">$49.99<sub>/mo</sub></div>
-      <div class="plan-usage" data-i18n="plan_pro_usage">20 GB bandwidth · $2.00/GB after</div>
+      <div class="plan-usage" data-i18n="plan_pro_usage">20GB multi-country · 10+ countries</div>
       <ul class="plan-feats">
-        <li data-i18n="pro_li1">Everything in Starter</li>
-        <li data-i18n="pro_li2">Multi-country IP rotation</li>
-        <li data-i18n="pro_li3">Scraping Browser CDP access</li>
-        <li data-i18n="pro_li4">Custom fingerprints</li>
-        <li data-i18n="pro_li5">Agent-native payment API</li>
-        <li data-i18n="pro_li6">Priority support</li>
+        <li data-i18n="pro_li1">20GB multi-country (10+ countries)</li>
+        <li data-i18n="pro_li2">All fingerprint profiles</li>
+        <li data-i18n="pro_li3">100 CAPTCHA solves/mo included</li>
+        <li data-i18n="pro_li4">Priority queue</li>
+        <li data-i18n="pro_li5">Priority support</li>
       </ul>
       <div class="plan-btns">
         <button onclick="goPay('pro','card')" class="plan-pay-btn stripe-btn">
@@ -446,14 +442,14 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <div class="plan">
       <div class="plan-tier">Enterprise</div>
       <div class="plan-price">$199<sub>/mo</sub></div>
-      <div class="plan-usage" data-i18n="plan_ent_usage">Unlimited · Dedicated zone</div>
+      <div class="plan-usage" data-i18n="plan_ent_usage">100GB · Dedicated IPs · SLA</div>
       <ul class="plan-feats">
-        <li data-i18n="ent_li1">Everything in Pro</li>
-        <li data-i18n="ent_li2">Dedicated Romania zone</li>
-        <li data-i18n="ent_li3">White-label API endpoint</li>
-        <li data-i18n="ent_li4">1-on-1 onboarding call</li>
-        <li data-i18n="ent_li5">SLA guarantee</li>
-        <li data-i18n="ent_li6">Custom skill development</li>
+        <li data-i18n="ent_li1">100GB bandwidth</li>
+        <li data-i18n="ent_li2">Dedicated sticky IPs</li>
+        <li data-i18n="ent_li3">Custom fingerprint profiles</li>
+        <li data-i18n="ent_li4">API access (REST)</li>
+        <li data-i18n="ent_li5">Dedicated support channel</li>
+        <li data-i18n="ent_li6">SLA</li>
       </ul>
       <div class="plan-btns">
         <button onclick="goPay('enterprise','card')" class="plan-pay-btn stripe-btn">
@@ -466,6 +462,24 @@ const bodyContent = `<!-- ── NAV ──────────────�
           <button onclick="goPay('enterprise','BTC')"  class="crypto-coin-btn" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="24" height="24"><span>BTC</span></button>
           <button onclick="goPay('enterprise','SOL')"  class="crypto-coin-btn" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="24" height="24"><span>SOL</span></button>
         </div>
+      </div>
+    </div>
+
+    <!-- ── Pay-per-Request API (Coming Soon) ── -->
+    <div class="plan plan-ppr">
+      <div class="ppr-coming-badge" data-i18n="plan_ppr_badge">Coming Soon</div>
+      <div class="plan-tier" data-i18n="plan_ppr_name">Pay-per-Request API</div>
+      <div class="plan-price">$0.001<sub data-i18n="plan_ppr_per">–$0.005/req</sub></div>
+      <div class="plan-usage" data-i18n="plan_ppr_usage">No monthly commitment</div>
+      <ul class="plan-feats">
+        <li data-i18n="ppr_li1">Basic request: $0.001</li>
+        <li data-i18n="ppr_li2">Cloudflare/JS-heavy: $0.005</li>
+        <li data-i18n="ppr_li3">CAPTCHA solve: $0.003</li>
+        <li data-i18n="ppr_li4">Pay with USDT, ETH, BTC, SOL, or card</li>
+        <li data-i18n="ppr_li5">Auto-purchase: agents buy their own credits</li>
+      </ul>
+      <div class="plan-btns">
+        <button class="plan-pay-btn ppr-notify-btn" onclick="alert('We will notify you when Pay-per-Request API launches!')" data-i18n="ppr_notify_btn">🔔 Notify me when ready</button>
       </div>
     </div>
   </div>
@@ -487,6 +501,55 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <span class="pn-item" title="ETH"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" width="22" height="22" class="pn-logo pn-round"></span>
     <span class="pn-item" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="22" height="22" class="pn-logo pn-round"></span>
     <span class="pn-item" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="22" height="22" class="pn-logo pn-round"></span>
+  </div>
+</div>
+
+<!-- ── ADD-ONS ─────────────────────────────────────── -->
+<div class="addons-section">
+  <div class="section-eyebrow" data-i18n="addons_eyebrow">Add-ons</div>
+  <div class="section-title" data-i18n="addons_title">Boost your setup</div>
+  <div class="section-sub" data-i18n="addons_sub">One-time purchases and monthly extras to customize any plan.</div>
+  <div class="addons-grid">
+    <div class="addon-card">
+      <div class="addon-icon">🎭</div>
+      <div class="addon-info">
+        <div class="addon-name" data-i18n="addon_1_name">Fingerprint Pack</div>
+        <div class="addon-desc" data-i18n="addon_1_desc">20 device profiles</div>
+      </div>
+      <div class="addon-price" data-i18n="addon_1_price">$9.99 one-time</div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-icon">📜</div>
+      <div class="addon-info">
+        <div class="addon-name" data-i18n="addon_2_name">Scraping Recipes</div>
+        <div class="addon-desc" data-i18n="addon_2_desc">Instagram, LinkedIn, Amazon</div>
+      </div>
+      <div class="addon-price" data-i18n="addon_2_price">$4.99/script</div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-icon">📍</div>
+      <div class="addon-info">
+        <div class="addon-name" data-i18n="addon_3_name">Sticky Session</div>
+        <div class="addon-desc" data-i18n="addon_3_desc">Same IP for 24h</div>
+      </div>
+      <div class="addon-price" data-i18n="addon_3_price">$2.99/day</div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-icon">⚡</div>
+      <div class="addon-info">
+        <div class="addon-name" data-i18n="addon_4_name">Priority Queue</div>
+        <div class="addon-desc" data-i18n="addon_4_desc">Skip the line</div>
+      </div>
+      <div class="addon-price" data-i18n="addon_4_price">+$5/mo</div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-icon">🤖</div>
+      <div class="addon-info">
+        <div class="addon-name" data-i18n="addon_5_name">CAPTCHA Bundle</div>
+        <div class="addon-desc" data-i18n="addon_5_desc">1000 solves</div>
+      </div>
+      <div class="addon-price" data-i18n="addon_5_price">$2.99</div>
+    </div>
   </div>
 </div>
 
@@ -699,6 +762,17 @@ const bodyContent = `<!-- ── NAV ──────────────�
     </div>
 
     <p class="amodal-support" data-i18n-html="modal_support_html">Need help? <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> on Telegram</p>
+  </div>
+</div>
+
+<!-- ── AFFILIATE ─────────────────────────────────────── -->
+<div class="affiliate-section">
+  <div class="container">
+    <p class="affiliate-desc" data-i18n="affiliate_desc">Using a different proxy? Get residential proxies via our affiliate links — same quality backbone we use. We earn a small commission at no cost to you.</p>
+    <div class="affiliate-links">
+      <a href="https://decodo.com/?ref=humanbrowser" target="_blank" rel="noopener" class="affiliate-link" data-i18n="affiliate_decodo">Get Decodo Residential Proxies →</a>
+      <a href="https://iproyal.com/?ref=humanbrowser" target="_blank" rel="noopener" class="affiliate-link" data-i18n="affiliate_iproyal">Get IPRoyal Proxies →</a>
+    </div>
   </div>
 </div>
 

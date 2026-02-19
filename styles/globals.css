@@ -1471,3 +1471,166 @@
   color: rgba(255,255,255,0.45);
   margin-bottom: 0.35em;
 }
+
+/* ═══════════════════════════════════════════════
+   PAY-PER-REQUEST PLAN CARD
+═══════════════════════════════════════════════ */
+.plan-ppr {
+  position: relative;
+  opacity: 0.82;
+  border: 1px dashed rgba(99,102,241,0.45) !important;
+  background: linear-gradient(135deg, rgba(99,102,241,0.06) 0%, rgba(6,182,212,0.04) 100%) !important;
+}
+.plan-ppr:hover { opacity: 1; }
+
+.ppr-coming-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.ppr-notify-btn {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--r-md);
+  border: 1px solid rgba(99,102,241,0.4);
+  background: rgba(99,102,241,0.12);
+  color: #a5b4fc;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+  text-align: center;
+}
+.ppr-notify-btn:hover {
+  background: rgba(99,102,241,0.22);
+  border-color: rgba(99,102,241,0.7);
+  color: #c7d2fe;
+}
+
+/* ═══════════════════════════════════════════════
+   ADD-ONS SECTION
+═══════════════════════════════════════════════ */
+.addons-section {
+  padding: 4rem 1.5rem;
+  background: #0d0d0d;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  max-width: 100%;
+}
+.addons-section .section-eyebrow,
+.addons-section .section-title,
+.addons-section .section-sub {
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.addons-section .section-sub {
+  margin-bottom: 2.5rem;
+}
+
+.addons-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.addon-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 1rem 1.25rem;
+  transition: border-color 0.18s, transform 0.18s;
+}
+.addon-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.addon-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+.addon-info {
+  flex: 1;
+  min-width: 0;
+}
+.addon-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+.addon-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.addon-price {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--green);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .addons-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   AFFILIATE SECTION
+═══════════════════════════════════════════════ */
+.affiliate-section {
+  padding: 2rem 1.5rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+.affiliate-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+.affiliate-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  max-width: 540px;
+  line-height: 1.6;
+}
+.affiliate-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.affiliate-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 0.45rem 1rem;
+  transition: color 0.18s, border-color 0.18s;
+  text-decoration: none;
+}
+.affiliate-link:hover {
+  color: var(--fg);
+  border-color: var(--muted2);
+}
