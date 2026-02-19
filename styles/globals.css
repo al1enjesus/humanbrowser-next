@@ -458,7 +458,6 @@
     .code-wrap { padding: 0 1.25rem; margin-top: 3rem; }
   }
   .fvp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
-  @media (max-width: 600px) { .fvp-grid { grid-template-columns: 1fr; } }
   .fvp-card {
     border: 1px solid var(--border); border-radius: var(--r-xl); padding: 2rem;
     display: flex; flex-direction: column; gap: 1.25rem;
@@ -977,8 +976,16 @@
 
   
   @media(max-width:600px){
-    .fvp-card { padding: 1rem 0.75rem; }
-    .fvp-header h3 { font-size: 0.85rem; }
+    .fvp-grid { gap: 0.6rem; margin-top: 1.75rem; }
+    .fvp-card { padding: 0.85rem 0.65rem; }
+    .fvp-tag { font-size: 0.65rem; padding: 3px 8px; }
+    .fvp-header h3 { font-size: 0.8rem; margin-bottom: 0.2rem; }
+    .fvp-header p { font-size: 0.72rem; }
+    .fvp-list { gap: 0.3rem; }
+    .fvp-list li { font-size: 0.7rem; line-height: 1.4; }
+    .fvp-list li code { font-size: 0.65rem; }
+    .fvp-why { display: none; }   /* too cramped on mobile */
+    .fvp-install { display: none; } /* install cmd is in hero — no need to repeat */
     .fvp-header p { display: none; }
     .fvp-list li { font-size: 0.72rem; }
     .fvp-tag { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
