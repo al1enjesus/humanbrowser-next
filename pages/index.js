@@ -460,13 +460,13 @@ const bodyContent = `<!-- ── NAV ──────────────�
         </div>
         <ul class="fvp-list">
           <li data-i18n-html="free_li1_html">✅ <code>browser-human.js</code> — full source code</li>
-          <li data-i18n="free_li2">✅ Human mouse, typing, scroll logic</li>
+          <li class="fvp-m-hide" data-i18n="free_li2">✅ Human mouse, typing, scroll logic</li>
           <li data-i18n="free_li3">✅ iPhone 15 Pro + Desktop fingerprints</li>
           <li data-i18n="free_li4">✅ Anti-detection stack (webdriver=false, etc.)</li>
-          <li data-i18n="free_li5">✅ OpenClaw skill via clawhub</li>
-          <li data-i18n="free_li6">✅ All future updates to the script</li>
-          <li class="fvp-dim" data-i18n="free_li7">⚠️ You need your own residential proxy</li>
-          <li class="fvp-dim" data-i18n="free_li8">⚠️ Without residential IP — sites will block you</li>
+          <li class="fvp-m-hide" data-i18n="free_li5">✅ OpenClaw skill via clawhub</li>
+          <li class="fvp-m-hide" data-i18n="free_li6">✅ All future updates to the script</li>
+          <li class="fvp-dim" data-i18n="free_li7">⚠️ Own residential proxy required</li>
+          <li class="fvp-dim fvp-m-hide" data-i18n="free_li8">⚠️ Without residential IP — sites will block you</li>
         </ul>
         <div class="fvp-install">
           <span class="fvp-install-label">Install free skill</span>
@@ -481,13 +481,13 @@ const bodyContent = `<!-- ── NAV ──────────────�
           <p data-i18n="paid_p">The missing piece. A real home IP that makes your browser invisible to anti-bot systems.</p>
         </div>
         <ul class="fvp-list">
-          <li data-i18n="paid_li1">✅ Romania / US / UK / DE / NL / JP IPs</li>
+          <li data-i18n="paid_li1">✅ RO / US / UK / DE / NL / JP IPs</li>
           <li data-i18n="paid_li2">✅ Real residential ISP (DIGI, AT&amp;T, BT…)</li>
-          <li data-i18n="paid_li3">✅ Instant credential delivery after payment</li>
-          <li data-i18n-html="paid_li4_html">✅ Works out of the box with <code>browser-human.js</code></li>
+          <li data-i18n="paid_li3">✅ Instant credential delivery</li>
+          <li class="fvp-m-hide" data-i18n-html="paid_li4_html">✅ Works out of the box with <code>browser-human.js</code></li>
           <li data-i18n="paid_li5">✅ No Bright Data account needed</li>
-          <li data-i18n="paid_li6">✅ Email support included</li>
-          <li data-i18n="paid_li7">✅ Cancel anytime — no long-term contract</li>
+          <li class="fvp-m-hide" data-i18n="paid_li6">✅ Email support included</li>
+          <li class="fvp-m-hide" data-i18n="paid_li7">✅ Cancel anytime — no long-term contract</li>
         </ul>
         <a href="#pricing" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:auto;" data-i18n="paid_cta">See Plans →</a>
       </div>
