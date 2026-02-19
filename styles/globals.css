@@ -47,9 +47,12 @@
     .section { padding: 5rem 1.5rem; }
     .section-eyebrow {
       font-size: 0.7rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.12em;
+      text-transform: uppercase; letter-spacing: 0.1em;
       color: var(--accent); margin-bottom: 0.6rem;
       white-space: nowrap;
+    }
+    @media (max-width: 500px) {
+      .section-eyebrow { letter-spacing: 0.06em; }
     }
     .section-title {
       font-size: clamp(1.6rem, 3vw, 2.4rem);
@@ -252,15 +255,18 @@
       border-radius: var(--r-xl); overflow: hidden; position: relative;
     }
     @media (max-width: 600px) {
-      /* subtle fade on right to hint at horizontal scroll */
+      /* allow horizontal scroll in code block on mobile */
+      .code-window { overflow-x: auto; }
+      /* subtle fade on right to hint at scroll */
       .code-window::after {
         content: '';
         position: absolute;
-        top: 0; right: 0;
-        width: 32px; height: 100%;
+        top: 36px; right: 0; /* below titlebar */
+        width: 40px;
+        height: calc(100% - 36px);
         background: linear-gradient(to right, transparent, #0c0c0c);
         pointer-events: none;
-        border-radius: 0 var(--r-xl) var(--r-xl) 0;
+        border-radius: 0 0 var(--r-xl) 0;
       }
     }
     .code-bar {
