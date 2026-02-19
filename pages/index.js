@@ -62,12 +62,12 @@ const bodyContent = `<!-- ── NAV ──────────────�
     </button>
   </div>
   <div class="nav-mobile-menu" id="mobile-menu">
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#how">How it works</a>
-    <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank">ClawHub Skill (free)</a>
+    <a href="#features" data-i18n="nav_features">Features</a>
+    <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="#how" data-i18n="nav_how">How it works</a>
+    <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank" data-i18n="nav_mobile_skill">ClawHub Skill (free)</a>
     <div class="mobile-cta">
-      <a href="https://t.me/virixlabs" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">Get Started →</a>
+      <a href="https://t.me/virixlabs" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;" data-i18n="nav_cta">Get Started →</a>
     </div>
   </div>
 </header>
@@ -143,17 +143,17 @@ const bodyContent = `<!-- ── NAV ──────────────�
 
 <!-- ── TRUST BAR ───────────────────────────────────── -->
 <div class="trust-bar">
-  <div class="trust-item"><span class="ck">✓</span> Bypasses Cloudflare</div>
-  <div class="trust-item"><span class="ck">✓</span> Bypasses DataDome</div>
-  <div class="trust-item"><span class="ck">✓</span> Bypasses PerimeterX</div>
-  <div class="trust-item"><span class="ck">✓</span> Romania Residential IP</div>
-  <div class="trust-item"><span class="ck">✓</span> Any Linux server</div>
-  <div class="trust-item"><span class="ck">✓</span> OpenClaw native skill</div>
+  <div class="trust-item"><span class="ck">✓</span> <span data-i18n="trust_1">Bypasses Cloudflare</span></div>
+  <div class="trust-item"><span class="ck">✓</span> <span data-i18n="trust_2">Bypasses DataDome</span></div>
+  <div class="trust-item"><span class="ck">✓</span> <span data-i18n="trust_3">Bypasses PerimeterX</span></div>
+  <div class="trust-item"><span class="ck">✓</span> <span data-i18n="trust_4">Residential IP</span></div>
+  <div class="trust-item"><span class="ck">✓</span> <span data-i18n="trust_5">Any Linux server</span></div>
+  <div class="trust-item"><span class="ck">✓</span> <span data-i18n="trust_6">OpenClaw native skill</span></div>
 </div>
 
 <!-- ── CODE PREVIEW ────────────────────────────────── -->
 <div class="code-wrap">
-  <div class="code-label">5 lines · any server · zero bans</div>
+  <div class="code-label" data-i18n="code_label">5 lines · any server · zero bans</div>
   <div class="code-window">
     <div class="code-bar">
       <div class="cd cd-r"></div><div class="cd cd-y"></div><div class="cd cd-g"></div>
@@ -163,10 +163,10 @@ const bodyContent = `<!-- ── NAV ──────────────�
 
 <span class="kw">const</span> { page, humanType, humanScroll } = <span class="kw">await</span> <span class="fn">launchHuman</span>();
 <span class="kw">await</span> page.<span class="fn">goto</span>(<span class="str">'https://instagram.com'</span>);
-<span class="kw">await</span> <span class="fn">humanScroll</span>(page, <span class="str">'down'</span>);   <span class="cm">// smooth scroll with jitter</span>
-<span class="kw">await</span> <span class="fn">humanType</span>(page, <span class="str">'input'</span>, <span class="str">'query'</span>);  <span class="cm">// 60–220ms/char</span>
+<span class="kw">await</span> <span class="fn">humanScroll</span>(page, <span class="str">'down'</span>);   <span class="cm">// <span data-i18n="code_c1">smooth scroll with jitter</span></span>
+<span class="kw">await</span> <span class="fn">humanType</span>(page, <span class="str">'input'</span>, <span class="str">'query'</span>);  <span class="cm">// <span data-i18n="code_c2">60–220ms/char</span></span>
 
-<span class="cm">// ✅ Romanian IP · iPhone 15 fingerprint · webdriver=false</span></pre>
+<span class="cm">// ✅ <span data-i18n="code_c3">Romanian IP · iPhone 15 fingerprint · webdriver=false</span></span></pre>
   </div>
 </div>
 
@@ -176,42 +176,42 @@ const bodyContent = `<!-- ── NAV ──────────────�
 <div class="callout-wrap">
   <div class="callout">
     <div>
-      <h2>Stop buying <span class="grad">hardware</span><br>for your AI agent</h2>
-      <p>Most browser automation guides assume you have a Mac Mini, a desktop VPS, or a $500/mo cloud browser subscription. Human Browser runs on a $5 Linux VPS. Nothing else.</p>
+      <h2 data-i18n-html="callout_h2">Stop buying <span class="grad">hardware</span><br>for your AI agent</h2>
+      <p data-i18n="callout_p">Most browser automation guides assume you have a Mac Mini, a desktop VPS, or a $500/mo cloud browser subscription. Human Browser runs on a $5 Linux VPS. Nothing else.</p>
       <ul class="callout-checks">
-        <li>No display server, no VNC, no desktop required</li>
-        <li>Chromium headless + residential proxy = real human fingerprint</li>
-        <li>iPhone 15 Pro UA · Romania IP · Bucharest geolocation</li>
-        <li>Bezier mouse · human-speed typing · natural scroll</li>
-        <li>Works in Docker, GitHub Actions, any CI/CD pipeline</li>
+        <li data-i18n="callout_li1">No display server, no VNC, no desktop required</li>
+        <li data-i18n="callout_li2">Chromium headless + residential proxy = real human fingerprint</li>
+        <li data-i18n="callout_li3">iPhone 15 Pro UA · Romania IP · Bucharest geolocation</li>
+        <li data-i18n="callout_li4">Bezier mouse · human-speed typing · natural scroll</li>
+        <li data-i18n="callout_li5">Works in Docker, GitHub Actions, any CI/CD pipeline</li>
       </ul>
     </div>
     <div>
       <div class="compare">
         <div class="cmp-head">
-          <div class="cmp-cell">Solution</div>
-          <div class="cmp-cell">Cost</div>
-          <div class="cmp-cell">Anti-bot</div>
+          <div class="cmp-cell" data-i18n="cmp_h1">Solution</div>
+          <div class="cmp-cell" data-i18n="cmp_h2">Cost</div>
+          <div class="cmp-cell" data-i18n="cmp_h3">Anti-bot</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">Mac Mini</div>
           <div class="cmp-cell c-bad">$600 upfront</div>
-          <div class="cmp-cell c-bad">Data center IP</div>
+          <div class="cmp-cell c-bad" data-i18n="cmp_r1_bot">Data center IP</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">Browserless.io</div>
           <div class="cmp-cell c-bad">$500+/mo</div>
-          <div class="cmp-cell c-ok">Partial</div>
+          <div class="cmp-cell c-ok" data-i18n="cmp_r2_bot">Partial</div>
         </div>
         <div class="cmp-row">
           <div class="cmp-cell">Plain Playwright</div>
           <div class="cmp-cell c-ok">Free</div>
-          <div class="cmp-cell c-bad">Instant ban</div>
+          <div class="cmp-cell c-bad" data-i18n="cmp_r3_bot">Instant ban</div>
         </div>
         <div class="cmp-row highlight">
           <div class="cmp-cell">Human Browser</div>
           <div class="cmp-cell c-good">$13.99/mo</div>
-          <div class="cmp-cell c-good">✓ Full bypass</div>
+          <div class="cmp-cell c-good" data-i18n="cmp_r4_bot">✓ Full bypass</div>
         </div>
       </div>
     </div>
@@ -244,7 +244,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
       <!-- filled by JS -->
     </div>
 
-    <p class="country-note">* Compatibility based on typical residential IP behavior. Some services may vary by specific ISP or account status.</p>
+    <p class="country-note" data-i18n="country_note">* Compatibility based on typical residential IP behavior. Some services may vary by specific ISP or account status.</p>
   </div>
 </div>
 
@@ -257,15 +257,15 @@ const bodyContent = `<!-- ── NAV ──────────────�
   <div class="section-sub" data-i18n="features_sub">Every signal Cloudflare, DataDome, and PerimeterX check. Handled before you write a line of code.</div>
 
   <div class="features-grid">
-    <div class="feat"><div class="feat-icon">🇷🇴</div><h3>Romania Residential IP</h3><p>DIGI Romania & WS Telecom ISP. Real residential ASN. Looks like a person browsing from Bucharest.</p></div>
-    <div class="feat"><div class="feat-icon">📱</div><h3>iPhone 15 Pro Fingerprint</h3><p>iOS 17.4.1 Safari UA, correct viewport, pixel ratio, touch events, platform string. Passes every fingerprint check.</p></div>
-    <div class="feat"><div class="feat-icon">🖱️</div><h3>Bezier Mouse Curves</h3><p>Movement along randomized curved paths. Humans never go in straight lines — neither does this browser.</p></div>
-    <div class="feat"><div class="feat-icon">⌨️</div><h3>Human Typing Speed</h3><p>60–220ms per keystroke with mid-word pauses. Works with React inputs where <code>page.fill()</code> silently fails.</p></div>
-    <div class="feat"><div class="feat-icon">📜</div><h3>Natural Scroll Behavior</h3><p>Scrolls in smooth steps with random jitter. Pauses to "read" content. Looks exactly like a real user.</p></div>
-    <div class="feat"><div class="feat-icon">🛡️</div><h3>Full Anti-Detection</h3><p><code>webdriver=false</code>, no automation flags, real plugin list, canvas fingerprint, real timezone & geo.</p></div>
-    <div class="feat"><div class="feat-icon">🦅</div><h3>OpenClaw Native Skill</h3><p>One command install: <code>clawhub install al1enjesus/human-browser</code>. Your agent gets it instantly.</p></div>
-    <div class="feat"><div class="feat-icon">🖥️</div><h3>Desktop Mode</h3><p>Switch to Windows Chrome fingerprint when needed: <code>launchHuman({ mobile: false })</code>.</p></div>
-    <div class="feat"><div class="feat-icon">⚡</div><h3>Any Server, Zero Setup</h3><p>Bare Linux, Docker, CI/CD. Just Node.js + Chromium. No display server, no VNC, no X11.</p></div>
+    <div class="feat"><div class="feat-icon">🇷🇴</div><h3 data-i18n="feat_1_h">Romania Residential IP</h3><p data-i18n="feat_1_p">DIGI Romania &amp; WS Telecom ISP. Real residential ASN. Looks like a person browsing from Bucharest.</p></div>
+    <div class="feat"><div class="feat-icon">📱</div><h3 data-i18n="feat_2_h">iPhone 15 Pro Fingerprint</h3><p data-i18n="feat_2_p">iOS 17.4.1 Safari UA, correct viewport, pixel ratio, touch events, platform string. Passes every fingerprint check.</p></div>
+    <div class="feat"><div class="feat-icon">🖱️</div><h3 data-i18n="feat_3_h">Bezier Mouse Curves</h3><p data-i18n="feat_3_p">Movement along randomized curved paths. Humans never go in straight lines — neither does this browser.</p></div>
+    <div class="feat"><div class="feat-icon">⌨️</div><h3 data-i18n="feat_4_h">Human Typing Speed</h3><p data-i18n-html="feat_4_p_html">60–220ms per keystroke with mid-word pauses. Works with React inputs where <code>page.fill()</code> silently fails.</p></div>
+    <div class="feat"><div class="feat-icon">📜</div><h3 data-i18n="feat_5_h">Natural Scroll Behavior</h3><p data-i18n="feat_5_p">Scrolls in smooth steps with random jitter. Pauses to read content. Looks exactly like a real user.</p></div>
+    <div class="feat"><div class="feat-icon">🛡️</div><h3 data-i18n="feat_6_h">Full Anti-Detection</h3><p data-i18n-html="feat_6_p_html"><code>webdriver=false</code>, no automation flags, real plugin list, canvas fingerprint, real timezone &amp; geo.</p></div>
+    <div class="feat"><div class="feat-icon">🦅</div><h3 data-i18n="feat_7_h">OpenClaw Native Skill</h3><p data-i18n-html="feat_7_p_html">One command install: <code>clawhub install al1enjesus/human-browser</code>. Your agent gets it instantly.</p></div>
+    <div class="feat"><div class="feat-icon">🖥️</div><h3 data-i18n="feat_8_h">Desktop Mode</h3><p data-i18n-html="feat_8_p_html">Switch to Windows Chrome fingerprint when needed: <code>launchHuman({ mobile: false })</code>.</p></div>
+    <div class="feat"><div class="feat-icon">⚡</div><h3 data-i18n="feat_9_h">Any Server, Zero Setup</h3><p data-i18n="feat_9_p">Bare Linux, Docker, CI/CD. Just Node.js + Chromium. No display server, no VNC, no X11.</p></div>
   </div>
 </div>
 
@@ -275,42 +275,42 @@ const bodyContent = `<!-- ── NAV ──────────────�
 <div id="how" class="how-section">
   <div class="how-grid">
     <div>
-      <div class="section-eyebrow">How it works</div>
-      <div class="section-title">Built for AI agents,<br>not just humans</div>
-      <p class="section-sub">The API speaks agent. Pay with crypto. Get credentials programmatically. No dashboards to click.</p>
+      <div class="section-eyebrow" data-i18n="how_eyebrow">How it works</div>
+      <div class="section-title" data-i18n-html="how_title">Built for AI agents,<br>not just humans</div>
+      <p class="section-sub" data-i18n="how_sub">The API speaks agent. Pay with crypto. Get credentials programmatically. No dashboards to click.</p>
       <div class="steps">
         <div class="step">
           <div class="step-n">1</div>
           <div class="step-body">
-            <h3>Agent calls <code>GET humanbrowser.dev/api/plans</code></h3>
-            <p>Sees pricing, bandwidth, and supported currencies. Machine-readable JSON.</p>
+            <h3 data-i18n-html="step_1_h_html">Agent calls <code>GET humanbrowser.dev/api/plans</code></h3>
+            <p data-i18n="step_1_p">Sees pricing, bandwidth, and supported currencies. Machine-readable JSON.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-n">2</div>
           <div class="step-body">
-            <h3>Agent calls <code>POST /buy</code></h3>
-            <p>Picks plan + currency (USDT, ETH, BTC, or card). Gets payment address back.</p>
+            <h3 data-i18n-html="step_2_h_html">Agent calls <code>POST /buy</code></h3>
+            <p data-i18n="step_2_p">Picks plan + currency (USDT, ETH, BTC, or card). Gets payment address back.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-n">3</div>
           <div class="step-body">
-            <h3>Payment auto-confirmed</h3>
-            <p>0xProcessing or Stripe webhook fires. Credentials provisioned in seconds.</p>
+            <h3 data-i18n="step_3_h">Payment auto-confirmed</h3>
+            <p data-i18n="step_3_p">0xProcessing or Stripe webhook fires. Credentials provisioned in seconds.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-n">4</div>
           <div class="step-body">
-            <h3>Agent polls <code>GET /status/:id</code></h3>
-            <p>Gets proxy credentials + API key. Drops into <code>.env</code>. Starts browsing.</p>
+            <h3 data-i18n-html="step_4_h_html">Agent polls <code>GET /status/:id</code></h3>
+            <p data-i18n-html="step_4_p_html">Gets proxy credentials + API key. Drops into <code>.env</code>. Starts browsing.</p>
           </div>
         </div>
       </div>
     </div>
     <div>
-      <div class="code-label" style="margin-top:0.5rem;">Agent purchase flow</div>
+      <div class="code-label" style="margin-top:0.5rem;" data-i18n="how_code_label">Agent purchase flow</div>
       <div class="agent-box">
         <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">GET humanbrowser.dev/api/plans</span></div>
         <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ starter: <span class="af-ok">$13.99</span>, pro: $49.99 }</span></div>
@@ -324,7 +324,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
         <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">GET humanbrowser.dev/api/status/:id</span></div>
         <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ proxy_user: "…", proxy_pass: "…", <span class="af-ok">status: "active"</span> }</span></div>
       </div>
-      <p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;">Or pay with card — same flow, Stripe checkout link returned instead.</p>
+      <p style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;" data-i18n="how_or_card">Or pay with card — same flow, Stripe checkout link returned instead.</p>
     </div>
   </div>
 </div>
@@ -333,23 +333,23 @@ const bodyContent = `<!-- ── NAV ──────────────�
 
 <!-- ── PRICING ───────────────────────────────────────── -->
 <div id="pricing" class="pricing-section">
-  <div class="section-eyebrow">Pricing</div>
-  <div class="section-title">Simple, transparent pricing</div>
-  <div class="section-sub">All plans include proxy credentials + OpenClaw skill. Card, Apple Pay, Google Pay or crypto. Cancel anytime.</div>
+  <div class="section-eyebrow" data-i18n="pricing_eyebrow">Pricing</div>
+  <div class="section-title" data-i18n="pricing_title">Simple, transparent pricing</div>
+  <div class="section-sub" data-i18n="pricing_sub">All plans include proxy credentials + OpenClaw skill. Card, Apple Pay, Google Pay or crypto. Cancel anytime.</div>
 
   <div class="pricing-grid">
     <div class="plan">
       <div class="plan-tier">Starter</div>
       <div class="plan-price">$13.99<sub>/mo</sub></div>
-      <div class="plan-usage">2 GB bandwidth · $2.50/GB after</div>
+      <div class="plan-usage" data-i18n="plan_starter_usage">2 GB bandwidth · $2.50/GB after</div>
       <ul class="plan-feats">
-        <li>Romania residential IP</li>
-        <li>iPhone 15 Pro + Desktop</li>
-        <li>OpenClaw skill + credentials</li>
-        <li>Cloudflare / DataDome bypass</li>
-        <li>Email support</li>
-        <li class="off">Multi-country rotation</li>
-        <li class="off">CDP / Scraping Browser</li>
+        <li data-i18n="starter_li1">Romania residential IP</li>
+        <li data-i18n="starter_li2">iPhone 15 Pro + Desktop</li>
+        <li data-i18n="starter_li3">OpenClaw skill + credentials</li>
+        <li data-i18n="starter_li4">Cloudflare / DataDome bypass</li>
+        <li data-i18n="starter_li5">Email support</li>
+        <li class="off" data-i18n="starter_li_off1">Multi-country rotation</li>
+        <li class="off" data-i18n="starter_li_off2">CDP / Scraping Browser</li>
       </ul>
       <div class="plan-btns">
         <button onclick="goPay('starter','card')" class="plan-pay-btn stripe-btn">
@@ -366,17 +366,17 @@ const bodyContent = `<!-- ── NAV ──────────────�
     </div>
 
     <div class="plan popular">
-      <div class="pop-tag">Most Popular</div>
+      <div class="pop-tag" data-i18n="plan_pop_tag">Most Popular</div>
       <div class="plan-tier">Pro</div>
       <div class="plan-price">$49.99<sub>/mo</sub></div>
-      <div class="plan-usage">20 GB bandwidth · $2.00/GB after</div>
+      <div class="plan-usage" data-i18n="plan_pro_usage">20 GB bandwidth · $2.00/GB after</div>
       <ul class="plan-feats">
-        <li>Everything in Starter</li>
-        <li>Multi-country IP rotation</li>
-        <li>Scraping Browser CDP access</li>
-        <li>Custom fingerprints</li>
-        <li>Agent-native payment API</li>
-        <li>Priority support</li>
+        <li data-i18n="pro_li1">Everything in Starter</li>
+        <li data-i18n="pro_li2">Multi-country IP rotation</li>
+        <li data-i18n="pro_li3">Scraping Browser CDP access</li>
+        <li data-i18n="pro_li4">Custom fingerprints</li>
+        <li data-i18n="pro_li5">Agent-native payment API</li>
+        <li data-i18n="pro_li6">Priority support</li>
       </ul>
       <div class="plan-btns">
         <button onclick="goPay('pro','card')" class="plan-pay-btn stripe-btn">
@@ -395,14 +395,14 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <div class="plan">
       <div class="plan-tier">Enterprise</div>
       <div class="plan-price">$199<sub>/mo</sub></div>
-      <div class="plan-usage">Unlimited · Dedicated zone</div>
+      <div class="plan-usage" data-i18n="plan_ent_usage">Unlimited · Dedicated zone</div>
       <ul class="plan-feats">
-        <li>Everything in Pro</li>
-        <li>Dedicated Romania zone</li>
-        <li>White-label API endpoint</li>
-        <li>1-on-1 onboarding call</li>
-        <li>SLA guarantee</li>
-        <li>Custom skill development</li>
+        <li data-i18n="ent_li1">Everything in Pro</li>
+        <li data-i18n="ent_li2">Dedicated Romania zone</li>
+        <li data-i18n="ent_li3">White-label API endpoint</li>
+        <li data-i18n="ent_li4">1-on-1 onboarding call</li>
+        <li data-i18n="ent_li5">SLA guarantee</li>
+        <li data-i18n="ent_li6">Custom skill development</li>
       </ul>
       <div class="plan-btns">
         <button onclick="goPay('enterprise','card')" class="plan-pay-btn stripe-btn">
@@ -441,26 +441,26 @@ const bodyContent = `<!-- ── NAV ──────────────�
 <!-- ── FREE VS PAID ──────────────────────────────────── -->
 <div class="fvp-section">
   <div class="container">
-    <div class="section-eyebrow">What's included</div>
-    <div class="section-title">Free vs Paid — no tricks</div>
-    <div class="section-sub">The skill and code are open and free. You pay only for the residential proxy — the IP that makes everything work.</div>
+    <div class="section-eyebrow" data-i18n="fvp_eyebrow">What's included</div>
+    <div class="section-title" data-i18n="fvp_title">Free vs Paid — no tricks</div>
+    <div class="section-sub" data-i18n="fvp_sub">The skill and code are open and free. You pay only for the residential proxy — the IP that makes everything work.</div>
 
     <div class="fvp-grid">
       <div class="fvp-card free">
         <div class="fvp-header">
-          <span class="fvp-tag free-tag">FREE forever</span>
-          <h3>OpenClaw Skill + Script</h3>
-          <p>Everything you need to run the browser. No credit card, no account.</p>
+          <span class="fvp-tag free-tag" data-i18n="free_tag">FREE forever</span>
+          <h3 data-i18n="free_h3">OpenClaw Skill + Script</h3>
+          <p data-i18n="free_p">Everything you need to run the browser. No credit card, no account.</p>
         </div>
         <ul class="fvp-list">
-          <li>✅ <code>browser-human.js</code> — full source code</li>
-          <li>✅ Human mouse, typing, scroll logic</li>
-          <li>✅ iPhone 15 Pro + Desktop fingerprints</li>
-          <li>✅ Anti-detection stack (webdriver=false, etc.)</li>
-          <li>✅ OpenClaw skill via clawhub</li>
-          <li>✅ All future updates to the script</li>
-          <li class="fvp-dim">⚠️ You need your own residential proxy</li>
-          <li class="fvp-dim">⚠️ Without residential IP — sites will block you</li>
+          <li data-i18n-html="free_li1_html">✅ <code>browser-human.js</code> — full source code</li>
+          <li data-i18n="free_li2">✅ Human mouse, typing, scroll logic</li>
+          <li data-i18n="free_li3">✅ iPhone 15 Pro + Desktop fingerprints</li>
+          <li data-i18n="free_li4">✅ Anti-detection stack (webdriver=false, etc.)</li>
+          <li data-i18n="free_li5">✅ OpenClaw skill via clawhub</li>
+          <li data-i18n="free_li6">✅ All future updates to the script</li>
+          <li class="fvp-dim" data-i18n="free_li7">⚠️ You need your own residential proxy</li>
+          <li class="fvp-dim" data-i18n="free_li8">⚠️ Without residential IP — sites will block you</li>
         </ul>
         <div class="fvp-install">
           <span class="fvp-install-label">Install free skill</span>
@@ -470,28 +470,28 @@ const bodyContent = `<!-- ── NAV ──────────────�
 
       <div class="fvp-card paid">
         <div class="fvp-header">
-          <span class="fvp-tag paid-tag">from $13.99/mo</span>
-          <h3>Residential Proxy Credentials</h3>
-          <p>The missing piece. A real home IP that makes your browser invisible to anti-bot systems.</p>
+          <span class="fvp-tag paid-tag" data-i18n="paid_tag">from $13.99/mo</span>
+          <h3 data-i18n="paid_h3">Residential Proxy Credentials</h3>
+          <p data-i18n="paid_p">The missing piece. A real home IP that makes your browser invisible to anti-bot systems.</p>
         </div>
         <ul class="fvp-list">
-          <li>✅ Romania / US / UK / DE / NL / JP IPs</li>
-          <li>✅ Real residential ISP (DIGI, AT&T, BT…)</li>
-          <li>✅ Instant credential delivery after payment</li>
-          <li>✅ Works out of the box with <code>browser-human.js</code></li>
-          <li>✅ No Bright Data account needed</li>
-          <li>✅ Email support included</li>
-          <li>✅ Cancel anytime — no long-term contract</li>
+          <li data-i18n="paid_li1">✅ Romania / US / UK / DE / NL / JP IPs</li>
+          <li data-i18n="paid_li2">✅ Real residential ISP (DIGI, AT&amp;T, BT…)</li>
+          <li data-i18n="paid_li3">✅ Instant credential delivery after payment</li>
+          <li data-i18n-html="paid_li4_html">✅ Works out of the box with <code>browser-human.js</code></li>
+          <li data-i18n="paid_li5">✅ No Bright Data account needed</li>
+          <li data-i18n="paid_li6">✅ Email support included</li>
+          <li data-i18n="paid_li7">✅ Cancel anytime — no long-term contract</li>
         </ul>
-        <a href="#pricing" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:auto;">See Plans →</a>
+        <a href="#pricing" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:auto;" data-i18n="paid_cta">See Plans →</a>
       </div>
     </div>
 
     <div class="fvp-why">
       <div class="fvp-why-icon">💡</div>
       <div>
-        <strong>Why do you need a residential IP at all?</strong>
-        <p>Data center IPs (from AWS, DigitalOcean, Hetzner — your regular VPS) are instantly recognized and blocked by Cloudflare, Instagram, LinkedIn, and most modern sites. A residential IP comes from a real home internet connection — it looks exactly like a normal person browsing. That's the only difference between getting blocked in 2 seconds and scraping forever.</p>
+        <strong data-i18n="fvp_why_h">Why do you need a residential IP at all?</strong>
+        <p data-i18n="fvp_why_p">Data center IPs (from AWS, DigitalOcean, Hetzner — your regular VPS) are instantly recognized and blocked by Cloudflare, Instagram, LinkedIn, and most modern sites. A residential IP comes from a real home internet connection — it looks exactly like a normal person browsing. That's the only difference between getting blocked in 2 seconds and scraping forever.</p>
       </div>
     </div>
   </div>
@@ -502,59 +502,59 @@ const bodyContent = `<!-- ── NAV ──────────────�
 <!-- ── HOW TO PAY ─────────────────────────────────────── -->
 <div class="pay-section">
   <div class="container">
-    <div class="section-eyebrow">Payment</div>
-    <div class="section-title">Pay any way you want</div>
-    <div class="section-sub">Card, Apple Pay, Google Pay or crypto. Credentials delivered automatically.</div>
+    <div class="section-eyebrow" data-i18n="pay_eyebrow">Payment</div>
+    <div class="section-title" data-i18n="pay_title">Pay any way you want</div>
+    <div class="section-sub" data-i18n="pay_sub">Card, Apple Pay, Google Pay or crypto. Credentials delivered automatically.</div>
 
     <div class="pay-methods-grid">
       <div class="pay-method">
         <div class="pay-method-icon">💳</div>
-        <h3>Card / Apple Pay / Google Pay</h3>
-        <p>Processed by Stripe. Visa, Mastercard, Amex. Apple Pay and Google Pay supported. Subscription renews monthly.</p>
+        <h3 data-i18n="pm1_h">Card / Apple Pay / Google Pay</h3>
+        <p data-i18n="pm1_p">Processed by Stripe. Visa, Mastercard, Amex. Apple Pay and Google Pay supported. Subscription renews monthly.</p>
         <div class="pay-steps">
-          <div class="pay-step"><span class="ps-n">1</span> Click <strong>Get Started</strong> on any plan</div>
-          <div class="pay-step"><span class="ps-n">2</span> Choose Card / Apple Pay / Google Pay</div>
-          <div class="pay-step"><span class="ps-n">3</span> Pay → credentials delivered instantly</div>
+          <div class="pay-step"><span class="ps-n">1</span> <span data-i18n="pm1_s1">Click Get Started on any plan</span></div>
+          <div class="pay-step"><span class="ps-n">2</span> <span data-i18n="pm1_s2">Choose Card / Apple Pay / Google Pay</span></div>
+          <div class="pay-step"><span class="ps-n">3</span> <span data-i18n="pm1_s3">Pay → credentials delivered instantly</span></div>
         </div>
       </div>
 
       <div class="pay-method">
         <div class="pay-method-icon">💵</div>
-        <h3>USDT (TRC-20 or ERC-20)</h3>
-        <p>Most popular crypto option. Exact amount to wallet address. Auto-confirmed by 0xProcessing.</p>
+        <h3 data-i18n="pm2_h">USDT (TRC-20 or ERC-20)</h3>
+        <p data-i18n="pm2_p">Most popular crypto option. Exact amount to wallet address. Auto-confirmed by 0xProcessing.</p>
         <div class="pay-steps">
-          <div class="pay-step"><span class="ps-n">1</span> Click <strong>Get Started</strong> → choose USDT</div>
-          <div class="pay-step"><span class="ps-n">2</span> Get wallet address + exact amount</div>
-          <div class="pay-step"><span class="ps-n">3</span> Send → credentials in ~2 min</div>
+          <div class="pay-step"><span class="ps-n">1</span> <span data-i18n="pm2_s1">Click Get Started → choose USDT</span></div>
+          <div class="pay-step"><span class="ps-n">2</span> <span data-i18n="pm2_s2">Get wallet address + exact amount</span></div>
+          <div class="pay-step"><span class="ps-n">3</span> <span data-i18n="pm2_s3">Send → credentials in ~2 min</span></div>
         </div>
       </div>
 
       <div class="pay-method">
         <div class="pay-method-icon">◎</div>
-        <h3>Solana / ETH / BTC</h3>
-        <p>All major blockchains accepted. Same automatic flow — no manual approval.</p>
+        <h3 data-i18n="pm3_h">Solana / ETH / BTC</h3>
+        <p data-i18n="pm3_p">All major blockchains accepted. Same automatic flow — no manual approval.</p>
         <div class="pay-steps">
-          <div class="pay-step"><span class="ps-n">1</span> Pick your coin in the payment modal</div>
-          <div class="pay-step"><span class="ps-n">2</span> Get network-specific address</div>
-          <div class="pay-step"><span class="ps-n">3</span> Send → credentials auto-delivered</div>
+          <div class="pay-step"><span class="ps-n">1</span> <span data-i18n="pm3_s1">Pick your coin in the payment panel</span></div>
+          <div class="pay-step"><span class="ps-n">2</span> <span data-i18n="pm3_s2">Get network-specific address</span></div>
+          <div class="pay-step"><span class="ps-n">3</span> <span data-i18n="pm3_s3">Send → credentials auto-delivered</span></div>
         </div>
       </div>
 
       <div class="pay-method">
         <div class="pay-method-icon">🤖</div>
-        <h3>AI Agent (API)</h3>
-        <p>Your agent can buy credentials programmatically. Full JSON API — machine-readable responses.</p>
+        <h3 data-i18n="pm4_h">AI Agent (API)</h3>
+        <p data-i18n="pm4_p">Your agent can buy credentials programmatically. Full JSON API — machine-readable responses.</p>
         <div class="pay-steps">
-          <div class="pay-step"><span class="ps-n">1</span> Agent: <code>GET /api/plans</code></div>
-          <div class="pay-step"><span class="ps-n">2</span> Agent: <code>POST /api/buy {currency:"USDT"}</code></div>
-          <div class="pay-step"><span class="ps-n">3</span> Agent pays → polls <code>GET /api/status/:id</code></div>
+          <div class="pay-step"><span class="ps-n">1</span> <span data-i18n-html="pm4_s1_html">Agent: <code>GET /api/plans</code></span></div>
+          <div class="pay-step"><span class="ps-n">2</span> <span data-i18n-html="pm4_s2_html">Agent: <code>POST /api/buy {currency:"USDT"}</code></span></div>
+          <div class="pay-step"><span class="ps-n">3</span> <span data-i18n-html="pm4_s3_html">Agent pays → polls <code>GET /api/status/:id</code></span></div>
         </div>
       </div>
     </div>
 
     <div class="pay-guarantee">
-      <span>🔒 Credentials delivered within 10 minutes of payment confirmation.</span>
-      <span>❌ Not satisfied? Full refund within 24h — no questions asked.</span>
+      <span data-i18n="pay_guar1">🔒 Credentials delivered within 10 minutes of payment confirmation.</span>
+      <span data-i18n="pay_guar2">❌ Not satisfied? Full refund within 24h — no questions asked.</span>
     </div>
   </div>
 </div>
@@ -564,41 +564,41 @@ const bodyContent = `<!-- ── NAV ──────────────�
 <!-- ── FAQ ───────────────────────────────────────────── -->
 <div class="faq-section">
   <div class="container" style="max-width:720px;">
-    <div class="section-eyebrow">FAQ</div>
-    <div class="section-title">Common questions</div>
+    <div class="section-eyebrow" data-i18n="faq_eyebrow">FAQ</div>
+    <div class="section-title" data-i18n="faq_title">Common questions</div>
 
     <div class="faq-list">
       <details class="faq-item">
-        <summary>Do I need a Mac Mini or desktop computer?</summary>
-        <p>No. Human Browser runs on any Linux VPS, Docker container, or cloud server. A $5/mo Hetzner or Contabo VPS is all you need. No display server, no VNC, no X11 — just Node.js and Chromium.</p>
+        <summary data-i18n="faq_1q">Do I need a Mac Mini or desktop computer?</summary>
+        <p data-i18n="faq_1a">No. Human Browser runs on any Linux VPS, Docker container, or cloud server. A $5/mo Hetzner or Contabo VPS is all you need. No display server, no VNC, no X11 — just Node.js and Chromium.</p>
       </details>
       <details class="faq-item">
-        <summary>What exactly is free and what costs money?</summary>
-        <p>The <code>browser-human.js</code> script and the OpenClaw skill are completely free — open source, install anytime. The paid subscription gives you <strong>residential proxy credentials</strong>: a real home IP address from DIGI Romania, AT&T, BT, etc. Without a residential IP, anti-bot systems will block your VPS's data center IP instantly.</p>
+        <summary data-i18n="faq_2q">What exactly is free and what costs money?</summary>
+        <p data-i18n-html="faq_2a_html">The browser-human.js script and the OpenClaw skill are completely free — open source, install anytime. The paid subscription gives you <strong>residential proxy credentials</strong>: a real home IP address from DIGI Romania, AT&T, BT, etc. Without a residential IP, anti-bot systems will block your VPS's data center IP instantly.</p>
       </details>
       <details class="faq-item">
-        <summary>Why Romania? Can I use other countries?</summary>
-        <p>Romania is the cheapest option and works for most tasks — Instagram, LinkedIn, Binance, Polymarket, Cloudflare sites. We also offer USA, UK, Germany, Netherlands, and Japan. Use the country picker above to see which services work where. Different services have different geo-restrictions.</p>
+        <summary data-i18n="faq_3q">Why Romania? Can I use other countries?</summary>
+        <p data-i18n="faq_3a">Romania is the cheapest option and works for most tasks — Instagram, LinkedIn, Binance, Polymarket, Cloudflare sites. We also offer USA, UK, Germany, Netherlands, and Japan. Use the country picker above to see which services work where.</p>
       </details>
       <details class="faq-item">
-        <summary>How quickly do I get credentials after paying?</summary>
-        <p>Card payments via Stripe: 2–3 minutes. Crypto (USDT/ETH): 5–10 minutes after on-chain confirmation. AI agent API: fully automatic, no human in the loop.</p>
+        <summary data-i18n="faq_4q">How quickly do I get credentials after paying?</summary>
+        <p data-i18n="faq_4a">Card payments via Stripe: 2–3 minutes. Crypto (USDT/ETH): 5–10 minutes after on-chain confirmation. AI agent API: fully automatic, no human in the loop.</p>
       </details>
       <details class="faq-item">
-        <summary>Can my AI agent buy this automatically?</summary>
-        <p>Yes — that's the whole point. Call <code>GET humanbrowser.dev/api/plans</code>, then <code>POST /buy</code> with your preferred currency. You'll get a crypto payment address. Your agent sends the payment, polls <code>GET /status/:id</code>, and receives proxy credentials in the response. Zero human involvement required.</p>
+        <summary data-i18n="faq_5q">Can my AI agent buy this automatically?</summary>
+        <p data-i18n-html="faq_5a_html">Yes — that's the whole point. Call <code>GET humanbrowser.dev/api/plans</code>, then <code>POST /buy</code> with your preferred currency. You'll get a crypto payment address. Your agent sends the payment, polls <code>GET /status/:id</code>, and receives proxy credentials in the response. Zero human involvement required.</p>
       </details>
       <details class="faq-item">
-        <summary>Will this bypass Cloudflare / DataDome / PerimeterX?</summary>
-        <p>Yes, in the vast majority of cases. The combination of a residential IP + realistic browser fingerprint (iPhone 15 Pro) + human behavior simulation (Bezier mouse, natural typing, scroll patterns) passes all major anti-bot systems. We've tested against all three.</p>
+        <summary data-i18n="faq_6q">Will this bypass Cloudflare / DataDome / PerimeterX?</summary>
+        <p data-i18n="faq_6a">Yes, in the vast majority of cases. The combination of a residential IP + realistic browser fingerprint (iPhone 15 Pro) + human behavior simulation (Bezier mouse, natural typing, scroll patterns) passes all major anti-bot systems. We've tested against all three.</p>
       </details>
       <details class="faq-item">
-        <summary>What's an OpenClaw skill?</summary>
-        <p>OpenClaw is an AI agent platform. Skills are reusable capability packages — install one and your agent gains specialized knowledge and tools. The Human Browser skill gives your OpenClaw agent the ability to launch a stealth browser with one function call: <code>launchHuman()</code>.</p>
+        <summary data-i18n="faq_7q">What's an OpenClaw skill?</summary>
+        <p data-i18n-html="faq_7a_html">OpenClaw is an AI agent platform. Skills are reusable capability packages — install one and your agent gains specialized knowledge and tools. The Human Browser skill gives your OpenClaw agent the ability to launch a stealth browser with one function call: <code>launchHuman()</code>.</p>
       </details>
       <details class="faq-item">
-        <summary>What if I want to cancel?</summary>
-        <p>DM <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> on Telegram. We'll cancel your subscription immediately. If you're within 24h of purchase, you'll get a full refund — no questions.</p>
+        <summary data-i18n="faq_8q">What if I want to cancel?</summary>
+        <p data-i18n-html="faq_8a_html">DM <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> on Telegram. We'll cancel your subscription immediately. If you're within 24h of purchase, you'll get a full refund — no questions.</p>
       </details>
     </div>
   </div>
@@ -611,8 +611,8 @@ const bodyContent = `<!-- ── NAV ──────────────�
   <div class="vx-card">
     <img src="https://virixlabs.com/logo.png" alt="Virix Labs"/>
     <div class="vx-info">
-      <h3>Built by Virix Labs</h3>
-      <p>AI-powered venture studio building focused products at scale. Human Browser is part of the OpenClaw skill ecosystem — tools that let AI agents work without human bottlenecks.</p>
+      <h3 data-i18n="vx_h3">Built by Virix Labs</h3>
+      <p data-i18n="vx_p">AI-powered venture studio building focused products at scale. Human Browser is part of the OpenClaw skill ecosystem — tools that let AI agents work without human bottlenecks.</p>
     </div>
     <a href="https://virixlabs.com" target="_blank" class="btn btn-secondary">virixlabs.com ↗</a>
   </div>
@@ -625,14 +625,14 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <span>Human Browser · Virix Labs</span>
   </div>
   <div class="footer-links">
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-    <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank">ClawHub</a>
-    <a href="https://openclaw.ai" target="_blank">OpenClaw</a>
-    <a href="https://virixlabs.com" target="_blank">Virix Labs</a>
-    <a href="https://t.me/virixlabs" target="_blank">Support</a>
+    <a href="#features" data-i18n="nav_features">Features</a>
+    <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank" data-i18n="footer_clawhub">ClawHub</a>
+    <a href="https://openclaw.ai" target="_blank" data-i18n="footer_openclaw">OpenClaw</a>
+    <a href="https://virixlabs.com" target="_blank" data-i18n="footer_virix">Virix Labs</a>
+    <a href="https://t.me/virixlabs" target="_blank" data-i18n="footer_support">Support</a>
   </div>
-  <p class="footer-copy">© 2026 Virix Labs · No Mac Mini needed · Runs on any server</p>
+  <p class="footer-copy" data-i18n="footer_copy">© 2026 Virix Labs · No Mac Mini needed · Runs on any server</p>
 </footer>
 
 <!-- ── SCRIPTS ───────────────────────────────────────── -->
@@ -652,17 +652,17 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <button class="psh-close" onclick="closePaySheet()">✕</button>
   </div>
   <div class="pay-sheet-tabs">
-    <button class="pst pst-active" id="tabCard" onclick="switchPayTab('card')">
+    <button class="pst pst-active" id="tabCard" onclick="switchPayTab('card')" data-i18n="sheet_tab_card">
       💳 Card · Apple Pay · Google Pay
     </button>
-    <button class="pst" id="tabCrypto" onclick="switchPayTab('crypto')">
+    <button class="pst" id="tabCrypto" onclick="switchPayTab('crypto')" data-i18n="sheet_tab_crypto">
       ₿ Crypto
     </button>
   </div>
   <div class="pay-sheet-body">
     <div id="tabContentCard" class="psc-pane">
       <div id="stripe-checkout">
-        <div class="psc-placeholder"><div class="pay-spinner"></div><p>Loading secure checkout…</p></div>
+        <div class="psc-placeholder"><div class="pay-spinner"></div><p data-i18n="sheet_loading">Loading secure checkout…</p></div>
       </div>
     </div>
     <div id="tabContentCrypto" class="psc-pane psc-hidden">
