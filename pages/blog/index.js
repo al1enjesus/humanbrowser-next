@@ -32,6 +32,46 @@ const posts = [
     tag: 'AI Agents',
     readTime: '9 min',
     date: 'Feb 19, 2026'
+  },
+  {
+    slug: 'playwright-stealth-not-working-2026',
+    title: 'playwright-stealth Not Working in 2026 — Here\'s the Real Fix',
+    description: 'playwright-extra stealth patches fingerprints but can\'t fix your IP address. Here\'s why it fails and how to actually bypass Cloudflare in 2026.',
+    tag: 'Playwright',
+    readTime: '8 min',
+    date: 'Feb 19, 2026'
+  },
+  {
+    slug: 'best-residential-proxy-scraping-2026',
+    title: 'Best Residential Proxy for Web Scraping in 2026 — Tested & Ranked',
+    description: 'We tested 8 residential proxy providers for Cloudflare bypass rates, speed, and price per GB. Here\'s what actually works.',
+    tag: 'Proxies',
+    readTime: '10 min',
+    date: 'Feb 19, 2026'
+  },
+  {
+    slug: 'scrape-linkedin-without-ban-2026',
+    title: 'How to Scrape LinkedIn Without Getting Banned in 2026',
+    description: 'LinkedIn runs DataDome + its own anti-bot system. Residential IP + iPhone fingerprint + rate limiting strategy that works in 2026.',
+    tag: 'LinkedIn',
+    readTime: '9 min',
+    date: 'Feb 19, 2026'
+  },
+  {
+    slug: 'python-cloudflare-bypass-2026',
+    title: 'Python Cloudflare Bypass in 2026 — requests, httpx, and Playwright',
+    description: 'cloudscraper is dead. Here\'s what actually works for bypassing Cloudflare with Python in 2026, with working code examples.',
+    tag: 'Python',
+    readTime: '8 min',
+    date: 'Feb 19, 2026'
+  },
+  {
+    slug: 'ai-agent-web-scraping-tools-2026',
+    title: 'Best Web Scraping Tools for AI Agents in 2026',
+    description: 'Top browser automation tools for AI agents: Human Browser, Playwright, OpenClaw skills, and agent-native payment APIs compared.',
+    tag: 'AI Agents',
+    readTime: '10 min',
+    date: 'Feb 19, 2026'
   }
 ];
 
@@ -128,6 +168,36 @@ const body = `
       <div class="post-title">Browser Automation for AI Agents: OpenClaw + Playwright 2026</div>
       <div class="post-desc">How AI agents browse the web autonomously in 2026. OpenClaw skill, agent-native payment API, use cases. Runs on any $5 Linux VPS.</div>
       <div class="post-meta"><span>Feb 19, 2026</span><span>9 min read</span></div>
+    </a>
+    <a href="/blog/playwright-stealth-not-working-2026" class="post-card">
+      <div class="post-tag">Playwright</div>
+      <div class="post-title">playwright-stealth Not Working in 2026 — Here's the Real Fix</div>
+      <div class="post-desc">playwright-extra stealth patches fingerprints but can't fix your IP. Here's why it fails against Cloudflare and how to actually fix it.</div>
+      <div class="post-meta"><span>Feb 19, 2026</span><span>8 min read</span></div>
+    </a>
+    <a href="/blog/best-residential-proxy-scraping-2026" class="post-card">
+      <div class="post-tag">Proxies</div>
+      <div class="post-title">Best Residential Proxy for Web Scraping in 2026 — Tested &amp; Ranked</div>
+      <div class="post-desc">We tested 8 residential proxy providers for Cloudflare bypass rates, speed, and price per GB. Real numbers, real results.</div>
+      <div class="post-meta"><span>Feb 19, 2026</span><span>10 min read</span></div>
+    </a>
+    <a href="/blog/scrape-linkedin-without-ban-2026" class="post-card">
+      <div class="post-tag">LinkedIn</div>
+      <div class="post-title">How to Scrape LinkedIn Without Getting Banned in 2026</div>
+      <div class="post-desc">LinkedIn runs DataDome + its own bot system. Residential IP + iPhone fingerprint + smart rate limiting = no bans.</div>
+      <div class="post-meta"><span>Feb 19, 2026</span><span>9 min read</span></div>
+    </a>
+    <a href="/blog/python-cloudflare-bypass-2026" class="post-card">
+      <div class="post-tag">Python</div>
+      <div class="post-title">Python Cloudflare Bypass in 2026 — requests, httpx, and Playwright</div>
+      <div class="post-desc">cloudscraper is dead. Here's what actually works for bypassing Cloudflare with Python in 2026, with working code examples.</div>
+      <div class="post-meta"><span>Feb 19, 2026</span><span>8 min read</span></div>
+    </a>
+    <a href="/blog/ai-agent-web-scraping-tools-2026" class="post-card">
+      <div class="post-tag">AI Agents</div>
+      <div class="post-title">Best Web Scraping Tools for AI Agents in 2026</div>
+      <div class="post-desc">Top browser automation tools for AI agents: Human Browser, Playwright, OpenClaw skills, and agent-native payment APIs compared.</div>
+      <div class="post-meta"><span>Feb 19, 2026</span><span>10 min read</span></div>
     </a>
   </div>
 
