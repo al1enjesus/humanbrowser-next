@@ -329,7 +329,7 @@
     }
     @media (max-width: 800px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
     /* Single column on small phones — 2 cols too cramped at 375px */
-    @media (max-width: 500px) { .features-grid { grid-template-columns: 1fr !important; } }
+    @media (max-width: 500px) { .features-grid { grid-template-columns: repeat(2, 1fr) !important; } }
     .feat {
       padding: 1.75rem; border-bottom: 1px solid var(--border);
       transition: background .2s;
@@ -346,7 +346,19 @@
     .features-grid { gap: 0; }
     .feat:not(:nth-child(3n)) { border-right: 1px solid var(--border); }
     @media (max-width: 800px) { .feat:not(:nth-child(3n)) { border-right: none; } .feat:not(:nth-child(2n)) { border-right: 1px solid var(--border); } }
-    @media (max-width: 500px) { .feat { border-right: none !important; padding: 1.25rem 1.25rem; } }
+    @media (max-width: 500px) {
+      .feat { padding: 1rem 0.9rem; border-right: none !important; }
+      /* 2-col on mobile: right border between cols */
+      .features-grid .feat:not(:nth-child(2n)) { border-right: 1px solid var(--border) !important; }
+      /* no bottom border on last 2 cards */
+      .features-grid .feat:nth-last-child(-n+2) { border-bottom: none !important; }
+      /* if 9 cards: last row has 1 card (9th) — no bottom */
+      .features-grid .feat:nth-child(9) { border-bottom: none !important; border-right: none !important; }
+      /* font tweaks for tighter 2-col */
+      .feat h3 { font-size: 0.82rem; }
+      .feat p { font-size: 0.75rem; }
+      .feat-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    }
 
     .feat-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
     .feat h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.35rem; }
