@@ -435,24 +435,21 @@ const bodyContent = `<!-- ── NAV ──────────────�
   </div>
 
   <div class="pay-note">
-    <!-- Apple Pay -->
-    <span class="pn-item" title="Apple Pay"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" height="20" class="pn-logo pn-invert"></span>
+    <!-- Apple Pay — icon only (text is part of SVG shape) -->
+    <span class="pn-item" title="Apple Pay"><img src="/icons/apple-pay.svg" alt="Apple Pay" height="22" class="pn-logo"></span>
     <span class="pn-sep">·</span>
     <!-- Google Pay -->
-    <span class="pn-item" title="Google Pay"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="Google Pay" height="20" class="pn-logo"></span>
+    <span class="pn-item" title="Google Pay"><img src="/icons/google-pay.svg" alt="Google Pay" height="22" class="pn-logo"></span>
     <span class="pn-sep">·</span>
-    <!-- Visa -->
-    <span class="pn-item" title="Visa"><img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" height="13" class="pn-logo pn-invert"></span>
+    <!-- Visa card icon (flat design, self-contained) -->
+    <span class="pn-item" title="Visa"><img src="/icons/visa.svg" alt="Visa" height="24" class="pn-logo pn-card-badge"></span>
     <!-- Mastercard -->
-    <span class="pn-item" title="Mastercard"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg" alt="Mastercard" height="22" class="pn-logo"></span>
+    <span class="pn-item" title="Mastercard"><img src="/icons/mastercard.svg" alt="Mastercard" height="24" class="pn-logo pn-card-badge"></span>
     <span class="pn-sep">·</span>
-    <!-- USDT -->
+    <!-- Crypto coins -->
     <span class="pn-item" title="USDT"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" width="22" height="22" class="pn-logo pn-round"></span>
-    <!-- ETH -->
     <span class="pn-item" title="ETH"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" width="22" height="22" class="pn-logo pn-round"></span>
-    <!-- BTC -->
     <span class="pn-item" title="BTC"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" width="22" height="22" class="pn-logo pn-round"></span>
-    <!-- SOL -->
     <span class="pn-item" title="SOL"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" width="22" height="22" class="pn-logo pn-round"></span>
   </div>
 </div>
