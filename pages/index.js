@@ -701,6 +701,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
   <div class="footer-links">
     <a href="#features" data-i18n="nav_features">Features</a>
     <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+    <a href="/blog" data-i18n="footer_blog">Blog</a>
     <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank" data-i18n="footer_clawhub">ClawHub</a>
     <a href="https://openclaw.ai" target="_blank" data-i18n="footer_openclaw">OpenClaw</a>
     <a href="https://virixlabs.com" target="_blank" data-i18n="footer_virix">Virix Labs</a>

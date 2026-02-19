@@ -7,9 +7,33 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://humanbrowser.dev/api/plans</loc>
+    <loc>https://humanbrowser.dev/blog</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://humanbrowser.dev/blog/bypass-cloudflare-playwright-2026</loc>
     <lastmod>2026-02-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://humanbrowser.dev/blog/playwright-residential-proxy</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://humanbrowser.dev/blog/scrape-instagram-without-ban</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://humanbrowser.dev/blog/ai-agent-browser-automation-openClaw</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
 </urlset>
