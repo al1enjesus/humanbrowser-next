@@ -955,6 +955,11 @@ document.addEventListener('DOMContentLoaded', function() {
       a.addEventListener('click', function() { hmenu.classList.remove('open'); });
     });
   }
+  // Global helper for mobile lang buttons
+  window.closeMobileMenu = function() {
+    var m = document.getElementById('mobile-menu');
+    if (m) m.classList.remove('open');
+  };
 
   // ── Country picker ───────────────────────────────────────────
   function renderCountry(code) {

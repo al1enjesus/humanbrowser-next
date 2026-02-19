@@ -66,6 +66,12 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
     <a href="#how" data-i18n="nav_how">How it works</a>
     <a href="https://clawhub.ai/al1enjesus/human-browser" target="_blank" data-i18n="nav_mobile_skill">ClawHub Skill (free)</a>
+    <div class="mobile-lang-row">
+      <button class="lang-btn lang-active" data-lang="en" onclick="setLang('en');closeMobileMenu()">EN</button>
+      <button class="lang-btn" data-lang="ru" onclick="setLang('ru');closeMobileMenu()">RU</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es');closeMobileMenu()">ES</button>
+      <button class="lang-btn" data-lang="zh" onclick="setLang('zh');closeMobileMenu()">中文</button>
+    </div>
     <div class="mobile-cta">
       <a href="https://t.me/virixlabs" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;" data-i18n="nav_cta">Get Started →</a>
     </div>
