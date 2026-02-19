@@ -462,48 +462,91 @@
   .faq-item p a { color: var(--cyan); }
 
   /* ── COUNTRY SECTION ───────────────────────────── */
-  .country-section { padding: 5rem 1.5rem; max-width: 1060px; margin: 0 auto; }
+  .country-section {
+    padding: 5rem 1.5rem;
+    max-width: 1060px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+  }
   .country-tabs {
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
     margin: 2.5rem 0 2rem;
   }
+  @media (max-width: 700px) {
+    .country-tabs { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 400px) {
+    .country-tabs { grid-template-columns: repeat(2, 1fr); }
+  }
   .ctab {
-    padding: 0.55rem 1.1rem; border-radius: var(--r-md);
-    border: 1px solid var(--border); background: var(--card);
-    color: var(--muted); font-size: 0.85rem; font-weight: 500;
-    cursor: pointer; transition: all .18s; font-family: inherit;
+    padding: 0.55rem 0.6rem;
+    border-radius: var(--r-md);
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .18s;
+    font-family: inherit;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .ctab:hover { border-color: var(--muted2); color: var(--fg); }
   .ctab.active { border-color: var(--accent); color: var(--fg); background: rgba(139,92,246,0.1); }
 
   .country-meta {
-    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: var(--r-lg); padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1rem 1.25rem;
     margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    width: 100%;
   }
-  .cm-flag { font-size: 2.2rem; }
-  .cm-info { flex: 1; }
-  .cm-info h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
-  .cm-info p { font-size: 0.82rem; color: var(--muted); }
+  .cm-flag { font-size: 2rem; flex-shrink: 0; }
+  .cm-info { flex: 1; min-width: 0; }
+  .cm-info h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cm-info p { font-size: 0.78rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .cm-price {
-    font-size: 1.4rem; font-weight: 800; color: var(--fg);
-    text-align: right; white-space: nowrap;
+    font-size: 1.3rem; font-weight: 800; color: var(--fg);
+    text-align: right; flex-shrink: 0;
   }
-  .cm-price span { font-size: 0.75rem; font-weight: 400; color: var(--muted); display: block; }
+  .cm-price span { font-size: 0.72rem; font-weight: 400; color: var(--muted); display: block; }
+
+  @media (max-width: 480px) {
+    .country-section { padding: 3rem 1rem; }
+    .ctab { font-size: 0.74rem; padding: 0.45rem 0.3rem; }
+    .country-meta { padding: 0.75rem 1rem; gap: 0.75rem; }
+    .cm-flag { font-size: 1.6rem; }
+    .cm-info h3 { font-size: 0.88rem; }
+    .cm-info p { font-size: 0.72rem; }
+    .cm-price { font-size: 1.1rem; }
+  }
 
   .service-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
   }
   @media (max-width: 500px) {
     .service-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
-    .country-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
-    .ctab { font-size: 0.75rem; padding: 0.45rem 0.5rem; text-align: center; }
     .svc-name { font-size: 0.74rem; }
     .svc-note { display: none; }
-    .cm-price { font-size: 1.1rem; }
+    .svc-card { padding: 0.7rem 0.75rem; gap: 0.5rem; }
+    .svc-icon { font-size: 1.1rem; }
   }
   .svc-card {
     background: var(--card); border: 1px solid var(--border);
