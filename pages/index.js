@@ -8,12 +8,21 @@ export default function Home() {
         <meta name="description" content="Stealth browser for AI agents. Residential proxy from $13.99/mo. Bypasses Cloudflare, DataDome, PerimeterX. Apple Pay, Google Pay, USDT, ETH, BTC, SOL." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://humanbrowser.dev" />
-        <meta property="og:title" content="Human Browser — Stealth Browser for AI Agents" />
+        <meta property="og:title" content="Human Browser — The browser that has no idea it's a bot" />
+        <meta property="og:description" content="No Mac Mini. No local setup. A full Playwright browser that runs on any server, looks like a real device, and bypasses every bot detection system alive." />
         <meta property="og:url" content="https://humanbrowser.dev" />
-        <meta property="og:image" content="https://virixlabs.com/og-image.jpg" />
+        <meta property="og:image" content="https://humanbrowser.dev/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="icon" href="https://virixlabs.com/favicon.ico" />
+        <meta name="twitter:title" content="Human Browser — The browser that has no idea it's a bot" />
+        <meta name="twitter:description" content="Residential proxy from $13.99/mo. Bypasses Cloudflare, DataDome, PerimeterX. Runs on any $5 Linux VPS." />
+        <meta name="twitter:image" content="https://humanbrowser.dev/og-image.jpg" />
+        <meta name="twitter:site" content="@virixlabs" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
       </Head>
