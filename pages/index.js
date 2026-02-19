@@ -7,7 +7,36 @@ export default function Home() {
         <title>Human Browser — Stealth Playwright Browser with Residential Proxy | Virix Labs</title>
         <meta name="description" content="Stealth browser for AI agents. Residential proxy from $13.99/mo. Bypasses Cloudflare, DataDome, PerimeterX. Apple Pay, Google Pay, USDT, ETH, BTC, SOL." />
         <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="stealth browser, residential proxy, playwright proxy, bypass cloudflare, bypass datadome, bypass perimeter x, anti bot bypass, ai agent browser, headless browser residential ip, playwright stealth, instagram scraping, web scraping proxy, playwright residential, human browser, cloudflare bypass playwright, browser automation residential ip" />
         <link rel="canonical" href="https://humanbrowser.dev" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "Human Browser",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Linux, Docker, macOS, Windows",
+          "description": "Stealth Playwright browser with residential proxy for AI agents. Bypasses Cloudflare, DataDome, PerimeterX. iPhone 15 Pro fingerprint. Runs on any $5 Linux VPS.",
+          "url": "https://humanbrowser.dev",
+          "screenshot": "https://humanbrowser.dev/og-image.jpg",
+          "offers": [
+            { "@type": "Offer", "name": "Starter", "price": "13.99", "priceCurrency": "USD", "description": "Romania residential IP, 2GB bandwidth" },
+            { "@type": "Offer", "name": "Pro", "price": "49.99", "priceCurrency": "USD", "description": "10+ countries, 20GB bandwidth" },
+            { "@type": "Offer", "name": "Enterprise", "price": "199.00", "priceCurrency": "USD", "description": "Unlimited bandwidth, dedicated zone" }
+          ],
+          "author": { "@type": "Organization", "name": "Virix Labs", "url": "https://virixlabs.com" },
+          "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "38" }
+        }) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "Does it bypass Cloudflare?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Human Browser uses a residential IP address (real ISP, not data center) combined with a real iPhone 15 Pro fingerprint. Cloudflare's bot score is based on IP reputation + browser fingerprint — both are covered." } },
+            { "@type": "Question", "name": "Can I use it without a Mac or local machine?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Human Browser runs on any Linux VPS, Docker container, or CI/CD pipeline. No display server, no VNC, no X11 needed. A $5/mo DigitalOcean droplet is enough." } },
+            { "@type": "Question", "name": "What is the difference between free and paid?", "acceptedAnswer": { "@type": "Answer", "text": "The browser-human.js script and the OpenClaw skill are completely free and open source. The paid subscription gives you residential proxy credentials — a real home IP address from Romania, US, UK, etc. Without it, your VPS data center IP gets blocked instantly." } },
+            { "@type": "Question", "name": "Which countries are available?", "acceptedAnswer": { "@type": "Answer", "text": "Romania (default), United States, United Kingdom, Germany, Netherlands, Japan, France, Canada, Singapore, Australia. Different countries work for different services — see the compatibility matrix on the website." } },
+            { "@type": "Question", "name": "Does it work with OpenClaw?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it is an OpenClaw native skill. Install with: clawhub install al1enjesus/human-browser. Your agent gains the ability to launch a stealth browser with one function call: launchHuman()." } }
+          ]
+        }) }} />
         <meta property="og:title" content="Human Browser — The browser that has no idea it's a bot" />
         <meta property="og:description" content="No Mac Mini. No local setup. A full Playwright browser that runs on any server, looks like a real device, and bypasses every bot detection system alive." />
         <meta property="og:url" content="https://humanbrowser.dev" />
