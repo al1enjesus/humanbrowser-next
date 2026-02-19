@@ -766,40 +766,76 @@ const bodyContent = `<!-- ── NAV ──────────────�
 </div>
 
 <!-- ── AFFILIATE ─────────────────────────────────────── -->
+<!-- ── HUMAN BROWSER AFFILIATE ─────────────────────────── -->
+<div class="hb-affiliate-section">
+  <div class="container">
+    <div class="hb-aff-inner">
+      <div class="hb-aff-left">
+        <div class="section-eyebrow" data-i18n="">Affiliate Program</div>
+        <h2 class="hb-aff-title" data-i18n="aff_hb_title">Promote Human Browser. Earn 20%.</h2>
+        <p class="hb-aff-desc" data-i18n="aff_hb_desc">Share the skill with developers, AI teams, or scraping communities. You get 20% of every subscription they buy — recurring, forever.</p>
+        <div class="hb-aff-perks">
+          <div class="hb-aff-perk">💸 <span>20% of every payment · recurring</span></div>
+          <div class="hb-aff-perk">🔁 <span data-i18n="aff_hb_note">Payouts in USDT TRC-20 · Monthly · No minimum</span></div>
+          <div class="hb-aff-perk">🤖 <span>Works for agent installs too</span></div>
+        </div>
+        <a href="https://t.me/virixlabs" target="_blank" class="btn btn-primary hb-aff-btn" data-i18n="aff_hb_cta">Get your referral link →</a>
+      </div>
+      <div class="hb-aff-right">
+        <div class="hb-aff-calc">
+          <div class="hb-aff-calc-title">Revenue calculator</div>
+          <div class="hb-aff-calc-row">
+            <span>10 users on Starter</span>
+            <strong>+$28/mo</strong>
+          </div>
+          <div class="hb-aff-calc-row">
+            <span>10 users on Pro</span>
+            <strong>+$140/mo</strong>
+          </div>
+          <div class="hb-aff-calc-row">
+            <span>10 users on Enterprise</span>
+            <strong>+$598/mo</strong>
+          </div>
+          <div class="hb-aff-calc-total">
+            <span>100 mixed users</span>
+            <strong style="color:#6366f1">~$2,000–4,000/mo</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SELF-HOSTED PROXIES ─────────────────────────────── -->
 <div class="affiliate-section">
   <div class="container">
     <div class="affiliate-header">
       <h3 class="affiliate-title" data-i18n="affiliate_title">Prefer self-hosted proxies?</h3>
-      <p class="affiliate-desc" data-i18n="affiliate_desc">We earn a small affiliate commission on these links — same providers we partner with. No extra cost to you.</p>
+      <p class="affiliate-desc" data-i18n="affiliate_desc">Tested and working with Human Browser. Pick a provider and set your proxy credentials in the env vars.</p>
     </div>
     <div class="affiliate-grid">
       <a href="https://decodo.com/?ref=humanbrowser" target="_blank" rel="noopener" class="affiliate-card">
         <div class="aff-name">Decodo</div>
-        <span class="aff-badge aff-badge--top" data-i18n="aff_badge_50first">50% commission</span>
         <div class="aff-desc" data-i18n="aff_decodo_desc">Best value. 195M+ IPs, 195 countries. Our recommended pick.</div>
         <div class="aff-cta" data-i18n="aff_cta">Get Started →</div>
       </a>
       <a href="https://iproyal.com/?ref=humanbrowser" target="_blank" rel="noopener" class="affiliate-card">
         <div class="aff-name">IPRoyal</div>
-        <span class="aff-badge aff-badge--recurring" data-i18n="aff_badge_10life">10% lifetime</span>
         <div class="aff-desc" data-i18n="aff_iproyal_desc">Affordable rotating &amp; sticky residential proxies. Pay-as-you-go.</div>
         <div class="aff-cta" data-i18n="aff_cta">Get Started →</div>
       </a>
       <a href="https://oxylabs.io/?via=humanbrowser" target="_blank" rel="noopener" class="affiliate-card">
         <div class="aff-name">Oxylabs</div>
-        <span class="aff-badge aff-badge--top" data-i18n="aff_badge_50first">50% commission</span>
         <div class="aff-desc" data-i18n="aff_oxylabs_desc">Enterprise-grade. 175M+ IPs, advanced geo-targeting.</div>
         <div class="aff-cta" data-i18n="aff_cta">Get Started →</div>
       </a>
       <a href="https://nodemaven.com/?ref=humanbrowser" target="_blank" rel="noopener" class="affiliate-card">
         <div class="aff-name">NodeMaven</div>
-        <span class="aff-badge aff-badge--dual" data-i18n="aff_badge_nodemaven">50% + 10% recurring</span>
         <div class="aff-desc" data-i18n="aff_nodemaven_desc">High-quality IPs with excellent success rates.</div>
         <div class="aff-cta" data-i18n="aff_cta">Get Started →</div>
       </a>
       <a href="https://www.webshare.io/?referral_code=humanbrowser" target="_blank" rel="noopener" class="affiliate-card">
         <div class="aff-name">Webshare</div>
-        <span class="aff-badge aff-badge--recurring" data-i18n="aff_badge_25rec">25% recurring</span>
         <div class="aff-desc" data-i18n="aff_webshare_desc">Best price-to-performance ratio. Free tier available.</div>
         <div class="aff-cta" data-i18n="aff_cta">Get Started →</div>
       </a>
