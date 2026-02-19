@@ -4,8 +4,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const PLANS = {
   starter:    { name: 'Human Browser Starter',    usd: 13.99, price: 1399, bandwidth: '2GB' },
-  pro:        { name: 'Human Browser Pro',        usd: 49.99, price: 4999, bandwidth: '20GB' },
-  enterprise: { name: 'Human Browser Enterprise', usd: 199,  price: 19900, bandwidth: 'Unlimited' },
+  pro:        { name: 'Human Browser Pro',        usd: 69.99, price: 6999, bandwidth: '20GB' },
+  enterprise: { name: 'Human Browser Enterprise', usd: 299,  price: 29900, bandwidth: 'Unlimited' },
 };
 
 export default async function handler(req, res) {

@@ -29,8 +29,8 @@ export default function Home() {
           "screenshot": "https://humanbrowser.dev/og-image.jpg",
           "offers": [
             { "@type": "Offer", "name": "Starter", "price": "13.99", "priceCurrency": "USD", "description": "Romania residential IP, 2GB bandwidth" },
-            { "@type": "Offer", "name": "Pro", "price": "49.99", "priceCurrency": "USD", "description": "10+ countries, 20GB bandwidth" },
-            { "@type": "Offer", "name": "Enterprise", "price": "199.00", "priceCurrency": "USD", "description": "Unlimited bandwidth, dedicated zone" }
+            { "@type": "Offer", "name": "Pro", "price": "69.99", "priceCurrency": "USD", "description": "10+ countries, 20GB bandwidth" },
+            { "@type": "Offer", "name": "Enterprise", "price": "299.00", "priceCurrency": "USD", "description": "Unlimited bandwidth, dedicated zone" }
           ],
           "author": { "@type": "Organization", "name": "Virix Labs", "url": "https://virixlabs.com" },
           "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "38" }
@@ -364,7 +364,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
       <div class="code-label" style="margin-top:0.5rem;" data-i18n="how_code_label">Agent purchase flow</div>
       <div class="agent-box">
         <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">GET humanbrowser.dev/api/plans</span></div>
-        <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ starter: <span class="af-ok">$13.99</span>, pro: $49.99 }</span></div>
+        <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ starter: <span class="af-ok">$13.99</span>, pro: $69.99 }</span></div>
         <div class="af-sep"></div>
         <div class="af"><span class="af-who ag">agent →</span><span class="af-txt">POST humanbrowser.dev/api/buy</span></div>
         <div class="af"><span class="af-who sv">server ←</span><span class="af-txt">{ address: <span class="af-addr">"0x4a3f…"</span>, amount: "13.99 USDT" }</span></div>
@@ -416,7 +416,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <div class="plan popular">
       <div class="pop-tag" data-i18n="plan_pop_tag">Most Popular</div>
       <div class="plan-tier">Pro</div>
-      <div class="plan-price">$49.99<sub>/mo</sub></div>
+      <div class="plan-price">$69.99<sub>/mo</sub></div>
       <div class="plan-usage" data-i18n="plan_pro_usage">20GB multi-country · 10+ countries</div>
       <ul class="plan-feats">
         <li data-i18n="pro_li1">20GB multi-country (10+ countries)</li>
@@ -441,7 +441,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
 
     <div class="plan">
       <div class="plan-tier">Enterprise</div>
-      <div class="plan-price">$199<sub>/mo</sub></div>
+      <div class="plan-price">$299<sub>/mo</sub></div>
       <div class="plan-usage" data-i18n="plan_ent_usage">100GB · Dedicated IPs · SLA</div>
       <ul class="plan-feats">
         <li data-i18n="ent_li1">100GB bandwidth</li>

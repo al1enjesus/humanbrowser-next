@@ -1067,7 +1067,7 @@ var stripeInstance           = null;
 var embeddedCheckout         = null;
 
 var PLAN_NAMES  = { starter: 'Starter',  pro: 'Pro',     enterprise: 'Enterprise' };
-var PLAN_PRICES = { starter: '$13.99',   pro: '$49.99',  enterprise: '$199' };
+var PLAN_PRICES = { starter: '$13.99',   pro: '$69.99',  enterprise: '$299' };
 
 // ═══════════════════════════════════════════════════════════════
 //  i18n

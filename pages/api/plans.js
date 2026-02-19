@@ -14,7 +14,7 @@ export default function handler(req, res) {
       },
       pro: {
         name: 'Human Browser Pro',
-        price_usd: 49.99,
+        price_usd: 69.99,
         bandwidth_gb: 20,
         overage_per_gb: 2.0,
         countries: ['ro', 'us', 'uk', 'de', 'nl', 'jp', 'fr', 'ca', 'au', 'sg'],
@@ -22,7 +22,7 @@ export default function handler(req, res) {
       },
       enterprise: {
         name: 'Human Browser Enterprise',
-        price_usd: 199,
+        price_usd: 299,
         bandwidth_gb: 999,
         overage_per_gb: 1.5,
         countries: ['all'],
