@@ -45,7 +45,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
       <a href="#features" data-i18n="nav_features">Features</a>
       <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
       <a href="#how" data-i18n="nav_how">How it works</a>
-      <a href="https://t.me/virixlabs" target="_blank" class="btn btn-primary nav-cta" data-i18n="nav_cta">Get Started →</a>
+      <button onclick="showAgentModal()" class="btn btn-primary nav-cta" data-i18n="nav_cta">Get Started →</button>
     </nav>
 
     <div class="lang-sel">
@@ -73,7 +73,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
       <button class="lang-btn" data-lang="zh" onclick="setLang('zh');closeMobileMenu()">中文</button>
     </div>
     <div class="mobile-cta">
-      <a href="https://t.me/virixlabs" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;" data-i18n="nav_cta">Get Started →</a>
+      <button onclick="showAgentModal();closeMobileMenu();" class="btn btn-primary" style="width:100%;justify-content:center;" data-i18n="nav_cta">Get Started →</button>
     </div>
   </div>
 </header>
@@ -621,6 +621,36 @@ const bodyContent = `<!-- ── NAV ──────────────�
       <p data-i18n="vx_p">AI-powered venture studio building focused products at scale. Human Browser is part of the OpenClaw skill ecosystem — tools that let AI agents work without human bottlenecks.</p>
     </div>
     <a href="https://virixlabs.com" target="_blank" class="btn btn-secondary">virixlabs.com ↗</a>
+  </div>
+</div>
+
+<!-- ── AGENT INSTALL MODAL ──────────────────────────── -->
+<div id="agent-modal" class="amodal-overlay" aria-hidden="true" onclick="handleModalOverlayClick(event)">
+  <div class="amodal-box" role="dialog" aria-modal="true">
+    <button class="amodal-close" onclick="closeAgentModal()" aria-label="Close">✕</button>
+
+    <div class="amodal-icon">🦅</div>
+    <h2 class="amodal-title" data-i18n="modal_title">Send this to your OpenClaw agent</h2>
+    <p class="amodal-sub" data-i18n="modal_sub">Your agent will install the skill, pick a plan, and browse like a human — no manual setup needed.</p>
+
+    <div class="amodal-section-label" data-i18n="modal_cmd_label">INSTALL COMMAND</div>
+    <div class="amodal-cmd" id="amodal-cmd-box" onclick="copyModalCmd('clawhub install al1enjesus/human-browser','amodal-cmd-box')">
+      <code>clawhub install al1enjesus/human-browser</code>
+      <span class="amodal-copy-hint" data-i18n="modal_tap_copy">📋 tap to copy</span>
+    </div>
+
+    <div class="amodal-section-label" data-i18n="modal_msg_label">OR SEND THIS TO YOUR AGENT</div>
+    <div class="amodal-msg" id="amodal-msg-box" onclick="copyModalCmd(document.getElementById('amodal-msg-text').textContent,'amodal-msg-box')">
+      <p id="amodal-msg-text" data-i18n="modal_msg">Install the Human Browser skill and use it whenever I need to browse the web — Instagram, LinkedIn, Binance, Cloudflare-protected sites, or any page that blocks bots. It uses a real residential IP and iPhone 15 Pro fingerprint. Install with: clawhub install al1enjesus/human-browser</p>
+      <span class="amodal-copy-hint" data-i18n="modal_tap_copy2">📋 tap to copy</span>
+    </div>
+
+    <div class="amodal-actions">
+      <a href="https://clawhub.com/skills/al1enjesus/human-browser" target="_blank" class="btn btn-primary amodal-btn" data-i18n="modal_clawhub">View on ClawHub →</a>
+      <a href="https://github.com/al1enjesus/human-browser" target="_blank" class="btn btn-secondary amodal-btn" data-i18n="modal_github">GitHub ↗</a>
+    </div>
+
+    <p class="amodal-support" data-i18n-html="modal_support_html">Need help? <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> on Telegram</p>
   </div>
 </div>
 

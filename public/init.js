@@ -202,6 +202,17 @@ var TRANSLATIONS = {
     footer_openclaw: 'OpenClaw',
     footer_virix: 'Virix Labs',
     footer_support: 'Support',
+    // ─── Agent Modal ───
+    modal_title:        'Send this to your OpenClaw agent',
+    modal_sub:          'Your agent will install the skill, pick a plan, and browse like a human — no manual setup.',
+    modal_cmd_label:    'INSTALL COMMAND',
+    modal_tap_copy:     '📋 tap to copy',
+    modal_msg_label:    'OR SEND THIS MESSAGE TO YOUR AGENT',
+    modal_msg:          'Install the Human Browser skill and use it whenever I browse the web — Instagram, LinkedIn, Binance, Cloudflare-protected sites, or any page that blocks bots. It uses a real residential IP and iPhone 15 Pro fingerprint, so you\'ll always pass anti-bot checks. Install with: clawhub install al1enjesus/human-browser',
+    modal_tap_copy2:    '📋 tap to copy',
+    modal_clawhub:      'View on ClawHub →',
+    modal_github:       'GitHub ↗',
+    modal_support_html: 'Need help? <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> on Telegram',
     // ─── Payment sheet ───
     sheet_tab_card: '💳 Card · Apple Pay · Google Pay',
     sheet_tab_crypto: '₿ Crypto',
@@ -408,6 +419,17 @@ var TRANSLATIONS = {
     footer_openclaw: 'OpenClaw',
     footer_virix: 'Virix Labs',
     footer_support: 'Поддержка',
+    // ─── Agent Modal ───
+    modal_title:        'Отправьте это своему OpenClaw агенту',
+    modal_sub:          'Агент установит скилл, выберет план и начнёт серфить как человек — никаких ручных настроек.',
+    modal_cmd_label:    'КОМАНДА УСТАНОВКИ',
+    modal_tap_copy:     '📋 нажмите чтобы скопировать',
+    modal_msg_label:    'ИЛИ ОТПРАВЬТЕ ЭТО СООБЩЕНИЕ АГЕНТУ',
+    modal_msg:          'Установи скилл Human Browser и используй его всегда, когда мне нужно зайти в интернет — Instagram, LinkedIn, Binance, сайты с защитой Cloudflare или любые страницы, которые блокируют ботов. У него настоящий резидентный IP и фингерпринт iPhone 15 Pro — антибот-системы не заблокируют. Установка: clawhub install al1enjesus/human-browser',
+    modal_tap_copy2:    '📋 нажмите чтобы скопировать',
+    modal_clawhub:      'Открыть на ClawHub →',
+    modal_github:       'GitHub ↗',
+    modal_support_html: 'Нужна помощь? <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> в Telegram',
     // ─── Payment sheet ───
     sheet_tab_card: '💳 Карта · Apple Pay · Google Pay',
     sheet_tab_crypto: '₿ Крипта',
@@ -614,6 +636,17 @@ var TRANSLATIONS = {
     footer_openclaw: 'OpenClaw',
     footer_virix: 'Virix Labs',
     footer_support: 'Soporte',
+    // ─── Agent Modal ───
+    modal_title:        'Envía esto a tu agente OpenClaw',
+    modal_sub:          'Tu agente instalará el skill, elegirá un plan y navegará como humano — sin configuración manual.',
+    modal_cmd_label:    'COMANDO DE INSTALACIÓN',
+    modal_tap_copy:     '📋 toca para copiar',
+    modal_msg_label:    'O ENVÍA ESTE MENSAJE A TU AGENTE',
+    modal_msg:          'Instala el skill Human Browser y úsalo siempre que navegue — Instagram, LinkedIn, Binance, sitios protegidos por Cloudflare. Usa IP residencial real y huella iPhone 15 Pro. Instala con: clawhub install al1enjesus/human-browser',
+    modal_tap_copy2:    '📋 toca para copiar',
+    modal_clawhub:      'Ver en ClawHub →',
+    modal_github:       'GitHub ↗',
+    modal_support_html: '¿Necesitas ayuda? <a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> en Telegram',
     // ─── Payment sheet ───
     sheet_tab_card: '💳 Tarjeta · Apple Pay · Google Pay',
     sheet_tab_crypto: '₿ Cripto',
@@ -820,6 +853,17 @@ var TRANSLATIONS = {
     footer_openclaw: 'OpenClaw',
     footer_virix: 'Virix Labs',
     footer_support: '支持',
+    // ─── Agent Modal ───
+    modal_title:        '发送给您的OpenClaw代理',
+    modal_sub:          '您的代理将安装技能、选择计划并像人类一样浏览 — 无需手动设置。',
+    modal_cmd_label:    '安装命令',
+    modal_tap_copy:     '📋 点击复制',
+    modal_msg_label:    '或将此消息发送给您的代理',
+    modal_msg:          '安装Human Browser技能，每次我需要浏览网络时使用它 — Instagram、LinkedIn、Binance、受Cloudflare保护的网站。使用真实住宅IP和iPhone 15 Pro指纹。安装命令：clawhub install al1enjesus/human-browser',
+    modal_tap_copy2:    '📋 点击复制',
+    modal_clawhub:      '在ClawHub查看 →',
+    modal_github:       'GitHub ↗',
+    modal_support_html: '需要帮助？<a href="https://t.me/virixlabs" target="_blank">@virixlabs</a> Telegram',
     // ─── Payment sheet ───
     sheet_tab_card: '💳 信用卡 · Apple Pay · Google Pay',
     sheet_tab_crypto: '₿ 加密货币',
@@ -1196,3 +1240,53 @@ function buyPlan(plan, currency) {
   if (currency === 'card') { openPaySheet(plan); }
   else { openPaySheet(plan); setTimeout(function() { switchPayTab('crypto'); setTimeout(function() { selectCoin(currency); }, 200); }, 300); }
 }
+
+// ── Agent Install Modal ───────────────────────────────────────────────
+function showAgentModal() {
+  var overlay = document.getElementById('agent-modal');
+  if (!overlay) return;
+  overlay.setAttribute('aria-hidden', 'false');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Apply i18n to modal elements
+  if (typeof applyLang === 'function') applyLang(currentLang || 'en');
+}
+
+function closeAgentModal() {
+  var overlay = document.getElementById('agent-modal');
+  if (!overlay) return;
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  // Reset copied states
+  ['amodal-cmd-box','amodal-msg-box'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('copied');
+  });
+}
+
+function handleModalOverlayClick(e) {
+  if (e.target === e.currentTarget) closeAgentModal();
+}
+
+function copyModalCmd(text, boxId) {
+  if (!navigator.clipboard) return;
+  navigator.clipboard.writeText(text.trim()).then(function() {
+    var box = document.getElementById(boxId);
+    if (!box) return;
+    box.classList.add('copied');
+    var hint = box.querySelector('.amodal-copy-hint');
+    if (hint) { var orig = hint.textContent; hint.textContent = '✅ Copied!'; setTimeout(function() { hint.textContent = orig; box.classList.remove('copied'); }, 2000); }
+  });
+}
+
+// ESC key closes modal
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeAgentModal();
+});
+
+// Expose globally
+window.showAgentModal   = showAgentModal;
+window.closeAgentModal  = closeAgentModal;
+window.handleModalOverlayClick = handleModalOverlayClick;
+window.copyModalCmd     = copyModalCmd;

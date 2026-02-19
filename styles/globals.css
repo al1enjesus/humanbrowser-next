@@ -1378,3 +1378,80 @@
     .crypto-iframe { height: 480px; }
   }
 
+
+  /* ═══════════════════════════════════════════════
+     AGENT INSTALL MODAL
+  ═══════════════════════════════════════════════ */
+  .amodal-overlay {
+    position: fixed; inset: 0; z-index: 9000;
+    background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .amodal-overlay.open {
+    opacity: 1; pointer-events: all;
+  }
+  .amodal-box {
+    background: #0f0f0f; border: 1px solid var(--border);
+    border-radius: 1.25rem; padding: 2rem 1.75rem;
+    max-width: 520px; width: 100%; position: relative;
+    max-height: 90vh; overflow-y: auto;
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;
+    opacity: 0;
+  }
+  .amodal-overlay.open .amodal-box {
+    transform: translateY(0) scale(1); opacity: 1;
+  }
+  .amodal-close {
+    position: absolute; top: 1rem; right: 1rem;
+    background: rgba(255,255,255,0.07); border: 1px solid var(--border);
+    color: var(--muted); border-radius: 50%;
+    width: 32px; height: 32px; cursor: pointer;
+    font-size: 0.9rem; display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+  }
+  .amodal-close:hover { background: rgba(255,255,255,0.12); color: var(--fg); }
+  .amodal-icon { font-size: 2.2rem; margin-bottom: 0.75rem; }
+  .amodal-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.4rem; }
+  .amodal-sub   { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.25rem; }
+  .amodal-section-label {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; margin-top: 1.1rem;
+  }
+  .amodal-cmd {
+    background: #060606; border: 1px solid var(--border);
+    border-radius: 0.65rem; padding: 0.85rem 1rem;
+    cursor: pointer; transition: border-color 0.15s, background 0.15s;
+    position: relative;
+  }
+  .amodal-cmd:hover { border-color: var(--accent); background: rgba(99,255,220,0.03); }
+  .amodal-cmd.copied { border-color: var(--green); }
+  .amodal-cmd code { font-size: 0.88rem; color: var(--accent); font-family: var(--mono); display: block; }
+  .amodal-msg {
+    background: #060606; border: 1px solid var(--border);
+    border-radius: 0.65rem; padding: 0.85rem 1rem;
+    cursor: pointer; transition: border-color 0.15s;
+  }
+  .amodal-msg:hover { border-color: var(--accent); }
+  .amodal-msg.copied { border-color: var(--green); }
+  .amodal-msg p { font-size: 0.84rem; color: var(--fg); line-height: 1.65; margin: 0 0 0.5rem; }
+  .amodal-copy-hint {
+    font-size: 0.72rem; color: var(--muted); display: block;
+    text-align: right;
+  }
+  .amodal-cmd.copied .amodal-copy-hint,
+  .amodal-msg.copied .amodal-copy-hint { color: var(--green); }
+  .amodal-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .amodal-btn { flex: 1; min-width: 140px; justify-content: center; }
+  .amodal-support { font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 1.1rem; }
+  .amodal-support a { color: var(--accent); text-decoration: none; }
+  .amodal-support a:hover { text-decoration: underline; }
+  @media (max-width: 500px) {
+    .amodal-box { padding: 1.5rem 1.1rem; }
+    .amodal-title { font-size: 1.1rem; }
+    .amodal-actions { flex-direction: column; }
+    .amodal-btn { width: 100%; }
+  }
