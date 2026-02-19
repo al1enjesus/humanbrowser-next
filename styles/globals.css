@@ -255,18 +255,17 @@
       border-radius: var(--r-xl); overflow: hidden; position: relative;
     }
     @media (max-width: 600px) {
-      /* allow horizontal scroll in code block on mobile */
-      .code-window { overflow-x: auto; }
-      /* subtle fade on right to hint at scroll */
+      /* fade gradient on right edge hints at horizontal scroll */
       .code-window::after {
         content: '';
         position: absolute;
         top: 36px; right: 0; /* below titlebar */
-        width: 40px;
+        width: 48px;
         height: calc(100% - 36px);
-        background: linear-gradient(to right, transparent, #0c0c0c);
+        background: linear-gradient(to right, transparent, #0c0c0c 85%);
         pointer-events: none;
         border-radius: 0 0 var(--r-xl) 0;
+        z-index: 1;
       }
     }
     .code-bar {
