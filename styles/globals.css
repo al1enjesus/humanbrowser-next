@@ -104,7 +104,17 @@
     .nav-links a:hover { color: var(--fg); }
     .nav-cta { margin-left: 0.5rem; }
 
-    /* Language selector */
+    /* OpenClaw badge SVG in nav */
+  .oc-badge-svg {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 4px;
+    margin-top: -1px;
+  }
+
+  /* Language selector */
     .lang-sel {
       display: flex;
       align-items: center;
@@ -908,8 +918,29 @@
      HERO INSTALL COMMAND + PLATFORMS
   ══════════════════════════════════════════════════════════ */
 
+  /* OpenClaw intro above install command */
+  .hero-oc-intro {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 77, 77, 0.07);
+    border: 1px solid rgba(255, 77, 77, 0.2);
+    border-radius: 999px;
+    padding: 0.4rem 1rem 0.4rem 0.7rem;
+    margin: 1.75rem auto 0.75rem;
+    font-size: 0.8rem;
+    color: #ccc;
+    max-width: 520px;
+    width: fit-content;
+  }
+  .oc-intro-svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
   .hero-install {
-    margin: 2rem auto 0;
+    margin: 0 auto 0;
     max-width: 520px;
     background: #0d0d0d;
     border: 1px solid #2a2a2a;
