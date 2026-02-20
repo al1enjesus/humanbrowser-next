@@ -43,7 +43,7 @@ export default function Home() {
             { "@type": "Question", "name": "Can I use it without a Mac or local machine?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Human Browser runs on any Linux VPS, Docker container, or CI/CD pipeline. No display server, no VNC, no X11 needed. A $5/mo DigitalOcean droplet is enough." } },
             { "@type": "Question", "name": "What is the difference between free and paid?", "acceptedAnswer": { "@type": "Answer", "text": "The browser-human.js script and the OpenClaw skill are completely free and open source. The paid subscription gives you residential proxy credentials — a real home IP address from Romania, US, UK, etc. Without it, your VPS data center IP gets blocked instantly." } },
             { "@type": "Question", "name": "Which countries are available?", "acceptedAnswer": { "@type": "Answer", "text": "Romania (default), United States, United Kingdom, Germany, Netherlands, Japan, France, Canada, Singapore, Australia. Different countries work for different services — see the compatibility matrix on the website." } },
-            { "@type": "Question", "name": "Does it work with OpenClaw?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it is an OpenClaw native skill. Install with: clawhub install al1enjesus/human-browser. Your agent gains the ability to launch a stealth browser with one function call: launchHuman()." } }
+            { "@type": "Question", "name": "Does it work with OpenClaw?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it is an OpenClaw native skill. Install with: clawhub install human-browser. Your agent gains the ability to launch a stealth browser with one function call: launchHuman()." } }
           ]
         }) }} />
         <meta property="og:title" content="Human Browser — The browser that has no idea it's a bot" />
@@ -138,7 +138,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <span class="hero-rotating" id="hero-rotating">thinks it's human</span>
   </h1>
 
-  <p data-i18n="hero_desc">No Mac Mini. No local setup. A full Playwright browser that runs on any server, looks like a real device, and bypasses every bot detection system alive.</p>
+  <p data-i18n-html="hero_desc">No Mac Mini. No local setup. A full Playwright browser that runs on any server, looks like a real device, and bypasses every bot detection system alive.</p>
 
   <!-- ── OpenClaw intro ── -->
   <div class="hero-oc-intro">
@@ -163,7 +163,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
     </div>
     <div class="hi-body">
       <span class="hi-prompt">$</span>
-      <span class="hi-cmd" id="heroInstallCmd">clawhub install al1enjesus/human-browser</span>
+      <span class="hi-cmd" id="heroInstallCmd">clawhub install human-browser</span>
       <button class="hi-copy" id="heroInstallCopy" onclick="copyInstallCmd()" title="Copy command">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -189,6 +189,28 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <a href="https://www.npmjs.com/package/human-browser" target="_blank" class="hp-badge">
       <span class="hp-icon">📦</span> npm
     </a>
+  </div>
+</div>
+
+<!-- ── FREE TRIAL ─────────────────────────────────── -->
+<div class="trial-section">
+  <div class="trial-inner">
+    <div class="trial-left">
+      <div class="trial-top">
+        <span class="trial-pill">Free Trial</span>
+        <span class="trial-bandwidth">1 GB</span>
+        <span class="trial-sep">·</span>
+        <span class="trial-country">🇷🇴 Romania residential</span>
+      </div>
+      <p class="trial-desc" data-i18n="trial_desc">No signup. No credit card. Just grab the credentials and go.</p>
+    </div>
+    <div class="trial-right">
+      <div class="trial-code-block">
+        <span class="trial-code-line"><span class="tc-kw">await</span> <span class="tc-fn">getTrial</span>();&nbsp;&nbsp;<span class="tc-comment">// sets PROXY_USER/PASS</span></span>
+        <span class="trial-code-line"><span class="tc-kw">const</span> { page } = <span class="tc-kw">await</span> <span class="tc-fn">launchHuman</span>();</span>
+      </div>
+      <a href="https://humanbrowser.dev/api/trial" target="_blank" class="trial-cta" data-i18n="trial_cta">Get credentials →</a>
+    </div>
   </div>
 </div>
 
@@ -314,7 +336,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <div class="feat"><div class="feat-icon">⌨️</div><h3 data-i18n="feat_4_h">Human Typing Speed</h3><p data-i18n-html="feat_4_p_html">60–220ms per keystroke with mid-word pauses. Works with React inputs where <code>page.fill()</code> silently fails.</p></div>
     <div class="feat"><div class="feat-icon">📜</div><h3 data-i18n="feat_5_h">Natural Scroll Behavior</h3><p data-i18n="feat_5_p">Scrolls in smooth steps with random jitter. Pauses to read content. Looks exactly like a real user.</p></div>
     <div class="feat"><div class="feat-icon">🛡️</div><h3 data-i18n="feat_6_h">Full Anti-Detection</h3><p data-i18n-html="feat_6_p_html"><code>webdriver=false</code>, no automation flags, real plugin list, canvas fingerprint, real timezone &amp; geo.</p></div>
-    <div class="feat"><div class="feat-icon">🦅</div><h3 data-i18n="feat_7_h">OpenClaw Native Skill</h3><p data-i18n-html="feat_7_p_html">One command install: <code>clawhub install al1enjesus/human-browser</code>. Your agent gets it instantly.</p></div>
+    <div class="feat"><div class="feat-icon">🦅</div><h3 data-i18n="feat_7_h">OpenClaw Native Skill</h3><p data-i18n-html="feat_7_p_html">One command install: <code>clawhub install human-browser</code>. Your agent gets it instantly.</p></div>
     <div class="feat"><div class="feat-icon">🖥️</div><h3 data-i18n="feat_8_h">Desktop Mode</h3><p data-i18n-html="feat_8_p_html">Switch to Windows Chrome fingerprint when needed: <code>launchHuman({ mobile: false })</code>.</p></div>
     <div class="feat"><div class="feat-icon">⚡</div><h3 data-i18n="feat_9_h">Any Server, Zero Setup</h3><p data-i18n="feat_9_p">Bare Linux, Docker, CI/CD. Just Node.js + Chromium. No display server, no VNC, no X11.</p></div>
   </div>
@@ -581,7 +603,7 @@ const bodyContent = `<!-- ── NAV ──────────────�
         </ul>
         <div class="fvp-install">
           <span class="fvp-install-label">Install free skill</span>
-          <code style="font-size:0.82rem;padding:0.5rem 0.75rem;border-radius:8px;display:block;background:#0a0a0a;">clawhub install al1enjesus/human-browser</code>
+          <code style="font-size:0.82rem;padding:0.5rem 0.75rem;border-radius:8px;display:block;background:#0a0a0a;">clawhub install human-browser</code>
         </div>
       </div>
 
@@ -745,14 +767,14 @@ const bodyContent = `<!-- ── NAV ──────────────�
     <p class="amodal-sub" data-i18n="modal_sub">Your agent will install the skill, pick a plan, and browse like a human — no manual setup needed.</p>
 
     <div class="amodal-section-label" data-i18n="modal_cmd_label">INSTALL COMMAND</div>
-    <div class="amodal-cmd" id="amodal-cmd-box" onclick="copyModalCmd('clawhub install al1enjesus/human-browser','amodal-cmd-box')">
-      <code>clawhub install al1enjesus/human-browser</code>
+    <div class="amodal-cmd" id="amodal-cmd-box" onclick="copyModalCmd('clawhub install human-browser','amodal-cmd-box')">
+      <code>clawhub install human-browser</code>
       <span class="amodal-copy-hint" data-i18n="modal_tap_copy">📋 tap to copy</span>
     </div>
 
     <div class="amodal-section-label" data-i18n="modal_msg_label">OR SEND THIS TO YOUR AGENT</div>
     <div class="amodal-msg" id="amodal-msg-box" onclick="copyModalCmd(document.getElementById('amodal-msg-text').textContent,'amodal-msg-box')">
-      <p id="amodal-msg-text" data-i18n="modal_msg">Install the Human Browser skill and use it whenever I need to browse the web — Instagram, LinkedIn, Binance, Cloudflare-protected sites, or any page that blocks bots. It uses a real residential IP and iPhone 15 Pro fingerprint. Install with: clawhub install al1enjesus/human-browser</p>
+      <p id="amodal-msg-text" data-i18n="modal_msg">Install the Human Browser skill and use it whenever I need to browse the web — Instagram, LinkedIn, Binance, Cloudflare-protected sites, or any page that blocks bots. It uses a real residential IP and iPhone 15 Pro fingerprint. Install with: clawhub install human-browser</p>
       <span class="amodal-copy-hint" data-i18n="modal_tap_copy2">📋 tap to copy</span>
     </div>
 

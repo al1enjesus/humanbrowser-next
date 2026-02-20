@@ -8,6 +8,10 @@ const PLANS = {
   enterprise: { name: 'Human Browser Enterprise', usd: 299,  price: 29900, bandwidth: 'Unlimited' },
 };
 
+// In-memory order store for crypto payments (survives within same serverless instance)
+// ⚠️ Not persistent across cold starts — upgrade to Vercel KV for production
+if (!global._cryptoOrders) global._cryptoOrders = new Map();
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
@@ -21,7 +25,6 @@ export default async function handler(req, res) {
   if (currency === 'card') {
     try {
       const session = await stripe.checkout.sessions.create({
-        // No payment_method_types — let Stripe show Card + Apple Pay + Google Pay automatically
         mode: 'subscription',
         ui_mode: 'embedded',
         line_items: [{
@@ -48,18 +51,16 @@ export default async function handler(req, res) {
   }
 
   // ── CRYPTO via 0xProcessing ─────────────────────────────────
-  // 0xProcessing currency codes — exact strings their API accepts
   const CURRENCY_MAP = {
-    'USDT':    'USDT (TRC20)',   // default USDT = TRC-20 (faster, cheaper)
-    'USDTTRC': 'USDT (TRC20)',   // TRC-20 alias
-    'USDTERC': 'USDT',           // ERC-20 = just 'USDT' in 0xProcessing
+    'USDT':    'USDT (TRC20)',
+    'USDTTRC': 'USDT (TRC20)',
+    'USDTERC': 'USDT',
     'ETH':     'ETH',
     'BTC':     'BTC',
     'SOL':     'SOL',
   };
-  const VALID_INPUT = Object.keys(CURRENCY_MAP);
   const inputCur = currency.toUpperCase();
-  if (!VALID_INPUT.includes(inputCur)) {
+  if (!CURRENCY_MAP[inputCur]) {
     return res.status(400).json({ error: 'Invalid currency. Use: card, USDT, ETH, BTC, SOL' });
   }
   const cur = CURRENCY_MAP[inputCur];
@@ -71,20 +72,37 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: 'Crypto payments temporarily unavailable' });
   }
 
+  // Store order so webhook can look it up
+  const customerEmail = email || null;
+  global._cryptoOrders.set(orderId, {
+    plan,
+    email: customerEmail,
+    currency: cur,
+    usd: p.usd,
+    created: Date.now(),
+  });
+
+  // Success URL carries order context for the success page
+  const successUrl = `https://humanbrowser.dev/success?order=${orderId}&method=crypto&plan=${plan}`;
+
   try {
-    // 0xProcessing: form POST with ReturnUrl=true → returns { redirectUrl }
     const params = new URLSearchParams({
       AmountUSD:  p.usd.toString(),
+      Amount:     p.usd.toString(),
       Currency:   cur,
-      Email:      email || 'customer@humanbrowser.dev',
+      Email:      customerEmail || 'customer@humanbrowser.dev',
       ClientId:   orderId,
+      ClientID:   orderId,
       MerchantId: merchantId,
       BillingId:  orderId,
-      SuccessUrl: 'https://humanbrowser.dev/success',
+      SuccessUrl: successUrl,
+      SuccessURL: successUrl,
       CancelUrl:  'https://humanbrowser.dev/#pricing',
+      FailURL:    'https://humanbrowser.dev/#pricing',
       ReturnUrl:  'true',
       AutoReturn: 'true',
     });
+    if (apiKey) params.append('api_key', apiKey);
 
     const oxRes = await fetch('https://app.0xprocessing.com/Payment', {
       method: 'POST',
@@ -92,20 +110,28 @@ export default async function handler(req, res) {
       body: params.toString(),
     });
 
-    const oxData = await oxRes.json();
-    const redirectUrl = oxData.redirectUrl || oxData.url || oxData.payment_url;
+    const contentType = oxRes.headers.get('content-type') || '';
+    let oxData = {};
+    if (contentType.includes('application/json')) {
+      oxData = await oxRes.json();
+    } else {
+      const text = await oxRes.text();
+      try { oxData = JSON.parse(text); } catch { oxData = {}; }
+    }
+
+    const redirectUrl =
+      oxData.redirectUrl || oxData.redirect_url || oxData.url ||
+      oxData.payment_url || oxData.paymentUrl || oxData.PaymentUrl ||
+      oxData.link || oxData.checkout_url;
 
     if (!redirectUrl) {
       console.error('[0xProcessing]', JSON.stringify(oxData));
-      return res.status(502).json({ error: '0xProcessing: no redirect URL', detail: oxData });
+      // Fallback: direct URL
+      const fallback = `https://app.0xprocessing.com/Payment?MerchantId=${encodeURIComponent(merchantId)}&AmountUSD=${p.usd}&Currency=${encodeURIComponent(cur)}&ClientId=${orderId}&SuccessUrl=${encodeURIComponent(successUrl)}&CancelUrl=${encodeURIComponent('https://humanbrowser.dev/#pricing')}`;
+      return res.status(200).json({ payment_url: fallback, order_id: orderId, currency: cur, method: '0xprocessing' });
     }
 
-    return res.status(200).json({
-      payment_url: redirectUrl,
-      order_id: orderId,
-      currency: cur,
-      method: '0xprocessing',
-    });
+    return res.status(200).json({ payment_url: redirectUrl, order_id: orderId, currency: cur, method: '0xprocessing' });
   } catch (e) {
     console.error('[0xProcessing error]', e.message);
     return res.status(500).json({ error: e.message });

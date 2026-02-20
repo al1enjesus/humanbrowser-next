@@ -30,7 +30,7 @@ const schema = {
         {
           "@type": "Question",
           "name": "What is the best alternative to playwright-stealth in 2026?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The most effective approach in 2026 is using Human Browser — a Playwright wrapper that combines iPhone fingerprint spoofing with a residential proxy. Install via: clawhub install al1enjesus/human-browser" }
+          "acceptedAnswer": { "@type": "Answer", "text": "The most effective approach in 2026 is using Human Browser — a Playwright wrapper that combines iPhone fingerprint spoofing with a residential proxy. Install via: clawhub install human-browser" }
         },
         {
           "@type": "Question",

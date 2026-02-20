@@ -141,7 +141,7 @@ const bodyContent = `
 
   <div class="provider-card">
     <h3>🥇 Human Browser <span class="badge badge-top">Best overall for AI agents</span></h3>
-    <p>Human Browser is the only managed solution that bundles residential proxy credentials with iPhone 15 Pro fingerprinting out of the box. Install via <code>clawhub install al1enjesus/human-browser</code> — no proxy account setup required.</p>
+    <p>Human Browser is the only managed solution that bundles residential proxy credentials with iPhone 15 Pro fingerprinting out of the box. Install via <code>clawhub install human-browser</code> — no proxy account setup required.</p>
     <div class="provider-stats">
       <div class="stat"><div class="stat-label">Price</div><div class="stat-value">$13.99/mo</div></div>
       <div class="stat"><div class="stat-label">Bandwidth</div><div class="stat-value">2GB starter</div></div>

@@ -2,13 +2,30 @@ import Head from 'next/head';
 
 export async function getServerSideProps({ query }) {
   const sessionId = query.session || query.inv || null;
+  const method    = query.method || 'stripe';
+  const orderId   = query.order  || null;
+  const plan      = query.plan   || 'starter';
+
+  // ── Crypto payment success (0xProcessing) ──────────────────
+  if (method === 'crypto' && orderId) {
+    return {
+      props: {
+        creds:    null,
+        error:    null,
+        sessionId: null,
+        cryptoSuccess: true,
+        orderId,
+        plan,
+      },
+    };
+  }
 
   if (!sessionId) {
-    return { props: { error: 'No session found', creds: null } };
+    return { props: { error: 'No session found', creds: null, cryptoSuccess: false } };
   }
 
   try {
-    // Try to retrieve credentials from our API
+    // ── Stripe payment — retrieve credentials ───────────────
     const baseUrl = process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}`
       : 'https://humanbrowser.dev';
@@ -16,13 +33,49 @@ export async function getServerSideProps({ query }) {
     const res = await fetch(`${baseUrl}/api/credentials?session=${sessionId}`);
     if (!res.ok) throw new Error('Not found');
     const data = await res.json();
-    return { props: { creds: data, error: null, sessionId } };
+    return { props: { creds: data, error: null, sessionId, cryptoSuccess: false } };
   } catch (e) {
-    return { props: { creds: null, error: 'Loading credentials...', sessionId } };
+    return { props: { creds: null, error: 'Loading credentials...', sessionId, cryptoSuccess: false } };
   }
 }
 
-export default function SuccessPage({ creds, error, sessionId }) {
+export default function SuccessPage({ creds, error, sessionId, cryptoSuccess, orderId, plan }) {
+  // ── Crypto payment confirmed ────────────────────────────────
+  if (cryptoSuccess) {
+    const planNames = { starter: 'Starter', pro: 'Pro', enterprise: 'Enterprise' };
+    return (
+      <>
+        <Head><title>Payment received — Human Browser</title></Head>
+        <div style={{ minHeight: '100vh', background: '#0a0a0f', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif', padding: '2rem 1rem' }}>
+          <div style={{ textAlign: 'center', color: '#fff', maxWidth: 520 }}>
+            <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>✅</div>
+            <h1 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '0.5rem' }}>Payment received!</h1>
+            <p style={{ color: '#888', marginBottom: '2rem', lineHeight: 1.6 }}>
+              Your <strong style={{ color: '#6366f1' }}>{planNames[plan] || 'Human Browser'}</strong> plan is being activated.
+              <br />Proxy credentials will be <strong style={{ color: '#fff' }}>sent to your email within 30 minutes</strong>.
+            </p>
+            <div style={{ background: '#13131a', border: '1px solid #222', borderRadius: 12, padding: '1.5rem', marginBottom: '1.5rem', textAlign: 'left' }}>
+              <p style={{ color: '#64748b', fontSize: '0.82rem', margin: '0 0 0.75rem' }}>What to do next:</p>
+              <ol style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: 2, margin: 0, paddingLeft: '1.2rem' }}>
+                <li>Check your email — credentials arrive automatically after on-chain confirmation</li>
+                <li>Set <code style={{ color: '#a5b4fc' }}>PROXY_USER</code> and <code style={{ color: '#a5b4fc' }}>PROXY_PASS</code> from the email</li>
+                <li>Run <code style={{ color: '#a5b4fc' }}>clawhub install human-browser</code></li>
+              </ol>
+            </div>
+            <p style={{ color: '#555', fontSize: '0.8rem', marginBottom: '1rem' }}>
+              Order: <code style={{ color: '#64748b' }}>{orderId}</code>
+            </p>
+            <a href="https://t.me/virixlabs" target="_blank" rel="noopener noreferrer"
+               style={{ display: 'inline-block', background: '#1e293b', color: '#06b6d4', textDecoration: 'none', borderRadius: 8, padding: '0.65rem 1.4rem', fontSize: '0.9rem', fontWeight: 600, border: '1px solid #334155' }}>
+              💬 Contact support if needed
+            </a>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // ── Stripe: still processing ────────────────────────────────
   if (error || !creds) {
     return (
       <>
@@ -123,7 +176,7 @@ export PROXY_USER="${creds.proxy_user}"
 export PROXY_PASS="${creds.proxy_pass}"
 
 # Install skill
-clawhub install al1enjesus/human-browser`}</pre>
+clawhub install human-browser`}</pre>
           </div>
 
           {/* Plan info + expiry */}

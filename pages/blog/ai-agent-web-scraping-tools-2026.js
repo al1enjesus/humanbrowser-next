@@ -120,7 +120,7 @@ const bodyContent = `
     <h3>🥇 Human Browser <span class="tool-badge">Recommended for OpenClaw agents</span></h3>
     <p class="tool-desc">The only tool built specifically for AI agents. Combines iPhone fingerprinting, residential proxy, Bezier mouse movements, and human-like timing into a single OpenClaw skill.</p>
     <pre><code># One command install for OpenClaw agents
-clawhub install al1enjesus/human-browser</code></pre>
+clawhub install human-browser</code></pre>
     <div class="tool-pros-cons">
       <ul class="pros">
         <li>No proxy account setup needed</li>
@@ -219,7 +219,7 @@ const { page } = await launchHuman({ token });</code></pre>
 
   <h3>OpenClaw / Claude agent (recommended)</h3>
   <ul>
-    <li>Install: <code>clawhub install al1enjesus/human-browser</code></li>
+    <li>Install: <code>clawhub install human-browser</code></li>
     <li>Proxy: Human Browser subscription ($13.99/mo)</li>
     <li>Use: <code>launchHuman()</code> from SKILL.md</li>
   </ul>

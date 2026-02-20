@@ -17,7 +17,7 @@ var TRANSLATIONS = {
     // ─── Hero ───
     hero_pill:     'Any country · Residential IP · Zero bans',
     hero_prefix:   'The browser that',
-    hero_desc:     'No Mac Mini. No local setup. A full Playwright browser that runs on any server, looks like a real device, and bypasses every bot detection system alive.',
+    hero_desc:     '<span class="no-mac-hl">No Mac Mini.</span> No local setup. A full Playwright browser that runs on any server, looks like a real device, and bypasses every bot detection system alive.',
     install_intro: 'Built for OpenClaw — just send this to your agent, it handles everything',
     install_available: 'Available on',
     // ─── Nav ───
@@ -26,6 +26,8 @@ var TRANSLATIONS = {
     nav_how:       'How it works',
     nav_cta:       'Get Started →',
     nav_mobile_skill: 'ClawHub Skill (free)',
+    trial_desc: 'No signup. No credit card. Just grab the credentials and go.',
+    trial_cta:  'Get credentials →',
     // ─── Trust bar ───
     trust_1: 'Bypasses Cloudflare',
     trust_2: 'Bypasses DataDome',
@@ -75,7 +77,7 @@ var TRANSLATIONS = {
     feat_6_h: 'Full Anti-Detection',
     feat_6_p_html: '<code>webdriver=false</code>, no automation flags, real plugin list, canvas fingerprint, real timezone & geo.',
     feat_7_h: 'OpenClaw Native Skill',
-    feat_7_p_html: 'One command install: <code>clawhub install al1enjesus/human-browser</code>. Your agent gets it instantly.',
+    feat_7_p_html: 'One command install: <code>clawhub install human-browser</code>. Your agent gets it instantly.',
     feat_8_h: 'Desktop Mode',
     feat_8_p_html: 'Switch to Windows Chrome fingerprint when needed: <code>launchHuman({ mobile: false })</code>.',
     feat_9_h: 'Any Server, Zero Setup',
@@ -151,7 +153,7 @@ var TRANSLATIONS = {
     affiliate_title: 'Prefer self-hosted proxies?',
     proxy_compare_title: 'Recommended residential proxies',
     proxy_compare_sub: 'All providers below are tested and compatible with Human Browser. Set PROXY_HOST/USER/PASS in your env and it works out of the box.',
-    proxy_compare_note: '💡 Don't want to manage proxies? Human Browser Starter — $13.99/mo includes a residential IP out of the box.',
+    proxy_compare_note: '💡 Don\'t want to manage proxies? Human Browser Starter — $13.99/mo includes a residential IP out of the box.',
     affiliate_desc: 'Tested and working with Human Browser. Pick a provider and set your proxy credentials in the env vars.',
     aff_hb_title: 'Promote Human Browser. Earn 20%.',
     aff_hb_desc: 'Share the skill with developers, AI teams, or scraping communities. You get 20% of every subscription they buy — recurring, forever.',
@@ -258,7 +260,7 @@ var TRANSLATIONS = {
     modal_cmd_label:    'INSTALL COMMAND',
     modal_tap_copy:     '📋 tap to copy',
     modal_msg_label:    'OR SEND THIS MESSAGE TO YOUR AGENT',
-    modal_msg:          'Install the Human Browser skill and use it whenever I browse the web — Instagram, LinkedIn, Binance, Cloudflare-protected sites, or any page that blocks bots. It uses a real residential IP and iPhone 15 Pro fingerprint, so you\'ll always pass anti-bot checks. Install with: clawhub install al1enjesus/human-browser',
+    modal_msg:          'Install the Human Browser skill and use it whenever I browse the web — Instagram, LinkedIn, Binance, Cloudflare-protected sites, or any page that blocks bots. It uses a real residential IP and iPhone 15 Pro fingerprint, so you\'ll always pass anti-bot checks. Install with: clawhub install human-browser',
     modal_tap_copy2:    '📋 tap to copy',
     modal_clawhub:      'View on ClawHub →',
     modal_github:       'GitHub ↗',
@@ -284,7 +286,7 @@ var TRANSLATIONS = {
     // ─── Hero ───
     hero_pill:     'Любая страна · Резидентный IP · Ноль банов',
     hero_prefix:   'Браузер, который',
-    hero_desc:     'Без Mac Mini. Без локальной настройки. Полноценный Playwright-браузер на любом сервере — выглядит как реальное устройство и обходит любую защиту от ботов.',
+    hero_desc:     '<span class="no-mac-hl">Без Mac Mini.</span> Без локальной настройки. Полноценный Playwright-браузер на любом сервере — выглядит как реальное устройство и обходит любую защиту от ботов.',
     install_intro: 'Создан для OpenClaw — просто скиньте это своему агенту, он всё сделает сам',
     install_available: 'Доступно на',
     // ─── Nav ───
@@ -293,6 +295,8 @@ var TRANSLATIONS = {
     nav_how:       'Как это работает',
     nav_cta:       'Начать →',
     nav_mobile_skill: 'Скилл ClawHub (бесплатно)',
+    trial_desc: 'Без регистрации. Без карты. Просто забери credentials и начни.',
+    trial_cta:  'Получить credentials →',
     // ─── Trust bar ───
     trust_1: 'Обходит Cloudflare',
     trust_2: 'Обходит DataDome',
@@ -342,7 +346,7 @@ var TRANSLATIONS = {
     feat_6_h: 'Полная антидетекция',
     feat_6_p_html: '<code>webdriver=false</code>, без флагов автоматизации, настоящий список плагинов, canvas fingerprint, реальный часовой пояс и геолокация.',
     feat_7_h: 'Нативный скилл OpenClaw',
-    feat_7_p_html: 'Установка одной командой: <code>clawhub install al1enjesus/human-browser</code>. Агент получает всё мгновенно.',
+    feat_7_p_html: 'Установка одной командой: <code>clawhub install human-browser</code>. Агент получает всё мгновенно.',
     feat_8_h: 'Режим десктопа',
     feat_8_p_html: 'Переключение на фингерпринт Windows Chrome когда нужно: <code>launchHuman({ mobile: false })</code>.',
     feat_9_h: 'Любой сервер, нулевой сетап',
@@ -525,7 +529,7 @@ var TRANSLATIONS = {
     modal_cmd_label:    'КОМАНДА УСТАНОВКИ',
     modal_tap_copy:     '📋 нажмите чтобы скопировать',
     modal_msg_label:    'ИЛИ ОТПРАВЬТЕ ЭТО СООБЩЕНИЕ АГЕНТУ',
-    modal_msg:          'Установи скилл Human Browser и используй его всегда, когда мне нужно зайти в интернет — Instagram, LinkedIn, Binance, сайты с защитой Cloudflare или любые страницы, которые блокируют ботов. У него настоящий резидентный IP и фингерпринт iPhone 15 Pro — антибот-системы не заблокируют. Установка: clawhub install al1enjesus/human-browser',
+    modal_msg:          'Установи скилл Human Browser и используй его всегда, когда мне нужно зайти в интернет — Instagram, LinkedIn, Binance, сайты с защитой Cloudflare или любые страницы, которые блокируют ботов. У него настоящий резидентный IP и фингерпринт iPhone 15 Pro — антибот-системы не заблокируют. Установка: clawhub install human-browser',
     modal_tap_copy2:    '📋 нажмите чтобы скопировать',
     modal_clawhub:      'Открыть на ClawHub →',
     modal_github:       'GitHub ↗',
@@ -551,7 +555,7 @@ var TRANSLATIONS = {
     // ─── Hero ───
     hero_pill:     'Cualquier país · IP residencial · Cero bloqueos',
     hero_prefix:   'El navegador que',
-    hero_desc:     'Sin Mac Mini. Sin configuración local. Un navegador Playwright completo que corre en cualquier servidor, parece un dispositivo real y evita todo sistema anti-bot.',
+    hero_desc:     '<span class="no-mac-hl">Sin Mac Mini.</span> Sin configuración local. Un navegador Playwright completo que corre en cualquier servidor, parece un dispositivo real y evita todo sistema anti-bot.',
     install_intro: 'Hecho para OpenClaw — solo envía esto a tu agente, él se encarga de todo',
     install_available: 'Disponible en',
     // ─── Nav ───
@@ -560,6 +564,8 @@ var TRANSLATIONS = {
     nav_how:       'Cómo funciona',
     nav_cta:       'Empezar →',
     nav_mobile_skill: 'Skill ClawHub (gratis)',
+    trial_desc: 'Sin registro. Sin tarjeta. Solo toma las credenciales y empieza.',
+    trial_cta:  'Obtener credenciales →',
     // ─── Trust bar ───
     trust_1: 'Evita Cloudflare',
     trust_2: 'Evita DataDome',
@@ -609,7 +615,7 @@ var TRANSLATIONS = {
     feat_6_h: 'Anti-detección Completa',
     feat_6_p_html: '<code>webdriver=false</code>, sin flags de automatización, lista real de plugins, canvas fingerprint, timezone y geo reales.',
     feat_7_h: 'Skill Nativo de OpenClaw',
-    feat_7_p_html: 'Instalación en un comando: <code>clawhub install al1enjesus/human-browser</code>. Tu agente lo obtiene al instante.',
+    feat_7_p_html: 'Instalación en un comando: <code>clawhub install human-browser</code>. Tu agente lo obtiene al instante.',
     feat_8_h: 'Modo Escritorio',
     feat_8_p_html: 'Cambia a huella Windows Chrome cuando lo necesites: <code>launchHuman({ mobile: false })</code>.',
     feat_9_h: 'Cualquier Servidor, Sin Configuración',
@@ -792,7 +798,7 @@ var TRANSLATIONS = {
     modal_cmd_label:    'COMANDO DE INSTALACIÓN',
     modal_tap_copy:     '📋 toca para copiar',
     modal_msg_label:    'O ENVÍA ESTE MENSAJE A TU AGENTE',
-    modal_msg:          'Instala el skill Human Browser y úsalo siempre que navegue — Instagram, LinkedIn, Binance, sitios protegidos por Cloudflare. Usa IP residencial real y huella iPhone 15 Pro. Instala con: clawhub install al1enjesus/human-browser',
+    modal_msg:          'Instala el skill Human Browser y úsalo siempre que navegue — Instagram, LinkedIn, Binance, sitios protegidos por Cloudflare. Usa IP residencial real y huella iPhone 15 Pro. Instala con: clawhub install human-browser',
     modal_tap_copy2:    '📋 toca para copiar',
     modal_clawhub:      'Ver en ClawHub →',
     modal_github:       'GitHub ↗',
@@ -818,7 +824,7 @@ var TRANSLATIONS = {
     // ─── Hero ───
     hero_pill:     '任意国家 · 住宅IP · 零封禁',
     hero_prefix:   '这个浏览器',
-    hero_desc:     '无需Mac Mini，无需本地配置。完整的Playwright浏览器，可在任何服务器上运行，看起来像真实设备，绕过所有反爬虫系统。',
+    hero_desc:     '<span class="no-mac-hl">无需Mac Mini，</span>无需本地配置。完整的Playwright浏览器，可在任何服务器上运行，看起来像真实设备，绕过所有反爬虫系统。',
     install_intro: '专为 OpenClaw 打造 — 把这条命令发给你的Agent，它会搞定一切',
     install_available: '可用平台',
     // ─── Nav ───
@@ -827,6 +833,8 @@ var TRANSLATIONS = {
     nav_how:       '工作原理',
     nav_cta:       '立即开始 →',
     nav_mobile_skill: 'ClawHub技能（免费）',
+    trial_desc: '无需注册，无需信用卡。直接获取凭证，立即开始。',
+    trial_cta:  '获取凭证 →',
     // ─── Trust bar ───
     trust_1: '绕过 Cloudflare',
     trust_2: '绕过 DataDome',
@@ -876,7 +884,7 @@ var TRANSLATIONS = {
     feat_6_h: '完整反检测',
     feat_6_p_html: '<code>webdriver=false</code>，无自动化标志，真实插件列表，canvas指纹，真实时区和地理位置。',
     feat_7_h: 'OpenClaw原生技能',
-    feat_7_p_html: '一条命令安装：<code>clawhub install al1enjesus/human-browser</code>。你的Agent立即获得它。',
+    feat_7_p_html: '一条命令安装：<code>clawhub install human-browser</code>。你的Agent立即获得它。',
     feat_8_h: '桌面模式',
     feat_8_p_html: '需要时切换到Windows Chrome指纹：<code>launchHuman({ mobile: false })</code>。',
     feat_9_h: '任意服务器，零配置',
@@ -1059,7 +1067,7 @@ var TRANSLATIONS = {
     modal_cmd_label:    '安装命令',
     modal_tap_copy:     '📋 点击复制',
     modal_msg_label:    '或将此消息发送给您的代理',
-    modal_msg:          '安装Human Browser技能，每次我需要浏览网络时使用它 — Instagram、LinkedIn、Binance、受Cloudflare保护的网站。使用真实住宅IP和iPhone 15 Pro指纹。安装命令：clawhub install al1enjesus/human-browser',
+    modal_msg:          '安装Human Browser技能，每次我需要浏览网络时使用它 — Instagram、LinkedIn、Binance、受Cloudflare保护的网站。使用真实住宅IP和iPhone 15 Pro指纹。安装命令：clawhub install human-browser',
     modal_tap_copy2:    '📋 点击复制',
     modal_clawhub:      '在ClawHub查看 →',
     modal_github:       'GitHub ↗',
@@ -1275,7 +1283,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ═══════════════════════════════════════════════════════════════
 
 function copyInstallCmd() {
-  var cmd = 'clawhub install al1enjesus/human-browser';
+  var cmd = 'clawhub install human-browser';
   var btn = document.getElementById('heroInstallCopy');
   navigator.clipboard.writeText(cmd).then(function() {
     if (btn) {
@@ -1391,12 +1399,16 @@ async function selectCoin(coin) {
     var data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Server error');
     var addr = data.wallet_address || '';
-    // 0xProcessing returns payment_url (redirect) → load in iframe
+    // 0xProcessing returns payment_url → open in new tab (avoids X-Frame-Options issues)
     if (data.payment_url && !addr) {
+      window.open(data.payment_url, '_blank', 'noopener,noreferrer');
       invoice.innerHTML =
-        '<div class="crypto-iframe-wrap">' +
-          '<iframe src="' + data.payment_url + '" class="crypto-iframe" allow="payment *" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>' +
-          '<p class="cib-hint" style="text-align:center;margin-top:0.5rem;">Order: <code>' + (data.order_id || '') + '</code> · <a href="' + data.payment_url + '" target="_blank" style="color:#06b6d4;">Open in browser ↗</a></p>' +
+        '<div class="crypto-invoice-box" style="text-align:center;">' +
+          '<div style="font-size:2rem;margin-bottom:0.75rem;">🔗</div>' +
+          '<div class="cib-title" style="margin-bottom:0.5rem;">Payment page opened</div>' +
+          '<p style="color:#94a3b8;font-size:0.9rem;margin:0 0 1rem;">Complete your payment in the new tab. Credentials are delivered automatically after confirmation.</p>' +
+          '<a href="' + data.payment_url + '" target="_blank" rel="noopener noreferrer" class="pay-back-btn" style="display:inline-block;text-decoration:none;margin-bottom:0.75rem;">↗ Reopen payment page</a>' +
+          '<p style="color:#64748b;font-size:0.78rem;margin:0;">Order: <code style="color:#94a3b8;">' + (data.order_id || '') + '</code></p>' +
         '</div>';
       return;
     }
@@ -1490,3 +1502,23 @@ window.showAgentModal   = showAgentModal;
 window.closeAgentModal  = closeAgentModal;
 window.handleModalOverlayClick = handleModalOverlayClick;
 window.copyModalCmd     = copyModalCmd;
+
+window._installCmds = {
+  npm: 'npm install human-browser',
+  github: 'cd ~/.openclaw/workspace && mkdir -p skills/human-browser/scripts && curl -sL https://raw.githubusercontent.com/al1enjesus/human-browser/main/SKILL.md > skills/human-browser/SKILL.md && curl -sL https://raw.githubusercontent.com/al1enjesus/human-browser/main/scripts/browser-human.js > skills/human-browser/scripts/browser-human.js'
+};
+window._installTab = 'npm';
+
+function switchInstallTab(tab, btn) {
+  window._installTab = tab;
+  var cmd = window._installCmds[tab] || '';
+  var el = document.getElementById('amodal-cmd-text');
+  if (el) el.textContent = cmd;
+  var box = document.getElementById('amodal-cmd-box');
+  if (box) box.title = cmd;
+  // toggle active class
+  var tabs = document.querySelectorAll('.amodal-tab');
+  tabs.forEach(function(t){ t.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+}
+

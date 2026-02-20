@@ -21,7 +21,7 @@ export default function Document() {
         {/* Stripe.js — must load before init.js */}
         <script src="https://js.stripe.com/v3/" async></script>
         {/* Always load init.js — works for static + SSR pages */}
-        <script src="/init.js?v=15" defer></script>
+        <script src="/init.js?v=20" defer></script>
       </body>
     </Html>
   );

@@ -11,7 +11,36 @@ if (!global._pprOrders) global._pprOrders = new Map();
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
-  const { order_id, status, amount, currency } = req.body || {};
+  const body = req.body || {};
+  const { order_id, status, amount, currency } = body;
+
+  // ── Route Clawster crypto payments ────────────────────────────────────────
+  const meta = body.metadata || {};
+  const isClawster = meta.product === 'clawster' || String(order_id || '').startsWith('clawster-');
+  if (isClawster) {
+    const isPaid = status === 'confirmed' || status === 'paid' || status === 'completed';
+    if (isPaid && meta.tg_user_id && meta.bot_token) {
+      try {
+        await fetch('https://getclawster.dev/api/webhooks/crypto', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            secret: meta.webhook_secret || process.env.CLAWSTER_CRYPTO_SECRET || 'clawster-crypto-hook-2026',
+            tg_user_id: meta.tg_user_id,
+            bot_token: meta.bot_token,
+            bot_username: meta.bot_username,
+            plan: meta.plan,
+            order_id,
+          }),
+        });
+        console.log(`[ppr/webhook] Clawster order routed: ${order_id}`);
+      } catch (e) {
+        console.error('[ppr/webhook] Clawster route error:', e);
+      }
+    }
+    return res.status(200).json({ ok: true, routed: 'clawster' });
+  }
+  // ─────────────────────────────────────────────────────────────────────────
 
   if (!order_id) return res.status(400).json({ error: 'missing order_id' });
 

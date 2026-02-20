@@ -137,7 +137,7 @@ const body = `
   <p>
     Human Browser is an OpenClaw skill. Your agent installs it with one command:
   </p>
-  <pre><code>clawhub install al1enjesus/human-browser</code></pre>
+  <pre><code>clawhub install human-browser</code></pre>
   <p>
     After installation, your agent knows how to launch a stealth browser, pick a country, pay for credentials autonomously, and navigate any site without getting blocked.
   </p>
@@ -290,7 +290,7 @@ async function loginAndScrape(email, password, targetUrl) {
     You can use Human Browser two ways:
   </p>
   <p>
-    <strong>As an OpenClaw skill</strong> (<code>clawhub install al1enjesus/human-browser</code>): Your agent understands when to use the browser, how to pick the right country, how to handle failures. The SKILL.md gives Claude all the context it needs to use the tool correctly.
+    <strong>As an OpenClaw skill</strong> (<code>clawhub install human-browser</code>): Your agent understands when to use the browser, how to pick the right country, how to handle failures. The SKILL.md gives Claude all the context it needs to use the tool correctly.
   </p>
   <p>
     <strong>As a raw npm package</strong> (<code>npm install human-browser</code>): Drop the <code>launchHuman()</code> function into any Node.js code. Works with any AI framework — LangChain, AutoGPT, custom agents.
@@ -311,7 +311,7 @@ async function loginAndScrape(email, password, targetUrl) {
     <p>Install the skill in seconds. Residential proxy from $13.99/mo. Script is free & open source.</p>
     <a href="https://humanbrowser.dev" class="btn-cta">Get Started →</a>
     <br><br>
-    <code style="background:rgba(0,0,0,0.3);color:#c4b5fd;padding:0.5rem 1rem;border-radius:6px;font-size:0.85rem;">clawhub install al1enjesus/human-browser</code>
+    <code style="background:rgba(0,0,0,0.3);color:#c4b5fd;padding:0.5rem 1rem;border-radius:6px;font-size:0.85rem;">clawhub install human-browser</code>
   </div>
 
   <div class="blog-footer">

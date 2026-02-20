@@ -40,32 +40,68 @@ export default async function handler(req, res) {
   const rate = CRYPTO_RATES[currency] || 1;
   const cryptoAmount = (tier.usd * rate).toFixed(currency === 'BTC' ? 8 : 4);
 
-  // Create 0xProcessing invoice
+  // Map PPR currency to 0xProcessing format
+  const OX_CURRENCY_MAP = {
+    USDTTRC: 'USDT (TRC20)',
+    USDT:    'USDT (TRC20)',
+    ETH:     'ETH',
+    BTC:     'BTC',
+    SOL:     'SOL',
+  };
+  const oxCurrency = OX_CURRENCY_MAP[currency] || 'USDT (TRC20)';
+  const merchantId = process.env.OX_MERCHANT_ID;
+  const apiKey     = process.env.OX_API_KEY;
+
+  // Create 0xProcessing invoice via form POST
   let walletAddress = null;
   let invoiceUrl = null;
 
-  try {
-    const oxResp = await fetch('https://app.0xprocessing.com/api/v1/invoices/create', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.OX_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        amount: tier.usd,
-        currency_in: 'USD',
-        currency_out: currency,
-        order_id: orderId,
-        description: `Human Browser PPR: ${reqCount} requests`,
-        callback_url: `https://humanbrowser.dev/api/ppr/webhook`,
-        return_url: `https://humanbrowser.dev/ppr/success?order=${orderId}`,
-      }),
-    });
-    const oxData = await oxResp.json();
-    walletAddress = oxData.wallet_address || oxData.address;
-    invoiceUrl = oxData.invoice_url || oxData.payment_url;
-  } catch (e) {
-    console.warn('[ppr/quote] 0xProcessing error:', e.message);
+  if (merchantId) {
+    try {
+      const params = new URLSearchParams({
+        AmountUSD:  tier.usd.toString(),
+        Amount:     tier.usd.toString(),
+        Currency:   oxCurrency,
+        Email:      'ppr@humanbrowser.dev',
+        ClientId:   orderId,
+        ClientID:   orderId,
+        MerchantId: merchantId,
+        BillingId:  orderId,
+        SuccessUrl: `https://humanbrowser.dev/ppr?order=${orderId}&status=paid`,
+        SuccessURL: `https://humanbrowser.dev/ppr?order=${orderId}&status=paid`,
+        CancelUrl:  'https://humanbrowser.dev/ppr',
+        FailURL:    'https://humanbrowser.dev/ppr',
+        ReturnUrl:  'true',
+        AutoReturn: 'true',
+      });
+      if (apiKey) params.append('api_key', apiKey);
+
+      const oxResp = await fetch('https://app.0xprocessing.com/Payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+      });
+
+      const contentType = oxResp.headers.get('content-type') || '';
+      let oxData = {};
+      if (contentType.includes('application/json')) {
+        oxData = await oxResp.json();
+      } else {
+        const text = await oxResp.text();
+        try { oxData = JSON.parse(text); } catch { oxData = {}; }
+      }
+
+      walletAddress = oxData.wallet_address || oxData.address || null;
+      invoiceUrl = oxData.redirectUrl || oxData.redirect_url || oxData.url ||
+                   oxData.payment_url || oxData.paymentUrl || oxData.link || null;
+    } catch (e) {
+      console.warn('[ppr/quote] 0xProcessing error:', e.message);
+    }
+  }
+
+  // Fallback: direct 0xProcessing payment URL
+  if (!invoiceUrl && !walletAddress && merchantId) {
+    invoiceUrl = `https://app.0xprocessing.com/Payment?MerchantId=${encodeURIComponent(merchantId)}&AmountUSD=${tier.usd}&Currency=${encodeURIComponent(oxCurrency)}&ClientId=${orderId}&SuccessUrl=${encodeURIComponent(`https://humanbrowser.dev/ppr?order=${orderId}&status=paid`)}&CancelUrl=${encodeURIComponent('https://humanbrowser.dev/ppr')}&ReturnUrl=false`;
   }
 
   return res.status(200).json({

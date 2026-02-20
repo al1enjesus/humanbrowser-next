@@ -9,7 +9,7 @@ const schema = {
       "description": "Install Human Browser — the stealth Playwright browser with residential proxy for AI agents.",
       "url": "https://humanbrowser.dev/install",
       "step": [
-        { "@type": "HowToStep", "position": 1, "name": "Install via OpenClaw/ClawHub", "text": "Run: clawhub install al1enjesus/human-browser" },
+        { "@type": "HowToStep", "position": 1, "name": "Install via OpenClaw/ClawHub", "text": "Run: clawhub install human-browser" },
         { "@type": "HowToStep", "position": 2, "name": "Install via npm", "text": "Run: npm install human-browser" },
         { "@type": "HowToStep", "position": 3, "name": "Get proxy credentials", "text": "Purchase residential proxy credentials at humanbrowser.dev from $13.99/mo" },
         { "@type": "HowToStep", "position": 4, "name": "Launch the browser", "text": "Call launchHuman() in your Node.js code" }
@@ -18,7 +18,7 @@ const schema = {
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "How do I install Human Browser?", "acceptedAnswer": { "@type": "Answer", "text": "Install Human Browser via npm (npm install human-browser), via OpenClaw (clawhub install al1enjesus/human-browser), or via skild.sh (skild install al1enjesus/human-browser)." } },
+        { "@type": "Question", "name": "How do I install Human Browser?", "acceptedAnswer": { "@type": "Answer", "text": "Install Human Browser via npm (npm install human-browser), via OpenClaw (clawhub install human-browser), or via skild.sh (skild install al1enjesus/human-browser)." } },
         { "@type": "Question", "name": "Is Human Browser free?", "acceptedAnswer": { "@type": "Answer", "text": "The Human Browser script is 100% free and open source on GitHub. The paid part is the residential proxy credentials (starting at $13.99/mo) which give you a real home IP address." } },
         { "@type": "Question", "name": "What does Human Browser require?", "acceptedAnswer": { "@type": "Answer", "text": "Node.js, Playwright (npm install playwright && npx playwright install chromium), and a residential proxy subscription from humanbrowser.dev." } }
       ]
@@ -31,7 +31,7 @@ export default function InstallPage() {
     <>
       <Head>
         <title>Install Human Browser — Stealth Playwright Browser | npm & OpenClaw</title>
-        <meta name="description" content="Install Human Browser in seconds. npm install human-browser · clawhub install al1enjesus/human-browser. Stealth Playwright browser with residential proxy from $13.99/mo." />
+        <meta name="description" content="Install Human Browser in seconds. npm install human-browser · clawhub install human-browser. Stealth Playwright browser with residential proxy from $13.99/mo." />
         <meta name="keywords" content="install human browser, human browser npm, human browser openClaw, human browser install guide, npm install human browser, clawhub human browser" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://humanbrowser.dev/install" />
@@ -106,7 +106,7 @@ const body = `
     <div class="install-card primary">
       <div class="install-card-label rec">⭐ Recommended · OpenClaw</div>
       <h3>AI Agent Install</h3>
-      <pre onclick="navigator.clipboard.writeText(this.querySelector('code').textContent)"><code>clawhub install al1enjesus/human-browser</code></pre>
+      <pre onclick="navigator.clipboard.writeText(this.querySelector('code').textContent)"><code>clawhub install human-browser</code></pre>
       <div class="install-card-note">Installs skill + full context for AI agents. Tap to copy.</div>
     </div>
     <div class="install-card">

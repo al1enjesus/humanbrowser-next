@@ -2,7 +2,7 @@ export default function handler(req, res) {
   res.status(200).json({
     service: 'Human Browser by Virixlabs',
     description: 'Cloud-based stealth browser with residential proxy. No Mac Mini needed.',
-    skill: 'clawhub install al1enjesus/human-browser',
+    skill: 'clawhub install human-browser',
     plans: {
       starter: {
         name: 'Human Browser Starter',

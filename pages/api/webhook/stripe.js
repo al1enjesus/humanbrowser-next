@@ -84,7 +84,7 @@ export PROXY_PORT=${creds.proxy_port}
 export PROXY_USER="${creds.proxy_user}"
 export PROXY_PASS="${creds.proxy_pass}"
 
-clawhub install al1enjesus/human-browser</pre>
+clawhub install human-browser</pre>
     </div>
 
     <div style="text-align:center;margin-bottom:24px;">
