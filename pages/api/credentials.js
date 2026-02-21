@@ -14,21 +14,21 @@ const PLANS = {
 };
 
 function makeCredentials(plan, sessionId) {
-  const customer = process.env.BD_CUSTOMER || 'brd-customer-hl_b1694dd8';
-  const zone     = process.env.BD_ZONE     || 'mcp_unlocker';
-  const pass     = process.env.BD_ZONE_PASS;
-  const browser  = process.env.BD_BROWSER;
-  const bpass    = process.env.BD_BROWSER_PASS;
+  // Decodo residential proxy (primary since 2026-02-21)
+  const host = process.env.DECODO_HOST || 'ro.decodo.com';
+  const port = process.env.DECODO_PORT || '13001';
+  const user = process.env.DECODO_USER || 'spikfblbkh';
+  const pass = process.env.DECODO_PASS || 'pe4tpmWY=7bb89YdWd';
 
-  // Country targeting: starter = RO only, pro/enterprise = all
-  const country = (plan === 'starter') ? '-country-ro' : '';
+  // Unique sticky session per order (port 10001-49999)
+  const session = 10001 + Math.abs(sessionId?.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % 39999 || 0);
 
   return {
-    proxy_host:  'brd.superproxy.io',
-    proxy_port:  '22225',
-    proxy_user:  `${customer}-zone-${zone}${country}`,
+    proxy_host:  host,
+    proxy_port:  String(session),
+    proxy_user:  user,
     proxy_pass:  pass,
-    cdp_url:     browser ? `wss://${customer}-zone-${browser}${country}:${bpass}@brd.superproxy.io:9222` : null,
+    cdp_url:     null,
     plan_key:    plan,
     plan_name:   PLANS[plan]?.name || plan,
     bandwidth:   PLANS[plan]?.bandwidth || '2GB',
