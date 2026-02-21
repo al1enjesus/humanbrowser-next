@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import posthog from 'posthog-js';
 
 const POSTHOG_KEY = 'phc_VHVdzWU7sO9QZ9SFFvGnrl2ap0ykEUn7nsVLCmV3YlF';
-const POSTHOG_HOST = 'https://us.i.posthog.com';
+const POSTHOG_HOST = 'https://eu.i.posthog.com';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();

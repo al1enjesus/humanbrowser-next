@@ -108,7 +108,21 @@ export default async function handler(req, res) {
       await sendCredentialEmail({ email, plan, orderId, creds });
     }
 
-    // 2. Notify owner on Telegram
+    // 2. Store creds on VPS (persistent SQLite, survives Vercel restarts)
+    const VPS = process.env.VPS_URL || 'http://109.123.239.20:3050';
+    try {
+      await fetch(`${VPS}/api/hb/store-order`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ order_id: orderId, plan, email: email || null,
+          proxy_host: creds.proxy_host, proxy_port: creds.proxy_port,
+          proxy_user: creds.proxy_user, proxy_pass: creds.proxy_pass,
+          cdp_url: creds.cdp_url || null, amount: String(amount), currency }),
+        signal: AbortSignal.timeout(5000),
+      });
+    } catch (e) { console.error('[0x webhook] VPS store error:', e.message); }
+
+    // 3. Notify owner on Telegram
     await notifyOwner({ orderId, amount, currency, plan, email });
 
     // Clean up stored order
