@@ -1,5 +1,32 @@
 import React from 'react';
 import Head from 'next/head';
+import Stripe from 'stripe';
+
+const PLANS = {
+  starter:    { name: 'Starter',    bandwidth: '2GB' },
+  pro:        { name: 'Pro',        bandwidth: '20GB' },
+  enterprise: { name: 'Enterprise', bandwidth: 'Unlimited' },
+};
+
+function makeCredentials(plan, sessionId) {
+  const host = process.env.DECODO_HOST || 'ro.decodo.com';
+  const port = process.env.DECODO_PORT || '13001';
+  const user = process.env.DECODO_USER || 'spikfblbkh';
+  const pass = process.env.DECODO_PASS || 'pe4tpmWY=7bb89YdWd';
+  const session = 10001 + Math.abs((sessionId || '').split('').reduce((a, c) => a + c.charCodeAt(0), 0) % 39999);
+  return {
+    proxy_host:  host,
+    proxy_port:  String(session),
+    proxy_user:  user,
+    proxy_pass:  pass,
+    cdp_url:     null,
+    plan_key:    plan,
+    plan_name:   PLANS[plan]?.name || plan,
+    bandwidth:   PLANS[plan]?.bandwidth || '2GB',
+    expires_at:  new Date(Date.now() + 31 * 24 * 60 * 60 * 1000).toISOString(),
+    order_ref:   (sessionId || '').slice(-8),
+  };
+}
 
 export async function getServerSideProps({ query }) {
   const sessionId = query.session || query.inv || null;
@@ -9,13 +36,9 @@ export async function getServerSideProps({ query }) {
 
   // ── Crypto payment success (0xProcessing) ──────────────────
   if (method === 'crypto' && orderId) {
-    // Try to fetch credentials from VPS (stored by webhook)
     let cryptoCreds = null;
     try {
-      const baseUrl = process.env.VERCEL_URL
-        ? `https://${process.env.VERCEL_URL}`
-        : 'https://humanbrowser.dev';
-      const r = await fetch(`${baseUrl}/api/hb-creds?order_id=${encodeURIComponent(orderId)}`);
+      const r = await fetch(`https://humanbrowser.dev/api/hb-creds?order_id=${encodeURIComponent(orderId)}`);
       const d = await r.json();
       if (d.ok && d.status === 'paid') cryptoCreds = d;
     } catch (_) {}
@@ -38,16 +61,22 @@ export async function getServerSideProps({ query }) {
   }
 
   try {
-    // ── Stripe payment — retrieve credentials ───────────────
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : 'https://humanbrowser.dev';
+    // ── Stripe: call SDK directly (no internal HTTP) ───────────
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    const stripeSession = await stripe.checkout.sessions.retrieve(sessionId);
 
-    const res = await fetch(`${baseUrl}/api/credentials?session=${sessionId}`);
-    if (!res.ok) throw new Error('Not found');
-    const data = await res.json();
-    return { props: { creds: data, error: null, sessionId, cryptoSuccess: false } };
+    if (stripeSession.payment_status !== 'paid') {
+      return { props: { creds: null, error: 'Payment not confirmed yet', sessionId, cryptoSuccess: false } };
+    }
+
+    const planKey = stripeSession.metadata?.plan || 'starter';
+    const email   = stripeSession.customer_email || stripeSession.customer_details?.email || null;
+    const creds   = makeCredentials(planKey, sessionId);
+    creds.email   = email;
+
+    return { props: { creds, error: null, sessionId, cryptoSuccess: false } };
   } catch (e) {
+    console.error('[success SSR]', e.message);
     return { props: { creds: null, error: 'Loading credentials...', sessionId, cryptoSuccess: false } };
   }
 }
