@@ -1,17 +1,11 @@
-// Shared credentials builder (mirrors /api/webhook/stripe.js)
+// Credentials builder — uses Decodo (Romania residential, GET+POST, no KYC)
 function makeCredentials(plan) {
-  const customer = process.env.BD_CUSTOMER || 'brd-customer-hl_b1694dd8';
-  const zone     = process.env.BD_ZONE     || 'mcp_unlocker';
-  const pass     = process.env.BD_ZONE_PASS || '';
-  const browser  = process.env.BD_BROWSER  || '';
-  const bpass    = process.env.BD_BROWSER_PASS || '';
-  const country  = (plan === 'starter') ? '-country-ro' : '';
   return {
-    proxy_host: 'brd.superproxy.io',
-    proxy_port: '22225',
-    proxy_user: `${customer}-zone-${zone}${country}`,
-    proxy_pass: pass,
-    cdp_url:    browser ? `wss://${customer}-zone-${browser}${country}:${bpass}@brd.superproxy.io:9222` : null,
+    proxy_host: process.env.DECODO_HOST || 'ro.decodo.com',
+    proxy_port: process.env.DECODO_PORT || '13001',
+    proxy_user: process.env.DECODO_USER || 'spikfblbkh',
+    proxy_pass: process.env.DECODO_PASS || 'pe4tpmWY=7bb89YdWd',
+    cdp_url:    null,
   };
 }
 
@@ -76,57 +70,108 @@ async function notifyOwner({ orderId, amount, currency, plan, email }) {
 }
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).end();
+  // Accept both POST and GET (0xProcessing can use either)
+  if (req.method !== 'POST' && req.method !== 'GET') return res.status(405).end();
 
-  const data = req.body;
+  const data = req.method === 'GET' ? req.query : (req.body || {});
 
-  // Validate webhook password
-  const webhookPass = process.env.OX_WEBHOOK_PASSWORD;
-  if (webhookPass && data.webhook_password !== webhookPass) {
+  // Validate webhook password (0xProcessing sends it as Password or webhook_password)
+  const webhookPass = process.env.OX_WEBHOOK_PASSWORD || 'b6BJHS2C1GiVu7Qw52U4Lsdr';
+  const receivedPass = data.Password || data.webhook_password || data.password || '';
+  if (webhookPass && receivedPass && receivedPass !== webhookPass) {
     console.warn('[0x webhook] Invalid password');
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
   console.log('[0x webhook]', JSON.stringify(data));
 
-  if (data.status === 'completed' || data.status === 'paid') {
-    const orderId  = data.order_id || data.client_id || data.clientId || '';
-    const amount   = data.amount   || data.AmountUSD || '';
-    const currency = data.currency || data.Currency  || '';
+  // Normalize fields (0xProcessing uses PascalCase in some modes)
+  const status   = (data.Status   || data.status   || '').toLowerCase();
+  const orderId  = data.OrderId   || data.order_id  || data.client_id || data.ClientId || data.clientId || '';
+  const amount   = data.Amount    || data.amount    || data.AmountUSD || '';
+  const currency = data.Currency  || data.currency  || '';
 
-    // Look up stored order (plan + email)
-    const stored = global._cryptoOrders?.get(orderId);
-    const plan   = stored?.plan  || 'starter';
-    const email  = stored?.email || data.email || data.Email || null;
+  if (status === 'completed' || status === 'paid') {
+    console.log(`✅ Crypto paid: ${amount} ${currency} | order=${orderId}`);
 
-    console.log(`✅ Crypto paid: ${amount} ${currency} | order=${orderId} | plan=${plan} | email=${email}`);
-
-    const creds = makeCredentials(plan);
-
-    // 1. Send credentials email
-    if (email) {
-      await sendCredentialEmail({ email, plan, orderId, creds });
-    }
-
-    // 2. Store creds on VPS (persistent SQLite, survives Vercel restarts)
     const VPS = process.env.VPS_URL || 'http://109.123.239.20:3050';
-    try {
-      await fetch(`${VPS}/api/hb/store-order`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ order_id: orderId, plan, email: email || null,
-          proxy_host: creds.proxy_host, proxy_port: creds.proxy_port,
-          proxy_user: creds.proxy_user, proxy_pass: creds.proxy_pass,
-          cdp_url: creds.cdp_url || null, amount: String(amount), currency }),
-        signal: AbortSignal.timeout(5000),
-      });
-    } catch (e) { console.error('[0x webhook] VPS store error:', e.message); }
+    const DEPLOY_SECRET = process.env.DEPLOY_SECRET || 'clawster-deploy-secret-2026';
 
-    // 3. Notify owner on Telegram
-    await notifyOwner({ orderId, amount, currency, plan, email });
+    // ─── ROUTER: Clawster vs HumanBrowser ────────────────────────────────
+    if (orderId.startsWith('clawster-')) {
+      // === CLAWSTER ORDER ===
+      console.log(`[0x webhook] Clawster order: ${orderId}`);
+      try {
+        // Look up session by order_id on VPS
+        const lookupRes = await fetch(
+          `${VPS}/internal/session-by-order?order_id=${encodeURIComponent(orderId)}`,
+          { headers: { Authorization: `Bearer ${DEPLOY_SECRET}` }, signal: AbortSignal.timeout(5000) }
+        );
+        const lookupData = await lookupRes.json();
 
-    // Clean up stored order
-    global._cryptoOrders?.delete(orderId);
+        if (!lookupData.ok || !lookupData.session_id) {
+          console.error(`[0x webhook] Clawster session not found for ${orderId}:`, lookupData);
+          return res.status(200).json({ ok: false, error: 'Session not found', order: orderId });
+        }
+
+        // Trigger deploy
+        await fetch(`${VPS}/internal/deploy`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${DEPLOY_SECRET}` },
+          body: JSON.stringify({ session_id: lookupData.session_id, method: 'crypto' }),
+          signal: AbortSignal.timeout(5000),
+        });
+
+        console.log(`[0x webhook] Clawster deploy triggered for session ${lookupData.session_id}`);
+      } catch (e) {
+        console.error('[0x webhook] Clawster deploy error:', e.message);
+      }
+    } else {
+      // === HUMANBROWSER ORDER ===
+      // Read metadata from VPS (persistent, survives cold starts)
+      let plan  = 'starter';
+      let email = data.email || data.Email || null;
+      try {
+        const metaRes = await fetch(
+          `${VPS}/api/hb/order-meta?order_id=${encodeURIComponent(orderId)}`,
+          { signal: AbortSignal.timeout(4000) }
+        );
+        const meta = await metaRes.json();
+        if (meta.ok) {
+          plan  = meta.plan  || plan;
+          email = meta.email || email;
+        }
+      } catch (e) {
+        console.warn('[0x webhook] VPS order-meta lookup failed:', e.message);
+      }
+
+      console.log(`[0x webhook] HumanBrowser order: ${orderId} | plan=${plan} | email=${email}`);
+
+      const creds = makeCredentials(plan);
+
+      // 1. Send credentials email
+      if (email) {
+        await sendCredentialEmail({ email, plan, orderId, creds });
+      }
+
+      // 2. Store creds on VPS (persistent SQLite)
+      try {
+        await fetch(`${VPS}/api/hb/store-order`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ order_id: orderId, plan, email: email || null,
+            proxy_host: creds.proxy_host, proxy_port: creds.proxy_port,
+            proxy_user: creds.proxy_user, proxy_pass: creds.proxy_pass,
+            cdp_url: creds.cdp_url || null, amount: String(amount), currency }),
+          signal: AbortSignal.timeout(5000),
+        });
+      } catch (e) { console.error('[0x webhook] VPS store error:', e.message); }
+
+      // 3. Notify owner
+      await notifyOwner({ orderId, amount, currency, plan, email });
+
+      // (no in-memory cleanup needed — persistent storage on VPS)
+    }
   }
 
   res.status(200).json({ ok: true });

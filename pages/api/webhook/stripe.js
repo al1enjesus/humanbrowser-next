@@ -20,19 +20,12 @@ const PLANS = {
 };
 
 function makeCredentials(plan) {
-  const customer = process.env.BD_CUSTOMER || 'brd-customer-hl_b1694dd8';
-  const zone     = process.env.BD_ZONE     || 'mcp_unlocker';
-  const pass     = process.env.BD_ZONE_PASS || '';
-  const browser  = process.env.BD_BROWSER  || '';
-  const bpass    = process.env.BD_BROWSER_PASS || '';
-  const country  = (plan === 'starter') ? '-country-ro' : '';
-
   return {
-    proxy_host:  'brd.superproxy.io',
-    proxy_port:  '22225',
-    proxy_user:  `${customer}-zone-${zone}${country}`,
-    proxy_pass:  pass,
-    cdp_url:     browser ? `wss://${customer}-zone-${browser}${country}:${bpass}@brd.superproxy.io:9222` : null,
+    proxy_host: process.env.DECODO_HOST || 'ro.decodo.com',
+    proxy_port: process.env.DECODO_PORT || '13001',
+    proxy_user: process.env.DECODO_USER || 'spikfblbkh',
+    proxy_pass: process.env.DECODO_PASS || 'pe4tpmWY=7bb89YdWd',
+    cdp_url:    null,
   };
 }
 

@@ -8,9 +8,7 @@ const PLANS = {
   enterprise: { name: 'Human Browser Enterprise', usd: 299,  price: 29900, bandwidth: 'Unlimited' },
 };
 
-// In-memory order store for crypto payments (survives within same serverless instance)
-// ⚠️ Not persistent across cold starts — upgrade to Vercel KV for production
-if (!global._cryptoOrders) global._cryptoOrders = new Map();
+const VPS_URL = process.env.VPS_URL || 'http://109.123.239.20:3050';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
@@ -72,15 +70,19 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: 'Crypto payments temporarily unavailable' });
   }
 
-  // Store order so webhook can look it up
+  // Persist order metadata on VPS so webhook can look it up (survives Vercel cold starts)
   const customerEmail = email || null;
-  global._cryptoOrders.set(orderId, {
-    plan,
-    email: customerEmail,
-    currency: cur,
-    usd: p.usd,
-    created: Date.now(),
-  });
+  try {
+    await fetch(`${VPS_URL}/api/hb/register-order`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ order_id: orderId, plan, email: customerEmail }),
+      signal: AbortSignal.timeout(4000),
+    });
+  } catch (e) {
+    console.warn('[buy] VPS register-order failed:', e.message);
+    // Non-fatal: webhook will fallback to plan=starter, email=null
+  }
 
   // Success URL carries order context for the success page
   const successUrl = `https://humanbrowser.dev/success?order=${orderId}&method=crypto&plan=${plan}`;
